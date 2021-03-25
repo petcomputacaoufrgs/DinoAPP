@@ -1,26 +1,27 @@
-FROM ubuntu as prebuild
+FROM ubuntu as build
 WORKDIR /app
-
-# Install NodeJS
-RUN apt update -y && apt install curl -y
-RUN curl -fsSL https://deb.nodesource.com/setup_15.x | bash -
-RUN apt install nodejs -y 
-
-# Install Yarn
-RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr/share/keyrings/yarnkey.gpg >/dev/null
-RUN echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt update -y && apt install yarn -y
-
-# Install Git and clone DinoApp repository
-RUN apt install git -y
-RUN git clone https://github.com/petcomputacaoufrgs/DinoApp && cd DinoApp
-
-# Build branch main
-RUN git checkout main
-RUN yarn install --network-timeout 10000000 && yarn build
+# Install Tools
+RUN apt-get update -y \
+    && apt-get upgrade -y \
+    && apt-get install curl -y \
+    && curl -fsSL https://deb.nodesource.com/setup_15.x | bash - \
+    && apt-get install nodejs -y \
+    && curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr/share/keyrings/yarnkey.gpg >/dev/null \
+    && echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list \
+    && apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com \
+    && apt-get update -y \ 
+    && apt-get install yarn -y \
+    && apt-get install git -y
+# Download Project
+RUN git clone https://github.com/petcomputacaoufrgs/DinoApp
+# Build
+WORKDIR /app/DinoApp
+RUN git checkout staging \
+    && git pull \
+    && yarn install --production --network-timeout 10000000 && yarn build
 
 FROM nginx:stable-alpine
-COPY ./server/nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/DinoApp/build /usr/share/nginx/html
+COPY --from=build /app/DinoApp/nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 ENTRYPOINT ["nginx", "-g", "daemon off;"]

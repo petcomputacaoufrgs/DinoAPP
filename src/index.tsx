@@ -1,3 +1,4 @@
+import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import AlertProvider from './context/alert'
@@ -21,12 +22,14 @@ window.addEventListener('load', () => {
 })
 
 ReactDOM.render(
-	<GoogleOAuth2Provider>
-		<AlertProvider>
-			<LanguageProvider>
-				<App />
-			</LanguageProvider>
-		</AlertProvider>
-	</GoogleOAuth2Provider>,
+	<React.StrictMode>
+		<GoogleOAuth2Provider>
+			<AlertProvider>
+				<LanguageProvider>
+					<App />
+				</LanguageProvider>
+			</AlertProvider>
+		</GoogleOAuth2Provider>
+	</React.StrictMode>,
 	document.getElementById('root'),
 )

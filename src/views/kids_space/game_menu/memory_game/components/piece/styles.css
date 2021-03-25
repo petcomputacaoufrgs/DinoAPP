@@ -56,11 +56,11 @@
 
 @keyframes piece_flip_back_animation{
     0% {transform: rotate3d(0, 1, 0, 180deg);}
-    100% {transform: rotate3d(0);}
+    100% {transform: rotate3d(0, 0, 0, 0);}
 }
   
 @keyframes piece_flip_front_animation {
-    0% {transform: rotate3d(0,0,0,0);}
+    0% {transform: rotate3d(0, 0, 0, 0);}
     100% {transform: rotate3d(0, 1, 0, 180deg);}
 }
   
