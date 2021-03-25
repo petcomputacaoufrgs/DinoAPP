@@ -52,3 +52,16 @@
 - yarn start
 ### Visite o app em
 - localhost:3000
+
+## Deploy PETServer [branch staging]
+O PET possui um servidor Kubernetes para teste de aplicações construído sobre máquinas ARM.
+O arquivo Dockerfile possui as configurações necessárias para gerar a imagem de produção.
+Com o Docker instalado e conectado na conta do DockerHub execute o comando abaixo na pasta raiz.
+```cmd
+docker buildx build --platform linux/arm/v7 -t petcompufrgs/dinoapp:staging --push .
+```
+
+O arquivo config.yaml configura o deploy da aplicação no servidor. Copie o conteúdo deste arquivo para o servidor e execute o comando abaixo.
+```cmd
+kubectl apply -f config.yaml
+```
