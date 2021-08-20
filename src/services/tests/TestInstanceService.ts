@@ -24,6 +24,10 @@ import TreatmentQuestionService from '../treatment/TreatmentQuestionService'
 import TreatmentService from '../treatment/TreatmentService'
 import glossaryData from './glossary.json'
 import faqItemData from './faqItem.json'
+import CalendarEventTypeEntity from '../../types/calendar/database/CalendarEventTypeEntity'
+import CalendarEventTypeService from '../calendar/CalendarEventTypeService'
+import CalendarEventEntity from '../../types/calendar/database/CalendarEventEntity'
+import CalendarEventService from '../calendar/CalendarEventService'
 
 class TestInstanceService {
 	async loadInstances() {
@@ -36,6 +40,8 @@ class TestInstanceService {
 			await this.loadEssentialPhones()
 			await this.loadGlossary()
 		} else {
+			await this.loadCalendarEventTypes()
+			await this.loadCalendarEvents()
 			await this.loadContacts()
 			await this.loadPhones()
 			await this.loadNotes()
@@ -134,8 +140,6 @@ class TestInstanceService {
 
 		const treatments = await TreatmentService.getAll()
 
-		console.log(treatments)
-
 		const instancesNonUniversal: EssentialContactEntity[] =
 			this.contactInstances.map(c => {
 				const ec = c as EssentialContactEntity
@@ -188,6 +192,58 @@ class TestInstanceService {
 		}
 
 		await GlossaryService.saveAll(instances)
+	}
+	private async loadCalendarEventTypes() {
+		const instances = [
+			{ icon: 'clock', title: 'Evento', color: '#afd153', userId: 1 },
+			{
+				icon: 'clipboard',
+				title: 'Lembrete',
+				color: '#ab1e53',
+			},
+			{
+				icon: 'pill',
+				title: 'Personalizadooooo',
+				color: '#ab5e13',
+				userId: 1,
+			},
+		] as CalendarEventTypeEntity[]
+
+		await CalendarEventTypeService.saveAll(instances)
+	}
+	private async loadCalendarEvents() {
+		const types = await CalendarEventTypeService.getAll()
+
+		const getRandomTypeLocalId = () => {
+			if (types) {
+				const random = ArrayUtils.randomItem(types)
+				if (random) return random.localId
+			}
+			return undefined
+		}
+
+		const instances = [
+			{
+				title: 'Lembrete Top',
+				time: '10:00 - 11:00',
+				date: '01',
+				typeLocalId: getRandomTypeLocalId(),
+			},
+			{
+				title: 'Eventão',
+				time: '9:00 - 22:00',
+				date: '02',
+				typeLocalId: getRandomTypeLocalId(),
+			},
+			{
+				title: 'Eventão 2',
+				time: '14:00 - 18:00',
+				date: '04',
+				typeLocalId: getRandomTypeLocalId(),
+			},
+		] as CalendarEventEntity[]
+
+		await CalendarEventService.saveAll(instances)
 	}
 
 	private async loadContacts() {

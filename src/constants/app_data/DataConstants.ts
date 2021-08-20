@@ -53,6 +53,11 @@ class DataConstants {
 	static REPORT_WHAT = { MAX: 1000, REQUIRED: true } as const
 	static REPORT_WHERE = { MAX: 100, REQUIRED: false } as const
 	static REPORT_HOW = { MAX: 1000, REQUIRED: false } as const
+
+	// *-------------* CALENDAR *-------------*
+
+	static CALENDAR_EVENT_TITLE = { MAX: 100, REQUIRED: true } as const
+	static CALENDAR_EVENT_DESCRIPTION = { MAX: 1000, REQUIRED: false } as const
 }
 
 export default DataConstants

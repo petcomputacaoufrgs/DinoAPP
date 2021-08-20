@@ -46,7 +46,6 @@ const Treatment: React.FC<{ ref: React.Ref<unknown> }> = () => {
 		TreatmentService.addUpdateEventListenner(loadData)
 
 		let updateTreatments = (data: TreatmentEntity[]) => {
-			console.log(data)
 			setTreatments(data)
 		}
 

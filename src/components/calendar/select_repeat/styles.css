@@ -1,0 +1,9 @@
+.repeat__selector{
+    margin-top: 2rem;
+}
+
+.repeat_svg__selector svg{
+    fill: #fafafa;
+    margin-right: 0.5rem;
+    justify-content: center;
+}

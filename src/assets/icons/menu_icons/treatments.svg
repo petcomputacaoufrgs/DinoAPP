@@ -1,10 +1,10 @@
-<svg width="92" height="77" viewBox="0 0 92 77" fill="none" xmlns="http://www.w3.org/2000/svg" id='treatment_icon'>
+<svg id='treatment_icon' width="94" height="83" viewBox="0 0 94 83" fill="none" xmlns="http://www.w3.org/2000/svg%22%3E">
 <style type="text/css">
-	.st0{fill:#FFFFFF;}
+    .st0{fill:#FFFFFF;}
     .st1{stroke: white;}
 </style>
-<path class='st1' d="M13.4575 24.9741L35.9734 15.3157L45.829 38.291L23.3131 47.9495C16.9687 50.6711 9.6192 47.7341 6.89765 41.3896C4.17611 35.0451 7.11307 27.6957 13.4575 24.9741Z" stroke="white" stroke-width="3"/>
-<path class='st0' d="M40.4375 11.7689L64.3319 1.51911C71.4377 -1.52902 79.6691 1.76038 82.7172 8.86619C85.7653 15.972 82.4759 24.2034 75.3701 27.2515L51.4758 37.5013L40.4375 11.7689Z" fill="white"/>
-<circle class='st1' cx="72.4998" cy="57.4999" r="14" transform="rotate(16.1472 72.4998 57.4999)" stroke="white" stroke-width="3"/>
-<line class='st1' x1="57.6115" y1="53.1894" x2="87.3886" y2="61.8107" stroke="white" stroke-width="3"/>
+<path class="st1" d="M14.1706 30.5769L36.3597 21.0587L45.7004 42.8337L23.5113 52.352C17.4983 54.9314 10.5328 52.1478 7.95345 46.1348C5.37408 40.1218 8.15761 33.1563 14.1706 30.5769Z" stroke-width="5"/>
+<path class="st0" d="M41.4397 16.1597L65.9263 5.65583C73.2082 2.53216 81.6436 5.90308 84.7672 13.185V13.185C87.8909 20.4669 84.52 28.9023 77.2381 32.026L52.7515 42.5298L41.4397 16.1597Z"/>
+<circle class="st1" cx="74.2966" cy="63.0241" r="13.3841" transform="rotate(16.1472 74.2966 63.0241)" stroke="black" stroke-width="5"/>
+<line class="st1" x1="60.1096" y1="60.1103" x2="88.6559" y2="68.3753" stroke-width="5"/>
 </svg>

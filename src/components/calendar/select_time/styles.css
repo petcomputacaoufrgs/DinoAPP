@@ -1,0 +1,9 @@
+.time__selector{
+    margin-top:2rem;
+}
+
+.drop_down__flex_row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

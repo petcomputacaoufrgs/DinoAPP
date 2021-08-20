@@ -1,5 +1,26 @@
-.calendar {
-	position: relative;
-	width: 100%;
-	height: calc(100vh - 7.813rem);
+.calendar_dialog__header {
+	background-color: #fafafa69;
+	color: #fafafa;
+	padding: 1rem;
+}
+.calendar_dialog__header .color_palette {
+	margin-left: auto;
+}
+
+.calendar_dialog__header_title {
+	text-align: initial;
+	margin-right: 8px;
+	font-size: var(--default-font);
+}
+
+.calendar_dialog__content {
+	padding: 1.3rem;
+}
+
+.left_block__selector{
+    padding-right: 1rem;
+}
+
+.right_block__selector{
+	padding-right: 1rem;
 }

@@ -26,6 +26,8 @@ class APIHTTPPathsConstants {
 	REFRESH_AUTH_GOOGLE = `${this.PRIVATE_AUTH}google/refresh/`
 	WEB_SOCKET_AUTH = `${this.PRIVATE_AUTH}web_socket/`
 	DELETE_ACCOUNT = `${this.PRIVATE_AUTH}delete_account/`
+	CALENDAR_EVENT = `${this.ROOT}${this.ROUTE_PRIVATE}calendar_event/`
+	CALENDAR_EVENT_TYPE = `${this.ROOT}${this.ROUTE_PRIVATE}calendar_event_type/`
 	//LOGOUT = `${this.PRIVATE_AUTH}logout/`
 
 	/* user ------------------------------------------------------------------------ */

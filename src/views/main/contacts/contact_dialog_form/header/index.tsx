@@ -41,7 +41,9 @@ const AddContactDialogHeader = (
 					onClick={handleChangeColor}
 				/>
 			}
-			title={props.contact.name || (isStaff
+			title={
+				props.contact.name ||
+				(isStaff
 					? language.data.CONTACTS_ADD_ESSENTIAL_CONTACT
 					: language.data.NEW_CONTACT)
 			}

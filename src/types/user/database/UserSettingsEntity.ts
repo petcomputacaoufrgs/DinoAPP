@@ -7,6 +7,8 @@ export default interface UserSettingsEntity
 	fontSize: number
 	includeEssentialContact: boolean
 	declineGoogleContacts: boolean
+	declineGoogleCalendar: boolean
 	firstSettingsDone: boolean
+	googleCalendarId?: string
 	treatmentLocalId?: number
 }

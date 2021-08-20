@@ -1,0 +1,14 @@
+.event_wrapper {
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+}
+
+.event_wrapper p {
+    font-size: var(--default-font);
+    color: var(--light-color);
+    margin: 0;
+}
+
+.event_title {
+    font-weight: bold;
+}

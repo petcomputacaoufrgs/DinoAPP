@@ -74,11 +74,6 @@
 	margin: 0;
 }
 
-.settings__delete_account_dialog h3 {
-	padding: 16px;
-	margin: 0;
-}
-
 .settings__delete_account_dialog__buttons {
 	font-size: var(--default-font);
 	margin-left: 1rem;
@@ -94,7 +89,7 @@
 	margin-left: 1rem;
 }
 
-.settings__change_password_dialog input{
+.settings__change_password_dialog input {
 	margin-bottom: 0.7rem;
 	width: 100%;
 	padding: 0.2rem;
@@ -109,7 +104,7 @@
 }
 
 .settings__change_password_dialog__error_message {
-	color: #FF7676;
+	color: #ff7676;
 }
 
 @media (orientation: landscape) {

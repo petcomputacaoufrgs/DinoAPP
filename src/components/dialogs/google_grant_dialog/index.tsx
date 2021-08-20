@@ -1,178 +1,238 @@
 import React, { useState, useEffect } from 'react'
-import GoogleGrantDialogProps from './props'
-import { Dialog, Button } from '@material-ui/core'
-import TransitionSlide from '../../slide_transition'
+import { DialogActions } from '@material-ui/core'
 import AuthService from '../../../services/auth/AuthService'
 import { useAlert } from '../../../context/alert'
 import { useLanguage } from '../../../context/language'
-import { DinoDialogContent, DinoDialogHeader } from '../dino_dialog'
+import DinoDialog, { DinoDialogContent, DinoDialogHeader } from '../dino_dialog'
 import UserEntity from '../../../types/user/database/UserEntity'
 import UserService from '../../../services/user/UserService'
 import DinoLoader from '../../loader'
 import ConnectionService from '../../../services/connection/ConnectionService'
 import './styles.css'
-import { HasStaffPowers } from '../../../context/private_router'
+import GoogleScope from '../../../types/auth/google/GoogleScope'
+import UserSettingsEntity from '../../../types/user/database/UserSettingsEntity'
+import TextButton from '../../button/text_button'
 import UserSettingsService from '../../../services/user/UserSettingsService'
 
-const GoogleGrantDialog = React.forwardRef<JSX.Element, GoogleGrantDialogProps>(
-	({ scopes, open, settings, onClose }, ref) => {
-		const alert = useAlert()
-		const isStaff = HasStaffPowers()
+interface GoogleGrantDialogProps {
+	scopes: GoogleScope[]
+	open: boolean
+	onClose: () => void
+	onAgree: () => void
+	onDisagree: () => void
+}
 
-		const [isLoading, setIsLoading] = useState(true)
-		const [user, setUser] = useState<UserEntity | undefined>()
-		const [isConnected, setIsConnected] = useState<boolean>(true)
+const GoogleGrantDialog: React.FC<GoogleGrantDialogProps> = ({
+	scopes,
+	open,
+	onClose,
+	onAgree,
+	onDisagree,
+	children,
+}) => {
+	const alert = useAlert()
 
-		useEffect(() => {
-			const loadData = async () => {
-				const user = await UserService.getFirst()
-				const isConnected = ConnectionService.isConnected()
+	const [isLoading, setIsLoading] = useState(true)
+	const [user, setUser] = useState<UserEntity | undefined>()
+	const [isConnected, setIsConnected] = useState<boolean>(true)
 
-				if (user) {
-					updateData(user, isConnected)
-				}
+	useEffect(() => {
+		const loadData = async () => {
+			const user = await UserService.getFirst()
+			const isConnected = ConnectionService.isConnected()
 
-				finishLoading()
-			}
-
-			const updateConnectionState = () => {
-				setIsConnected(ConnectionService.isConnected())
-			}
-
-			let updateData = (user: UserEntity, isConnected: boolean) => {
-				setUser(user)
-				setIsConnected(isConnected)
-			}
-
-			let finishLoading = () => {
-				setIsLoading(false)
-			}
-
-			UserService.addUpdateEventListenner(loadData)
-			ConnectionService.addEventListener(updateConnectionState)
-
-			if (isLoading) {
-				loadData()
-			}
-
-			return () => {
-				updateData = () => {}
-				finishLoading = () => {}
-				UserService.removeUpdateEventListenner(loadData)
-				ConnectionService.removeEventListener(updateConnectionState)
-			}
-		}, [isLoading])
-
-		const language = useLanguage()
-
-		const [refreshNecessary, setRefreshNecessary] = useState(false)
-
-		const handleAcceptClick = async () => {
 			if (user) {
-				const [response] = await AuthService.requestGoogleGrant(
-					scopes,
-					refreshNecessary,
-					user.email,
-				)
-
-				setRefreshNecessary(false)
-
-				const onSucess = () => {
-					alert.showSuccessAlert(language.data.GRANT_FAIL_BY_EXTERNAL_SUCCESS)
-					onClose()
-					if (settings) {
-						settings.declineGoogleContacts = false
-						UserSettingsService.save(settings)
-					}
-				}
-
-				const onRefreshTokenNecessary = () => {
-					setRefreshNecessary(true)
-					alert.showInfoAlert(language.data.GRANT_RESFRESH_TOKEN_NECESSARY)
-				}
-
-				const onDisconnect = () => {
-					alert.showErrorAlert(language.data.GRANT_FAIL_BY_DISCONNECTION)
-					onClose()
-				}
-
-				const alerts = [
-					onSucess,
-					() =>
-						alert.showErrorAlert(language.data.GRANT_FAIL_BY_EXTERNAL_ERROR),
-					() => alert.showInfoAlert(language.data.GRANT_CANCELED),
-					() =>
-						alert.showInfoAlert(language.data.GRANT_FAIL_BY_INVALID_ACCOUNT),
-					onRefreshTokenNecessary,
-					onDisconnect,
-					() => alert.showErrorAlert(language.data.GRANT_FAIL_BY_UNKNOW_ERROR),
-				]
-
-				const responseFoo = alerts[response]
-				responseFoo()
+				updateData(user, isConnected)
 			}
+
+			finishLoading()
 		}
 
-		const handleDecline = async () => {
-			alert.showInfoAlert(language.data.GRANT_DECLINED)
-			onClose()
-			if (settings) {
-				settings.declineGoogleContacts = true
-				UserSettingsService.save(settings)
-			}
+		const updateConnectionState = () => {
+			setIsConnected(ConnectionService.isConnected())
 		}
 
-		const renderDialogContent = (): JSX.Element => (
-			<>
-				<DinoDialogHeader>
-					<h1>{language.data.GOOGLE_CONTACT_GRANT_TITLE}</h1>
-				</DinoDialogHeader>
-				<DinoDialogContent>
-					<p>{language.data.GOOGLE_CONTACT_GRANT_TEXT}</p>
-				</DinoDialogContent>
-				<div className='google_grant_dialog__buttons'>
-					<Button onClick={handleDecline}>
-						{language.data.DIALOG_DECLINE_BUTTON_TEXT}
-					</Button>
-					<Button
-						autoFocus
-						onClick={handleAcceptClick}
-						className='google_grant_dialog__buttons__accept_button'
-					>
-						{language.data.DIALOG_AGREE_TEXT}
-					</Button>
-				</div>
-			</>
-		)
+		let updateData = (user: UserEntity, isConnected: boolean) => {
+			setUser(user)
+			setIsConnected(isConnected)
+		}
 
-		const renderOfflineContent = (): JSX.Element => (
-			<>
+		let finishLoading = () => {
+			setIsLoading(false)
+		}
+
+		UserService.addUpdateEventListenner(loadData)
+		ConnectionService.addEventListener(updateConnectionState)
+
+		if (isLoading) {
+			loadData()
+		}
+
+		return () => {
+			updateData = () => {}
+			finishLoading = () => {}
+			UserService.removeUpdateEventListenner(loadData)
+			ConnectionService.removeEventListener(updateConnectionState)
+		}
+	}, [isLoading])
+
+	const language = useLanguage()
+
+	const [refreshNecessary, setRefreshNecessary] = useState(false)
+
+	const handleAgree = async () => {
+		if (user) {
+			const [response] = await AuthService.requestGoogleGrant(
+				scopes,
+				refreshNecessary,
+				user.email,
+			)
+
+			setRefreshNecessary(false)
+
+			const onSucess = () => {
+				alert.showSuccessAlert(language.data.GRANT_FAIL_BY_EXTERNAL_SUCCESS)
+				onAgree()
+			}
+
+			const onRefreshTokenNecessary = () => {
+				setRefreshNecessary(true)
+				alert.showInfoAlert(language.data.GRANT_RESFRESH_TOKEN_NECESSARY)
+			}
+
+			const onDisconnect = () => {
+				alert.showErrorAlert(language.data.GRANT_FAIL_BY_DISCONNECTION)
+				onClose()
+			}
+
+			const alerts = [
+				onSucess,
+				() => alert.showErrorAlert(language.data.GRANT_FAIL_BY_EXTERNAL_ERROR),
+				() => alert.showInfoAlert(language.data.GRANT_CANCELED),
+				() => alert.showInfoAlert(language.data.GRANT_FAIL_BY_INVALID_ACCOUNT),
+				onRefreshTokenNecessary,
+				onDisconnect,
+				() => alert.showErrorAlert(language.data.GRANT_FAIL_BY_UNKNOW_ERROR),
+			]
+
+			const responseFoo = alerts[response]
+			responseFoo()
+		}
+	}
+
+	const handleDisagree = async () => {
+		alert.showInfoAlert(language.data.GRANT_DECLINED)
+		onDisagree()
+	}
+
+	const renderOfflineContent = (): JSX.Element => (
+		<DinoDialog
+			open={open}
+			onClose={onClose}
+			header={
 				<DinoDialogHeader>
 					<h1>{language.data.NO_CONNECTION}</h1>
 				</DinoDialogHeader>
-				<DinoDialogContent>
-					<p>{language.data.RENDER_OFFLINE_CONTENT_PART_1}</p>
-					<p>{language.data.RENDER_OFFLINE_CONTENT_PART_2}</p>
-				</DinoDialogContent>
-			</>
-		)
+			}
+			actions={
+				<DialogActions>
+					<TextButton onClick={onClose}>
+						{language.data.CLOSE_ARIA_LABEL}
+					</TextButton>
+				</DialogActions>
+			}
+		>
+			<DinoDialogContent>
+				<p>{language.data.RENDER_OFFLINE_CONTENT_PART_1}</p>
+				<p>{language.data.RENDER_OFFLINE_CONTENT_PART_2}</p>
+			</DinoDialogContent>
+		</DinoDialog>
+	)
 
-		return (
-			<Dialog
-				className='google_grant_dialog'
-				ref={ref}
-				fullWidth
-				maxWidth='xs'
-				onClose={onClose}
-				TransitionComponent={TransitionSlide}
-				open={open && !isStaff}
-			>
-				<DinoLoader isLoading={isLoading}>
-					{isConnected ? renderDialogContent() : renderOfflineContent()}
-				</DinoLoader>
-			</Dialog>
-		)
-	},
-)
+	return isConnected ? (
+		<DinoDialog
+			open={open}
+			onClose={onClose}
+			header={
+				<DinoDialogHeader>
+					<h3>{language.data.GOOGLE_GRANT_TITLE}</h3>
+				</DinoDialogHeader>
+			}
+			actions={
+				<DialogActions>
+					<TextButton onClick={handleDisagree}>
+						{language.data.DIALOG_DECLINE_BUTTON_TEXT}
+					</TextButton>
+					<TextButton onClick={handleAgree}>
+						{language.data.DIALOG_AGREE_TEXT}
+					</TextButton>
+				</DialogActions>
+			}
+		>
+			<DinoLoader isLoading={isLoading}>{children}</DinoLoader>
+		</DinoDialog>
+	) : (
+		renderOfflineContent()
+	)
+}
 
 export default GoogleGrantDialog
+
+interface GoogleContactGrantProps {
+	settings?: UserSettingsEntity
+	onClose: () => void
+	open: boolean
+}
+
+export const GoogleContactGrantDialog = (props: GoogleContactGrantProps) => {
+	const language = useLanguage()
+
+	const handleSaveDecline = (decline: boolean) => {
+		if (props.settings) {
+			props.settings.declineGoogleContacts = decline
+			UserSettingsService.save(props.settings)
+		}
+		props.onClose()
+	}
+
+	return (
+		<GoogleGrantDialog
+			{...props}
+			onAgree={() => handleSaveDecline(false)}
+			onDisagree={() => handleSaveDecline(true)}
+			scopes={[GoogleScope.CONTACT_SCOPE]}
+		>
+			<DinoDialogContent>
+				<p>{language.data.GOOGLE_CONTACT_GRANT_TEXT}</p>
+			</DinoDialogContent>
+		</GoogleGrantDialog>
+	)
+}
+
+export const GoogleCalendarGrantDialog = (props: GoogleContactGrantProps) => {
+	const language = useLanguage()
+
+	const handleSaveDecline = (decline: boolean) => {
+		if (props.settings) {
+			props.settings.declineGoogleCalendar = decline
+			UserSettingsService.save(props.settings)
+		}
+		props.onClose()
+	}
+
+	return (
+		<GoogleGrantDialog
+			{...props}
+			onAgree={() => handleSaveDecline(false)}
+			onDisagree={() => handleSaveDecline(true)}
+			scopes={[GoogleScope.CALENDAR_SCOPE]}
+		>
+			<DinoDialogContent>
+				<p>
+					Caledario texto aaaaa \Lorem ipsum dolor sit amet consectetur
+					adipisicing elit. Fugit, natus iste,
+				</p>
+			</DinoDialogContent>
+		</GoogleGrantDialog>
+	)
+}

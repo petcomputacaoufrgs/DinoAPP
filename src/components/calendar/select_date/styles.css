@@ -1,0 +1,16 @@
+.date__selector{
+    margin-top: 1rem;
+}
+
+.month_date__selector{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.year_date__selector{
+    padding-left: 0rem;
+}
+
+.day_date__selector{
+    padding-right: 0rem;
+}

@@ -1,0 +1,14 @@
+.month_nav_bar_wrapper {
+    width: 95%;
+    margin: 1rem auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.month_and_year_text {
+    font-size: var(--large-font);
+    font-weight: bold;
+    color: var(--base-font-color);
+    text-align: center;
+}
+

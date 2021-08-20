@@ -77,7 +77,6 @@ const FaqItemForm: React.FC<FaqItemFormProps> = ({
 	) => {
 		item.localTreatmentId = checked ? undefined : treatment.localId
 		item.isUniversal = Number(checked) as 0 | 1
-		console.log('changed', item)
 		setItem({ ...item })
 	}
 

@@ -1,0 +1,43 @@
+.day_wrapper {
+    width: 95%;
+    margin: auto;
+}
+
+.day_number_wrapper {
+    width: 20%;
+    text-align: center;
+}
+
+.day_number_wrapper p {
+    color: var(--base-font-color);
+    margin: 0;
+}
+
+.week_day {
+    font-size: var(--big-font);
+}
+
+.month_day {
+    font-size: var(--large-font);
+}
+
+.day_event_list_wrapper {
+    width: 79%;
+    margin: auto;
+}
+
+.day_event_wrapper {
+    width: 100%;
+    margin-bottom: 0.25rem;
+}
+
+.empty_event_list {
+    width: 100%;
+}
+
+.empty_event_list p {
+    font-size: var(--default-font);
+    color: var(--base-font-color);
+    text-align: center;
+    margin: 0;
+}

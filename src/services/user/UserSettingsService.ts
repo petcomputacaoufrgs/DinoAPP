@@ -50,10 +50,12 @@ class UserSettingsServiceImpl extends AutoSynchronizableService<
 		const entity: UserSettingsEntity = {
 			colorTheme: model.colorTheme,
 			declineGoogleContacts: model.declineGoogleContacts,
+			declineGoogleCalendar: model.declineGoogleCalendar,
 			fontSize: model.fontSize,
 			includeEssentialContact: model.includeEssentialContact,
 			language: model.language || this.getDefaultLanguageCode(),
 			firstSettingsDone: model.firstSettingsDone,
+			googleCalendarId: model.googleCalendarId,
 		}
 
 		if (model.treatmentId) {
@@ -73,10 +75,12 @@ class UserSettingsServiceImpl extends AutoSynchronizableService<
 		const model: UserSettingsDataModel = {
 			colorTheme: entity.colorTheme,
 			declineGoogleContacts: entity.declineGoogleContacts,
+			declineGoogleCalendar: entity.declineGoogleCalendar,
 			fontSize: entity.fontSize,
 			includeEssentialContact: entity.includeEssentialContact,
 			language: entity.language,
 			firstSettingsDone: entity.firstSettingsDone,
+			googleCalendarId: entity.googleCalendarId,
 		}
 
 		if (entity.treatmentLocalId) {
@@ -157,6 +161,13 @@ class UserSettingsServiceImpl extends AutoSynchronizableService<
 	getEssentialContactGrant(
 		userSettings: UserSettingsEntity | undefined,
 	): boolean {
+		if (userSettings) {
+			return userSettings.includeEssentialContact
+		}
+		return this.getDefaultEssentialContactGrant()
+	}
+
+	getCalendar(userSettings: UserSettingsEntity | undefined): boolean {
 		if (userSettings) {
 			return userSettings.includeEssentialContact
 		}
@@ -282,7 +293,8 @@ class UserSettingsServiceImpl extends AutoSynchronizableService<
 			fontSize: this.getDefaultFontSizeCode(),
 			colorTheme: this.getDefaultColorThemeCode(),
 			includeEssentialContact: true,
-			declineGoogleContacts: false,
+			declineGoogleContacts: true,
+			declineGoogleCalendar: true,
 			firstSettingsDone: false,
 		} as UserSettingsEntity
 	}

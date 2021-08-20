@@ -7,7 +7,8 @@ export default interface UserSettingsDataModel
 	fontSize: number
 	includeEssentialContact: boolean
 	declineGoogleContacts: boolean
+	declineGoogleCalendar: boolean
 	treatmentId?: number
 	firstSettingsDone: boolean
-	parentsAreaPassword?: string
+	googleCalendarId?: string
 }

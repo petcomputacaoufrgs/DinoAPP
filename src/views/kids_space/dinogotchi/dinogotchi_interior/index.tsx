@@ -154,7 +154,7 @@ const DinogotchiInterior: React.FC<DinogotchiInteriorProps> = ({
 					className='selection_button'
 					onClick={() => setCustomizeState(DinoEnum.CUSTOMIZE_HAT)}
 				>
-					Escolher
+					{language.data.CHOOSE}
 				</Button>
 			</div>
 		)
@@ -196,7 +196,7 @@ const DinogotchiInterior: React.FC<DinogotchiInteriorProps> = ({
 
 	return (
 		<Loader isLoading={isLoading} className='dinogotchi_loader' hideChildren>
-			<DinoIconButton ariaLabel={language.data.CUSTOMIZE} icon={ClosetSVG} className='customize_dino' onClick={() => setCustomizeState(DinoEnum.CUSTOMIZE_COLOR)}/>
+			<DinoIconButton ariaLabel={language.data.CUSTOMIZE} icon={ClosetSVG} className='customize_dino' onClick={() => setCustomizeState(DinoEnum.CUSTOMIZE_COLOR)} />
 			{renderDinogotchiScreen()}
 			<StatusIndicator fillHealth={40} fillEnergy={70} fillHappiness={100} />
 		</Loader>

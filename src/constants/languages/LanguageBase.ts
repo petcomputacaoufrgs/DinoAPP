@@ -120,6 +120,14 @@ export default interface LanguageBase {
 	DECEMBER: string
 	INVALID_MONTH: string
 	STRING_DATE_FORMAT: string
+	SUNDAY_ABREVIATION: string
+	MONDAY_ABREVIATION: string
+	TUESDAY_ABREVIATION: string
+	WEDNESDAY_ABREVIATION: string
+	THURSDAY_ABREVIATION: string
+	FRIDAY_ABREVIATION: string
+	SATURDAY_ABREVIATION: string
+	EMPTY_EVENT_LIST: string
 	DELETE_NOTE_ALERT_TITLE: string
 	DELETE_NOTE_ALERT_TEXT: string
 	LOADING: string
@@ -161,8 +169,11 @@ export default interface LanguageBase {
 	HOUR: string
 	DAYS: string
 	DAY: string
+	MONTH: string
+	YEAR: string
 	AND: string
 	BEFORE: string
+	EVENT: string
 	ADD_EVENT_TITLE: string
 	EVENT_TYPE_LABEL: string
 	EVENT_NAME_LABEL: string
@@ -238,7 +249,8 @@ export default interface LanguageBase {
 	GRANT_FAIL_BY_EXTERNAL_SUCCESS: string
 	GRANT_DECLINED: string
 	GOOGLE_CONTACT_GRANT_TEXT: string
-	GOOGLE_CONTACT_GRANT_TITLE: string
+	GOOGLE_CALENDAR_GRANT_TEXT: string
+	GOOGLE_GRANT_TITLE: string
 	ARROW_BACK_ARIA_LABEL: string
 	GOOGLE_LOGIN_BUTTON_ARIA_LABEL: string
 	OPEN_DRAWER_BUTTON_ARIA_LABEL: string

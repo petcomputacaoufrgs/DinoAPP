@@ -10,8 +10,6 @@ import {
 import ContactItems from './contact_list_items'
 import DinoSearchBar from '../../../components/search_bar'
 import ContactFormDialog from './contact_dialog_form'
-import GoogleGrantDialog from '../../../components/dialogs/google_grant_dialog'
-import GoogleScope from '../../../types/auth/google/GoogleScope'
 import DinoLoader from '../../../components/loader'
 import { useLanguage } from '../../../context/language'
 import UserSettingsEntity from '../../../types/user/database/UserSettingsEntity'
@@ -33,6 +31,7 @@ import CRUDEnum from '../../../types/enum/CRUDEnum'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import FilterService from '../../../storage/local_storage/filter/FilterService'
 import ContactEntity from '../../../types/contact/database/ContactEntity'
+import { GoogleContactGrantDialog } from '../../../components/dialogs/google_grant_dialog'
 
 export const renderIcon = (contact: ContactType) => {
 	if (isUniversalEssential(contact)) return <Public />
@@ -183,11 +182,10 @@ const Contacts: React.FC = () => {
 				dialogOpen={toAction === CRUDEnum.CREATE}
 				onClose={handleClose}
 			/>
-			<GoogleGrantDialog
+			<GoogleContactGrantDialog
 				settings={settings}
 				onClose={handleCloseGoogleGrant}
-				open={openGrantDialog}
-				scopes={[GoogleScope.CONTACT_SCOPE]}
+				open={openGrantDialog && !hasStaffPowers}
 			/>
 		</div>
 	)

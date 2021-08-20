@@ -10,6 +10,7 @@ const Button: React.FC<ButtonProps> = ({
 	inputRef,
 	ariaLabel,
 	outline,
+	style,
 }) => {
 	const buttonRef = useRef<HTMLButtonElement>(null)
 	const getClassName = (): string => {
@@ -51,6 +52,7 @@ const Button: React.FC<ButtonProps> = ({
 			onClick={onClick}
 			ref={buttonRef}
 			aria-label={ariaLabel}
+			style={style}
 		>
 			{children}
 		</button>

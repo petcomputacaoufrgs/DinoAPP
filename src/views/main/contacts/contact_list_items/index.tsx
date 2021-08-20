@@ -5,9 +5,7 @@ import ContactItemList from './contact_list_item'
 import { List } from '@material-ui/core'
 import ContactFormDialog from '../contact_dialog_form'
 import AgreementDialog from '../../../../components/dialogs/agreement_dialog'
-import ContactView, {
-	ContactType,
-} from '../../../../types/contact/view/ContactView'
+import ContactView from '../../../../types/contact/view/ContactView'
 import { useLanguage } from '../../../../context/language'
 import ContactService from '../../../../services/contact/ContactService'
 import { HasStaffPowers } from '../../../../context/private_router'

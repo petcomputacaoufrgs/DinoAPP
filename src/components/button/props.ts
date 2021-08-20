@@ -7,4 +7,5 @@ export default interface ButtonProps {
 	className?: string
 	disabled?: boolean
 	outline?: boolean
+	style?: React.CSSProperties
 }

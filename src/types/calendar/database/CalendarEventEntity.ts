@@ -1,19 +1,10 @@
-export default interface CalendarEventEntity {
-	id?: number
+import SynchronizableEntity from '../../sync/database/SynchronizableEntity'
 
-	external_id?: number
-
-	name: string
-
-	description: string
-
-	color: string
-
-	init_date: Date
-
-	end_date: Date
-
-	reminder_alarm_ms: number
-
-	type: number
+export default interface CalendarEventEntity
+	extends SynchronizableEntity<number> {
+	title: string
+	description?: string
+	typeLocalId?: number
+	time: string
+	date: string
 }

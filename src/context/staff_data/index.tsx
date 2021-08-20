@@ -14,13 +14,11 @@ const StaffData = createContext(new Map<number, TreatmentView>())
 /**
  * @description Gera os dados necessários para as rotas privadas e de login
  * @param children filho do StaffData
-*/
+ */
 const StaffDataProvider: React.FC = ({ children }) => {
-  
-  const [value, setValue] = useState(new Map<number, TreatmentView>())
+	const [value, setValue] = useState(new Map<number, TreatmentView>())
 
 	useEffect(() => {
-
 		const loadData = async () => {
 			const treatmentQuestions = await TreatmentQuestionService.getAll()
 
@@ -35,21 +33,34 @@ const StaffDataProvider: React.FC = ({ children }) => {
 			setValue(treatmentMap)
 		}
 
-		const populateMapWithTreatments = (treatments: TreatmentEntity[], treatmentMap: Map<number, TreatmentView>) => {
-			treatments.forEach(t => hasValue(t.localId) && treatmentMap.set(t.localId!, { treatment: t }))
+		const populateMapWithTreatments = (
+			treatments: TreatmentEntity[],
+			treatmentMap: Map<number, TreatmentView>,
+		) => {
+			treatments.forEach(
+				t =>
+					hasValue(t.localId) && treatmentMap.set(t.localId!, { treatment: t }),
+			)
 		}
 
-		const populateMapWithQuestions = (treatmentQuestions: TreatmentQuestionEntity[], treatmentMap: Map<number, TreatmentView>) => {
-
-			const pushQuestionToTreatment = (localTreatmentId: number, tq: TreatmentQuestionEntity) => {
+		const populateMapWithQuestions = (
+			treatmentQuestions: TreatmentQuestionEntity[],
+			treatmentMap: Map<number, TreatmentView>,
+		) => {
+			const pushQuestionToTreatment = (
+				localTreatmentId: number,
+				tq: TreatmentQuestionEntity,
+			) => {
 				const treatment = treatmentMap.get(localTreatmentId)
-				if(treatment)
-					treatment.questions ? treatment.questions.push(tq) : treatment.questions = [tq]
+				if (treatment)
+					treatment.questions
+						? treatment.questions.push(tq)
+						: (treatment.questions = [tq])
 			}
 
 			treatmentQuestions.forEach(tq => {
 				const localTreatmentId = tq.localTreatmentId
-				if(localTreatmentId && treatmentMap.has(localTreatmentId)) {
+				if (localTreatmentId && treatmentMap.has(localTreatmentId)) {
 					pushQuestionToTreatment(localTreatmentId, tq)
 				}
 			})
@@ -61,16 +72,14 @@ const StaffDataProvider: React.FC = ({ children }) => {
 		return () => TreatmentQuestionService.removeUpdateEventListenner(loadData)
 	}, [])
 
-  return (
-		<StaffData.Provider value={value}>
-			{children}
-		</StaffData.Provider>
-	)
+	return <StaffData.Provider value={value}>{children}</StaffData.Provider>
 }
 
 export const useStaffData = () => useContext(StaffData)
 
-export const useTreatmentView = (treatmentLocalId?: number): TreatmentView | undefined => {
+export const useTreatmentView = (
+	treatmentLocalId?: number,
+): TreatmentView | undefined => {
 	const staffData = useStaffData()
 	return treatmentLocalId ? staffData.get(treatmentLocalId) : undefined
 }

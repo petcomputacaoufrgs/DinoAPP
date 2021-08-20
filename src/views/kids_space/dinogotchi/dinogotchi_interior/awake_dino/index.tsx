@@ -6,7 +6,6 @@ import { ReactComponent as GoOutSVG } from '../../../../../assets/kids_space/ico
 import { ReactComponent as GameSVG } from '../../../../../assets/kids_space/icon_button/jogo.svg'
 import { ReactComponent as GoToSleepSVG } from '../../../../../assets/kids_space/icon_button/dormir.svg'
 import { ReactComponent as HeartsSVG } from '../../../../../assets/kids_space/hearts.svg'
-import { ReactComponent as CapSVG } from '../../../../../assets/kids_space/dino_acessories/cap.svg'
 import DinoIconButton from '../../../../../components/button/icon_button'
 import DinoEnum from '../../../../../types/enum/DinoEnum'
 import { useLanguage } from '../../../../../context/language'
