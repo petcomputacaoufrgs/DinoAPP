@@ -4,5 +4,5 @@ export default interface FaqItemDataModel
 	extends SynchronizableDataLocalIdModel<number> {
 	question: string
 	answer: string
-	faqId: number
+	treatmentId?: number
 }

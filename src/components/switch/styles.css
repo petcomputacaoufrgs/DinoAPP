@@ -18,6 +18,7 @@
 .dino_switch__form__switch .MuiSwitch-track {
 	height: 1.125rem;
 	border-radius: 1.125rem;
+	opacity: 0.25;
 }
 
 .MuiSwitch-root.dino_switch__form__switch {
@@ -27,12 +28,22 @@
 }
 
 .dino_switch__form .MuiSwitch-colorSecondary.Mui-checked {
-	color: var(--button-selected-font-color);
+	color: var(--switch-color);
 }
 
 .dino_switch__form .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track {
-	background-color: var(--button-selected-font-color);
+	background-color: var(--switch-slider-background);
 }
 .dino_switch__form .MuiSwitch-colorSecondary {
-	color: var(--button-font-color);
+	color: var(--switch-color);
+}
+
+@media (orientation: landscape) {
+	.dino_switch__form {
+		font-size: 1.4rem;
+	}
+
+	.MuiSwitch-root.dino_switch__form__switch {
+		transform: scale(1.2);
+	}
 }

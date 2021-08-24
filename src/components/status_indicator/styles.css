@@ -1,0 +1,34 @@
+.status_wrapper {
+    position: absolute;
+    top: 0;
+    left: 20%;
+    justify-content: space-between;   
+    margin-top: 1em; 
+}
+
+.status_wrapper svg {
+    width: 100%;
+    height: 100%;
+    grid-area: 1/1;
+    z-index: 2;
+}
+
+.status_wrapper svg .st0, .status_wrapper svg .st2{
+    fill: #0C1E59;
+}
+
+.status_bg {
+    justify-self: center;
+    align-self: end;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    grid-area: 1/1;
+}
+
+.status_item {
+    width: 2.813rem;
+    height: 2.813rem;
+    margin-left: 1rem; 
+    display: grid;
+}

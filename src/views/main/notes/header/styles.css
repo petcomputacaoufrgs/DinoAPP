@@ -13,18 +13,6 @@
 	width: 2.5rem;
 	height: auto;
 	margin-right: 0.5rem;
-	fill: var(--contrast-color);
-}
-
-.notes__header
-	.MuiAutocomplete-inputRoot[class*='MuiOutlinedInput-root'][class*='MuiOutlinedInput-marginDense'] {
-	padding: 0.375rem 0rem;
-}
-
-.notes__header
-	.MuiAutocomplete-inputRoot[class*='MuiOutlinedInput-root'][class*='MuiOutlinedInput-marginDense']
-	.MuiAutocomplete-input {
-	padding: 0.281rem 30.125rem 0.281rem 0rem;
 }
 
 .notes__header .MuiChip-label.MuiChip-labelSmall {

@@ -1,0 +1,9 @@
+.note__info_dialog__content {
+	padding: 16px;
+	overflow-y: visible;
+}
+
+.note__info_dialog__content__answer.MuiFormControl-root {
+	width: 100%;
+	margin-bottom: 0.5rem;
+}

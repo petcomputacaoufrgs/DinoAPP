@@ -1,29 +1,24 @@
 .home .home__grid {
-	width: 100%;
+	width: 90%;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	padding: 1.5rem 1.5rem 0rem;
-	grid-gap: 0rem 1.5rem;
+	grid-template-columns: 48% 48%;
+	grid-gap: 0 4%;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 5%;
 }
 
 .home .home__grid__button {
-	width: 100%;
 	padding: 0rem;
 	border-radius: 0.5rem;
 }
 
 .home__grid__item {
+	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	width: 100%;
-	height: 100%;
-}
-
-.home .home__grid__button {
-	width: 90%;
-	height: 90%;
 }
 
 .home .home__grid__button .MuiPaper-rounded {
@@ -31,24 +26,39 @@
 }
 
 .home__grid__item__name {
+	width: 100%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 	height: 2.5rem;
-	font-size: larger;
+	font-size: var(--big-font);
 	font-weight: 700;
-	color: var(--contrast-color);
-	margin-top: 0.25rem;
+	color: var(--menu-and-titles-font-color);
+	margin-top: 4px;
+	text-align: center;
+}
+
+p.home__grid__item__name {
+	margin: 0.5rem;
 }
 
 .home .home__grid__button {
-	width: 100%;
-	height: 100%;
-	background-color: var(--home-icons);
+	background-color: var(--menu-cards-background);
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	min-width: 9.72rem;
+	min-height: 9.72rem;
+}
+
+.home .home__grid__button #treatment_icon {
+	fill: transparent;
+	transform: scale(1.5);
 }
 
 .home .home__grid__button svg {
-	width: 90%;
+	width: 100%;
+	height: auto;
 	padding: 0.5rem;
 	height: auto;
 	fill: var(--dark-color);
@@ -66,7 +76,7 @@
 .info__grid__item {
 	width: 100%;
 	height: 2.5rem;
-	background-color: var(--horizontal-menu-item);
+	background-color: var(--menu-buttons-background);
 	font-size: var(--big-font);
 	font-weight: 700;
 	text-align: center;
@@ -83,15 +93,37 @@
 }
 
 @media (orientation: landscape) {
+	.home .home__grid {
+		grid-template-columns: 30% 30% 30%;
+		gap: 0 4%;
+		margin: 2vh 5vw 4vh 5vw;
+	}
+
+	.home .info__grid {
+		width: 90%;
+		grid-template-columns: 30% 30% 30%;
+		gap: 0 4%;
+	}
+
+	.info__grid__item {
+		height: 5vh;
+		margin: 0 5vw;
+	}
+
 	.home .home__avatar {
 		margin-top: 2.5rem;
 		width: 12.5rem;
 		height: 12.5rem;
 	}
 
-	.home .home__grid__button .img {
-		width: 90%;
-		height: 80%;
+	.home .home__grid__button {
+		width: 25vw;
+		height: 20vh;
+	}
+
+	.home .home__grid__button svg {
+		width: 18vh;
+		height: 18vh;
 	}
 
 	.home__grid__item {

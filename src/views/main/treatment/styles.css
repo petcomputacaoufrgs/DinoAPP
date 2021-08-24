@@ -1,0 +1,28 @@
+.treatment__dialog_form__content {
+	padding: 16px;
+	align-self: center;
+}
+
+.treatment__dialog_form__content__textfield {
+	width: 100%;
+	padding: 16px;
+}
+
+.treatment__list_item {
+	font-size: var(--default-font);
+}
+
+.treatment__list_item .treatment__list_item__text {
+	font-size: var(--big-font);
+	margin-right: 32px;
+}
+
+.treatment__list_item .treatment__list_item__action .dino_icon_button__tooltip {
+	margin-left: 1em;
+}
+
+.treatment__list_item
+	.MuiTypography-root.MuiListItemText-secondary.MuiTypography-body2.MuiTypography-colorTextSecondary.MuiTypography-displayBlock
+	.dino__history_link {
+	text-align: initial;
+}

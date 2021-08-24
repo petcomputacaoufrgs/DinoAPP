@@ -1,3 +1,7 @@
 .select_multiple_treatments {
 	margin-top: 1rem;
 }
+
+.select_multiple_treatments .select_multiple_treatments__form_control {
+    width: 100%;
+}

@@ -1,114 +1,131 @@
 const TOTAL_TURNS = 20
 
-let order: number[] = []
+//#region Variables
+// States and control variables
+let allPlaysOrder: number[] = []
 let playerOrder: number[] = []
-let flash: number
-let turn: number
-let good: boolean
+let currentDinoDisplaying: number
+let currentTurn: number
+let gameCanContinue: boolean
 let compTurn: boolean
-let intervalId: NodeJS.Timeout | null
-let noise: boolean
-let win: boolean
+let gameWon: boolean
+let gameBlocked: boolean
 
-let topLeft: HTMLElement | null
-let topRight: HTMLElement | null
-let bottomLeft: HTMLElement | null
-let bottomRight: HTMLElement | null
+// Interval control variable
+let intervalId: NodeJS.Timeout | null
+
+// Elements variables
+let dinoMusicalButtons: (HTMLElement | null)[]
 let startButton: HTMLElement | null
 let turnDiv: HTMLElement | null
 
+// Functions variables
 let onWin: () => void
+// //#endregion
 
-export function startGame(handleWin: () => void) {
+//#region Functions
+/**
+ * @description initialize game variables
+ * @param handleWin callback for win game event
+ */
+export const startGame = (handleWin: () => void) => {
 	onWin = handleWin
-	topLeft = document.getElementById('musical_dino__topleft')
-	topRight = document.getElementById('musical_dino__topright')
-	bottomLeft = document.getElementById('musical_dino__bottomleft')
-	bottomRight = document.getElementById('musical_dino__bottomright')
-	startButton = document.getElementById('musical_dino__start')
-	turnDiv = document.getElementById('musical_dino__header__turn')
+	setHTMLElements()
+	addOnClickHandler()
 
-	win = true
-	noise = false
+	gameWon = true
+	compTurn = false
+	gameBlocked = false
 
-	topLeft!.onclick = () => {
-		if (!compTurn) {
-			playerOrder.push(1)
-			check()
-			one()
-			if (!win) {
-				setTimeout(() => {
-					clearColor()
-				}, 300)
-			}
-		}
-	}
-
-	topRight!.onclick = () => {
-		if (!compTurn) {
-			playerOrder.push(2)
-			check()
-			two()
-			if (!win) {
-				setTimeout(() => {
-					clearColor()
-				}, 300)
-			}
-		}
-	}
-
-	bottomLeft!.onclick = () => {
-		if (!compTurn) {
-			playerOrder.push(3)
-			check()
-			three()
-			if (!win) {
-				setTimeout(() => {
-					clearColor()
-				}, 300)
-			}
-		}
-	}
-
-	bottomRight!.onclick = () => {
-		if (!compTurn) {
-			playerOrder.push(4)
-			check()
-			four()
-			if (!win) {
-				setTimeout(() => {
-					clearColor()
-				}, 300)
-			}
-		}
-	}
-
-	if (win) {
-		startButton!.style.opacity = '0'
-		play()
+	if (gameWon) {
+		startButton!.style.display = 'none'
+		beginGame()
 	}
 }
 
-function play() {
-	win = false
-	order = []
+/**
+ * @description set all divs to their respective variables
+ */
+const setHTMLElements = () => {
+	dinoMusicalButtons = [
+		document.getElementById('musical_dino__topleft'),
+		document.getElementById('musical_dino__topright'),
+		document.getElementById('musical_dino__bottomleft'),
+		document.getElementById('musical_dino__bottomright')
+	]
+	startButton = document.getElementById('musical_dino__start')
+	turnDiv = document.getElementById('musical_dino__header__turn')
+}
+
+/**
+ * @description add on click events to each button
+ */
+const addOnClickHandler = () => {
+	dinoMusicalButtons.forEach((musicalButton, index) => {
+		musicalButton!.onclick = () => {
+			if (!compTurn && !gameBlocked) {
+				playerOrder.push(index + 1)
+				gameBlocked = true
+				checkGameStatus()
+				animateDino(index)
+				if (!gameWon) {
+					setTimeout(() => {
+						clearColor()
+						gameBlocked = false
+					}, 300)
+				}
+			}
+		}
+	})
+}
+
+/**
+ * @description set initial variables and initialize turns
+ */
+const beginGame = () => {
+	setInitialValuesToVariables()
+	displayScore()
+}
+
+/**
+ * @description set initial values to necessary variables
+ */
+const setInitialValuesToVariables = () => {
+	gameWon = false
 	playerOrder = []
-	flash = 0
-	intervalId = null
-	turn = 1
-	good = true
-	turnDiv!.innerHTML = turn.toString()
-
-	for (var i = 0; i < TOTAL_TURNS; i++) {
-		order.push(Math.floor(Math.random() * 4) + 1)
-	}
+	currentDinoDisplaying = 0
+	currentTurn = 1
+	gameCanContinue = true
 	compTurn = true
-
+	allPlaysOrder = fillArrayRandomly()
 	intervalId = setInterval(gameTurn, 800)
 }
 
-function gameTurn() {
-	if (flash === turn) {
+/**
+ * @description fill array with numbers between 1 and 4 
+ */
+const fillArrayRandomly = () => {
+	const newArray: number[] = []
+	for (let i = 0; i < TOTAL_TURNS; i++) {
+		newArray.push(Math.floor(Math.random() * 4) + 1)
+	}
+	return newArray
+}
+
+/**
+ * @description display current score in game
+ */
+const displayScore = () => {
+	if (turnDiv) {
+		turnDiv.innerHTML = currentTurn.toString()
+	}
+}
+
+/**
+ * @description display computer's turn
+ */
+const gameTurn = () => {
+	if (currentDinoDisplaying === currentTurn) {
 		clearInterval(intervalId!)
 		compTurn = false
 		clearColor()
@@ -117,117 +134,100 @@ function gameTurn() {
 	if (compTurn) {
 		clearColor()
 		setTimeout(() => {
-			if (order[flash] === 1) one()
-			if (order[flash] === 2) two()
-			if (order[flash] === 3) three()
-			if (order[flash] === 4) four()
-			flash++
+			let dinoToAnimate = allPlaysOrder[currentDinoDisplaying]
+			animateDino(dinoToAnimate - 1)
+			currentDinoDisplaying++
 		}, 200)
 	}
 }
 
-function one() {
-	if (noise) {
-		const audio = document.getElementById(
-			'musical_dino__clip1',
-		) as HTMLAudioElement | null
-		if (audio) {
-			audio.play()
-		}
+/**
+ * @description animate the correct dino
+ * @param index index of witch dino button need to be animated
+ */
+const animateDino = (index: number) => {
+	const audio = document.getElementById(`musical_dino__clip${index + 1}`) as HTMLAudioElement | null
+	if (audio) {
+		audio.play()
 	}
-	noise = true
-	topLeft!.classList.add('musical_dino__dino_moving')
+	dinoMusicalButtons[index]!.classList.add('musical_dino__dino_moving')
 }
 
-function two() {
-	if (noise) {
-		const audio = document.getElementById(
-			'musical_dino__clip2',
-		) as HTMLAudioElement | null
-		if (audio) {
-			audio.play()
-		}
-	}
-	noise = true
-	topRight!.classList.add('musical_dino__dino_moving')
+/**
+ * @description clear all dino animations
+ */
+const clearColor = () => {
+	dinoMusicalButtons.forEach(dinoButton => {
+		dinoButton!.classList.remove('musical_dino__dino_moving')
+	})
 }
 
-function three() {
-	if (noise) {
-		const audio = document.getElementById(
-			'musical_dino__clip3',
-		) as HTMLAudioElement | null
-		if (audio) {
-			audio.play()
-		}
-	}
-	noise = true
-	bottomLeft!.classList.add('musical_dino__dino_moving')
+/**
+ * @description animate all dinos
+ */
+const flashColor = () => {
+	dinoMusicalButtons.forEach(dinoButton => {
+		dinoButton!.classList.add('musical_dino__dino_moving')
+	})
 }
 
-function four() {
-	if (noise) {
-		const audio = document.getElementById(
-			'musical_dino__clip4',
-		) as HTMLAudioElement | null
-		if (audio) {
-			audio.play()
-		}
-	}
-	noise = true
-	bottomRight!.classList.add('musical_dino__dino_moving')
-}
-
-function clearColor() {
-	topLeft!.classList.remove('musical_dino__dino_moving')
-	topRight!.classList.remove('musical_dino__dino_moving')
-	bottomLeft!.classList.remove('musical_dino__dino_moving')
-	bottomRight!.classList.remove('musical_dino__dino_moving')
-}
-
-function flashColor() {
-	topLeft!.classList.add('musical_dino__dino_moving')
-	topRight!.classList.add('musical_dino__dino_moving')
-	bottomLeft!.classList.add('musical_dino__dino_moving')
-	bottomRight!.classList.add('musical_dino__dino_moving')
-}
-
-function check() {
-	if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length - 1]) {
-		good = false
+/**
+ * @description verify current game status
+ */
+const checkGameStatus = () => {
+	if (playerOrder[playerOrder.length - 1] !== allPlaysOrder[playerOrder.length - 1]) {
+		gameCanContinue = false
 	}
 
-	if (playerOrder.length === TOTAL_TURNS && good) {
+	if (playerOrder.length === TOTAL_TURNS && gameCanContinue) {
 		winGame()
+		return
 	}
 
-	if (good === false) {
-		flashColor()
-		setTimeout(() => {
-			clearColor()
-
-			compTurn = true
-			flash = 0
-			playerOrder = []
-			good = true
-			intervalId = setInterval(gameTurn, 800)
-		}, 800)
-
-		noise = false
+	if (!gameCanContinue) {
+		handlePlayerWrongPlay()
+		return
 	}
 
-	if (turn === playerOrder.length && good && !win) {
-		turn++
-		turnDiv!.innerHTML = turn.toString()
-		playerOrder = []
-		compTurn = true
-		flash = 0
-		intervalId = setInterval(gameTurn, 800)
+	if (currentTurn === playerOrder.length && gameCanContinue && !gameWon) {
+		handlePlayerCorrectPlay()
+		return
 	}
 }
 
-function winGame() {
+/**
+ * @description set variables to user's correct play 
+ */
+const handlePlayerCorrectPlay = () => {
+	currentTurn++
+	displayScore()
+	playerOrder = []
+	currentDinoDisplaying = 0
+	compTurn = true
+	intervalId = setInterval(gameTurn, 800)
+}
+
+/**
+ * @description set variables to user's wrong play
+ */
+const handlePlayerWrongPlay = () => {
 	flashColor()
-	win = true
+	currentDinoDisplaying = 0
+	playerOrder = []
+	gameCanContinue = true
+	compTurn = true
+	setTimeout(() => {
+		clearColor()
+		intervalId = setInterval(gameTurn, 800)
+	}, 800)
+}
+
+/**
+ * @description win game
+ */
+const winGame = () => {
+	flashColor()
+	gameWon = true
 	onWin()
 }
+//#endregion

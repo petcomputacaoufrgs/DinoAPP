@@ -9,8 +9,8 @@
 	font: 0.875rem;
 	font-weight: 500;
 	text-transform: uppercase;
-	background-color: var(--header-and-menu);
-	color: var(--light-color);
+	background-color: var(--buttons-background);
+	color: var(--buttons-font-color);
 	text-decoration: none;
 }
 
@@ -28,9 +28,13 @@
 
 .button.button__outline {
 	border: solid 0.063rem;
-	border-color: var(--contrast-color);
+	border-color: var(--buttons-background);
 }
 
 .button.disabled {
 	opacity: 0.5;
+}
+
+.button.save_button {
+	color: var(--base-font-color)
 }

@@ -5,7 +5,7 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	background-color: var(--inv-contrast-color);
+	background-color: var(--selection-box-background);
 	padding: 2rem;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .secondary_tab__message p {
-	color: var(--contrast-color);
+	color: var(--base-font-color);
 	font-family: var(--font-base);
 	text-align: justify;
 	margin-left: 1rem;

@@ -1,0 +1,55 @@
+.kids_space_dialog {
+	position: fixed;
+    display: flex;
+    flex-direction: column;
+	width: 70vw;
+    max-width: max-content;
+    min-width: fit-content;
+    top: 27vh;
+	padding: 2rem 2rem 0 2rem;
+	border-radius: 1rem;
+	z-index: 10;
+	animation-name: kids_space_dialog_animation;
+  	animation-duration: 0.4s
+}
+
+.kids_space_dialog.warning_dialog,
+.kids_space_dialog.access_dialog {
+    align-items: center;
+    min-height: 46vh;
+    max-height: 61vh;
+}
+
+.kids_space_dialog__circle {
+    background-color: var(--dialog-circle-background-color);
+    border: solid var(--dialog-circle-border-color) 0.6rem;
+    width: 40vmin;
+    height: 40vmin;
+    border-radius: 50%;
+    z-index: 11;
+}
+
+.kids_space_dialog__circle svg {
+    width: 30vmin;
+    height: 30vmin;
+    margin-top: 2.5vmin;
+    margin-left: 2.5vmin;
+}
+
+.kids_space_dialog__content {
+    width: 70vw;
+	height: 40vh;
+    margin-top: -7rem;
+    padding-top: 8rem;
+    border-radius: 1rem;
+	text-align: center;
+    background-color: var(--dialog-background-color);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    z-index: 10;
+
+}
+
+@keyframes kids_space_dialog_animation {
+	from {opacity:0}
+	to {opacity:1}
+}

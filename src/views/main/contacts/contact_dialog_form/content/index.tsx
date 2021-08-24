@@ -1,76 +1,91 @@
 import React from 'react'
-import TextField from '@material-ui/core/TextField'
 import { ContactFormDialogContentProps } from './props'
 import PhoneFields from './phone_fields'
 import Typography from '@material-ui/core/Typography'
-import Constants from '../../../../../constants/contact/ContactsConstants'
+import Constants from '../../../../../constants/app_data/DataConstants'
 import TextButton from '../../../../../components/button/text_button'
 import { useLanguage } from '../../../../../context/language'
 import './styles.css'
+import { DinoTextfield } from '../../../../../components/textfield'
 
-const ContactFormDialogContent: React.FC<ContactFormDialogContentProps> = (
-	props: ContactFormDialogContentProps,
-) => {
+const ContactFormDialogContent: React.FC<ContactFormDialogContentProps> = ({
+	contact,
+	phones,
+	children,
+	errorName,
+	errorPhone,
+	setContact,
+	setPhones,
+	handleAddPhone,
+	handleDeletePhone,
+}) => {
 	const language = useLanguage()
 
-	const isNumberTaken = (tel: string): boolean =>
-		props.helperText.number === tel
+	const handleChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const name = event.target.value as string
+		setContact({ ...contact, name })
+	}
 
-	const isNumberInvalid = (tel: string) => isNumberTaken(tel)
+	const handleChangeDescription = (
+		event: React.ChangeEvent<HTMLInputElement>,
+	) => {
+		const description = event.target.value as string
+		setContact({ ...contact, description })
+	}
 
-	const isNameInvalid = (name: string) =>
-		name.length === Constants.NAME_MAX || props.invalidName
+	const handleChangeType = (
+		event: React.ChangeEvent<HTMLInputElement>,
+		index: number,
+	) => {
+		phones[index].type = Number(event.target.value)
+		setPhones([...phones])
+	}
+
+	const handleChangeNumber = (
+		event: React.ChangeEvent<HTMLInputElement>,
+		index: number,
+	) => {
+		phones[index].number = event.target.value as string
+		setPhones([...phones])
+	}
 
 	return (
-		<div className='dialog_form__content'>
-			<TextField
-				required
-				fullWidth
-				value={props.name}
-				onChange={props.handleChangeName}
-				margin='dense'
-				id='name'
-				label={`${language.data.FORM_NAME} (${language.data.MAX} ${Constants.NAME_MAX})`}
-				type='name'
-				inputProps={{ maxLength: Constants.NAME_MAX }}
-				error={isNameInvalid(props.name)}
+		<div className='contact__dialog_form__content'>
+			<DinoTextfield
+				dataProps={Constants.CONTACT_NAME}
+				value={contact.name}
+				onChange={handleChangeName}
+				label={`${language.data.FORM_NAME}`}
+				errorMessage={errorName}
 			/>
 			<br />
-			<TextField
-				fullWidth
-				value={props.description}
-				onChange={props.handleChangeDescription}
-				margin='dense'
-				id='description'
-				label={`${language.data.FORM_DESCRIPTION} (${language.data.MAX} ${Constants.DESCRIPTION_MAX})`}
-				type='text'
-				inputProps={{ maxLength: Constants.DESCRIPTION_MAX }}
-				error={props.description.length === Constants.DESCRIPTION_MAX}
+			<DinoTextfield
+				dataProps={Constants.CONTACT_DESCRIPTION}
+				multiline
+				rowsMax={5}
+				value={contact.description}
+				onChange={handleChangeDescription}
+				label={`${language.data.FORM_DESCRIPTION}`}
 			/>
 			<br />
-
-			{props.phones.map((phone, index) => (
-				<div key={index}>
-					<PhoneFields
-						type={phone.type}
-						onChangeType={e => props.handleChangeType(e, index)}
-						number={phone.number}
-						onChangeNumber={e => props.handleChangeNumber(e, index)}
-						error={isNumberInvalid(phone.number)}
-						helperText={
-							isNumberTaken(phone.number) ? props.helperText.text : ''
-						}
-						handleDeletePhone={() => props.handleDeletePhone(phone.number)}
-					/>
-					<br />
-				</div>
+			{phones.map((phone, index) => (
+				<PhoneFields
+					key={index}
+					type={phone.type}
+					onChangeType={e => handleChangeType(e, index)}
+					number={phone.number}
+					onChangeNumber={e => handleChangeNumber(e, index)}
+					error={errorPhone !== undefined}
+					helperText={errorPhone}
+					handleDeletePhone={() => handleDeletePhone(phone.number)}
+				/>
 			))}
-			<TextButton className='add-phone__button' onClick={props.handleAddPhone}>
+			<TextButton className='add_phone__button' onClick={handleAddPhone}>
 				<Typography variant='body2' color='textSecondary' display='block'>
-					{'+ ' + language.data.FORM_ADD_PHONE}
+					{`+ ${language.data.FORM_ADD_PHONE}`}
 				</Typography>
 			</TextButton>
-			{props.children}
+			{children}
 		</div>
 	)
 }

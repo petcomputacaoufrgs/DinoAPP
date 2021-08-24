@@ -6,26 +6,27 @@ import Section from './section'
 import DinoLogoHeader from '../../components/dino_logo_header'
 import ArrowBack from '../../components/arrow_back'
 import './styles.css'
+import { useLanguage } from '../../context/language'
 
 const AboutUs: React.FC = () => {
+
+	const language = useLanguage()
+
 	const sections = [
 		{
-			title: 'PET Computação',
+			title: language.data.ABOUT_US_PET,
 			img: PetLogo,
-			text: `\tO PET (Programa de Educação Tutorial) Computação, criado em 1988, é um grupo composto por estudantes de graduação dos cursos de Ciência da Computação e Engenharia da Computação. Coordenado pela professora Érika Cota, o projeto é formado por uma equipe diversa, voltada ao desenvolvimento individual de seus estudantes e também ao fortalecimento da comunidade acadêmica, tanto do Instituto de Informática, quanto externa e interPETs.
-\tO PET Computação é baseado na Tríade Acadêmica de Ensino, Pesquisa e Extensão, e tem como objetivo providenciar a oportunidade dos membros explorarem áreas de interesse além do currículo de seus cursos.
-\tOs projetos desenvolvidos pelo grupo abrangem o desenvolvimento de softwares e aplicações mobile; ministração de minicursos relacionados à computação; projetos de pesquisa e desenvolvimento de artigos acadêmicos; organização de eventos para a comunidade do Instituto, dentre outros. Também são realizados projetos em parceria com outros grupos PET da UFRGS (PETelos).`,
-			footnote: `Instituto de Informática - UFRGS\nAv. Bento Gonçalves, 9500\nCampus do Vale - Prédio 43424\n2° Pavimento - Sala 201`,
+			text: language.data.ABOUT_US_PET_TEXT
 		},
-		{ title: 'Hospital de Clínicas', img: HCLogo },
-		{ title: 'UFRGS', img: UfrgsLogo },
+		{ title: language.data.ABOUT_US_HCPA, img: HCLogo, text: language.data.ABOUT_US_HCPA_TEXT },
+		{ title: language.data.ABOUT_US_UFRGS, img: UfrgsLogo, text: language.data.ABOUT_US_UFRGS_TEXT },
 	]
 
 	return (
 		<div className='about_us'>
 			<ArrowBack />
 			<div className='card__header'>
-				<DinoLogoHeader title={'Sobre Nós'} subtitle={'DinoApp'} />
+				<DinoLogoHeader title={language.data.ABOUT_US} />
 			</div>
 			<div className='card__content'>
 				<div className='card__typography'>
@@ -34,7 +35,6 @@ const AboutUs: React.FC = () => {
 							title={`${section.title}`}
 							ImgSrc={section.img}
 							text={section.text}
-							footnote={section.footnote}
 							key={index}
 						/>
 					))}

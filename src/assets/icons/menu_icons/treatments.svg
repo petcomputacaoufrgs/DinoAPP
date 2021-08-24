@@ -1,0 +1,10 @@
+<svg width="92" height="77" viewBox="0 0 92 77" fill="none" xmlns="http://www.w3.org/2000/svg" id='treatment_icon'>
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+    .st1{stroke: white;}
+</style>
+<path class='st1' d="M13.4575 24.9741L35.9734 15.3157L45.829 38.291L23.3131 47.9495C16.9687 50.6711 9.6192 47.7341 6.89765 41.3896C4.17611 35.0451 7.11307 27.6957 13.4575 24.9741Z" stroke="white" stroke-width="3"/>
+<path class='st0' d="M40.4375 11.7689L64.3319 1.51911C71.4377 -1.52902 79.6691 1.76038 82.7172 8.86619C85.7653 15.972 82.4759 24.2034 75.3701 27.2515L51.4758 37.5013L40.4375 11.7689Z" fill="white"/>
+<circle class='st1' cx="72.4998" cy="57.4999" r="14" transform="rotate(16.1472 72.4998 57.4999)" stroke="white" stroke-width="3"/>
+<line class='st1' x1="57.6115" y1="53.1894" x2="87.3886" y2="61.8107" stroke="white" stroke-width="3"/>
+</svg>

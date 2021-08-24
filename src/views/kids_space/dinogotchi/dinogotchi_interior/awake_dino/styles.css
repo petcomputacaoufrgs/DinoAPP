@@ -1,0 +1,61 @@
+.dinogotchi_screen__options {
+	position: absolute;
+	right: 1.5rem;
+	top: 20vh;
+}
+
+.dinogotchi_screen__options .dino_icon_button {
+	height: 4.6rem;
+	width: 4.6rem;
+	margin-bottom: 1.5rem;
+}
+
+.dinogotchi_screen__options .dino_icon_button .dino_icon_button__button svg {
+	width: inherit;
+	height: inherit;
+	padding: 0;
+}
+
+.dinogotchi_screen__hearts {
+	position: absolute;
+	top: 12vh;
+	left: 55vw;
+	width: 100px;
+	height: auto;
+	z-index: 5;
+	visibility: hidden;
+}
+
+.dinogotchi_screen__hearts #dinogotchi_screen__heart_1 {
+	transition: visibility 0.2s;
+}
+
+.dinogotchi_screen__hearts #dinogotchi_screen__heart_2 {
+	transition: visibility 0.2s 0.2s;
+}
+
+.dinogotchi_screen__hearts #dinogotchi_screen__heart_3 {
+	transition: visibility 0.2s 0.3s;
+}
+
+.dinogotchi_screen__hearts.petting #dinogotchi_screen__heart_1 {
+	visibility: visible;
+	transition: visibility 0.2s;
+}
+
+.dinogotchi_screen__hearts.petting #dinogotchi_screen__heart_2 {
+	visibility: visible;
+	transition: visibility 0.2s 0.1s;
+}
+
+.dinogotchi_screen__hearts.petting #dinogotchi_screen__heart_3 {
+	visibility: visible;
+	transition: visibility 0.2s 0.2s;
+}
+
+@media (orientation: landscape) {
+	.dinogotchi_screen__options .circular_button {
+		width: 7rem;
+		height: 7rem;
+	}
+}

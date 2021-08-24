@@ -1,0 +1,520 @@
+{
+	"itemList": [
+	 {
+	   "title": "Adenomegalia",
+	   "subtitle": "Condição",
+	   "text": "Linfonodos ou gânglios aumentados, também conhecidos como ínguas.",
+	   "fullText": "Adenomegalia é o aumento dos linfonodos (ínguas). Pode estar presente em crianças e, na maior parte dos casos, é causada por infecções virais. Mais raramente podem ser causadas por doenças oncológicas tais como leucemias ou linfomas."
+	 },
+	 {
+	   "title": "Alopécia",
+	   "subtitle": "Condição",
+	   "text": "Queda de cabelos",
+	   "fullText": "A alopécia é a perda de cabelos do couro cabeludo ou de qualquer outra região do corpo. Em crianças em tratamento oncológico (quimioterapia ou radioterapia) a queda do cabelo pode acontecer. Nestes casos, uma vez terminado o tratamento o cabelo volta a crescer."
+	 },
+	 {
+	   "title": "Anemia",
+	   "subtitle": "Condição",
+	   "text": "Redução das células vermelhas do sangue.",
+	   "fullText": "Anemia é a redução na quantidade de hemoglobina, um pigmento presente nas células vermelhas do sangue. Os sintomas de anemia são diversos e incluem cansaço, palidez, coração acelerado. Ela podem acontecer por questões genéticas (herdadas), por falta de algum nutriente específico (p.ex. falta de ferro), por doenças que afetem a produção do sangue (p. ex. aplasias de medula óssea, leucemias) ou medicações (p. ex. agentes quimioterápicos). "
+	 },
+	 {
+	   "title": "Anestesia",
+	   "subtitle": "Procedimento",
+	   "text": "Procedimento médico que visa bloquear temporariamente a capacidade do cérebro de reconhecer um estímulo doloroso.",
+	   "fullText": "A Anestesia é a total ausência de dor durante uma cirurgia, exame diagnóstico ou curativo. Ela pode ser geral ou parcial (também chamada regional). Na geral todo o corpo fica anestesiado e o paciente dorme. Com a anestesia regional ou parcial apenas uma parte do corpo fica anestesiada e o paciente pode adormecer ou não, dependendo do que for melhor."
+	 },
+	 {
+	   "title": "Antibiótico",
+	   "subtitle": "Medicamento",
+	   "text": "Medicação contra bactérias.",
+	   "fullText": "Antibiótico é qualquer medicamento capaz de combater uma infecção causada por microorganismos  (bactérias) que causam infecções a outro organismo. Não destroem vírus ou fungos."
+	 },
+	 {
+	   "title": "Biópsia",
+	   "subtitle": "Procedimento",
+	   "text": "Retirada de pequeno pedaço do tumor ou órgão que é analisada em laboratório.",
+	   "fullText": "A biópsia é um procedimento cirúrgico no qual se colhe uma amostra de tecidos ou células para posterior estudo em laboratório, tal como a evolução de determinada doença crônica. Uma biópsia é frequentemente usada para diagnosticar se um tumor é benigno ou maligno."
+	 },
+	 {
+	   "title": "Benigno",
+	   "subtitle": "Condição",
+	   "text": "Que não é maligno ou câncer: tumor benigno; doença benigna.",
+	   "fullText": "Tumor benigno é o crescimento anormal de células maduras (bem diferenciadas), sem capacidade de invadir outros tipos de tecidos e órgãos (metástase), crescem mais lentamente e costumam ter bom prognóstico. Alguns tumores benignos podem fazer transformação maligna e por isso precisam ser acompanhados ou removidos e em outras situações podem estar em localizações de maior risco para o paciente, também necessitando de uma tratamento mais agressivo."
+	 },
+	 {
+	   "title": "Blastos",
+	   "subtitle": "Parte do corpo",
+	   "text": "Célula jovem do sangue que pode ser normal ou leucêmica.",
+	   "fullText": "As células mais imaturas na medula óssea são denominadas blastos. Normalmente ela não é encontrada no sangue periférico. Quando presente, deve ser investigado. A porcentagem de blastos na medula óssea ou sangue é particularmente importante. No diagnóstico de leucemia aguda há em geral no mínimo 20% de blastos na medula óssea enquanto os valores normais são inferiores a 5%."
+	 },
+	 {
+	   "title": "Câncer",
+	   "subtitle": "Condição",
+	   "text": "Multiplicação de células anormais (malignas).",
+	   "fullText": "Câncer é o nome dado a um conjunto de doenças que têm em comum o crescimento desordenado de células, que invadem tecidos e órgãos. Devido à multiplicação rápida levam à formação de tumores, que podem espalhar-se para outras regiões do corpo. Na infância, os cânceres mais frequentes são as leucemias, linfomas, tumores de sistema nervoso central, neuroblastoma, tumroes renais (p.ex. Wilms) e tumores ósseos."
+	 },
+	 {
+	   "title": "Cateter",
+	   "subtitle": "Objeto",
+	   "text": "Tubos colocados em veias grandes e é fixado embaixo da pele. É por onde se recebe quimioterapia, medicações, soroterapia e sangue.",
+	   "fullText": "O cateter é um dos equipamentos mais utilizados na enfermagem e na medicina. É um tubo fino e flexível que fica dentro de graneds vasos sanguíneos. Sua função principal é facilitar o acesso à veia do paciente para administrar medicamento, ou até fazer coleta para exames."
+	 },
+	 {
+	   "title": "Cateter Semi-implantável",
+	   "subtitle": "Objeto",
+	   "text": "Parte do cateter fica dentro e parte fica fora da pele.",
+	   "fullText": "São cateteres de longa permanência “semi-implantados”, uma vez que parte do mesmo é inserida em veia central passando por um “túnel” realizado no tecido subcutâneo, deixando uma parte exteriorizada, pela qual se realiza o acesso ao sistema venoso central e infusão de medicações e coleta de exames."
+	 },
+	 {
+	   "title": "Cateter Totalmente Implantável",
+	   "subtitle": "Objeto",
+	   "text": "Também chamado Portocath, é um cateter que fica totalmente embaixo da pele.",
+	   "fullText": "Quando o médico indica a colocação de um Port (Cateter totalmente implantado), ele está visando segurança e qualidade para infusão de medicamentos durante seu tratamento através de uma cateter de longa duração. Essa indicação varia de acordo com as condições de acesso venoso do paciente e do protocolo de quimioterapia a ser implantado. "
+	 },
+	 {
+	   "title": "CHAD",
+	   "subtitle": "Procedimento",
+	   "text": "Concentrado de hemácias de adulto. O termo é também utilizado para crianças. ",
+	   "fullText": "A transfusão de CHAD (sangue de doadores) é usada quando o paciente está anêmico e com sintomas, sem previsão de recuperação espontânea. Suas indicações mais frequentes são em pacientes pos-quimioterapia ou com aplaisa de medula óssea."
+	 },
+	 {
+	   "title": "Cintilografia",
+	   "subtitle": "Procedimento",
+	   "text": "Exame indolor para estudar metástases em outros órgãos ou ossos. Muito parecido com uma radiografia de corpo inteiro.",
+	   "fullText": "É um exame de imagem da medicina nuclear que utiliza doses mínimas de substâncias radioativas no diagnóstico de diversas patologias.\n\n O exame é realizado através de aplicação intravenosa ou oral de radiofármaco no paciente. Para cada órgão a ser examinado, é administrado um radiofármaco específico, tendo na sua composição uma molécula compatível com o órgão que se pretende investigar."
+	 },
+	 {
+	   "title": "Cirurgia",
+	   "subtitle": "Procedimento",
+	   "text": "É uma “operação”. Pode ser feita  para retirada de tumor ou colocação de cateter, entre outras ações.",
+	   "fullText": "Cirurgia, também chamada \"procedimento cirúrgico\" é qualquer tipo de procedimento no qual o cirurgião realiza uma intervenção manual ou instrumental no corpo do paciente para diagnosticar, tratar ou curar doenças ou traumatismo, ou para melhorar a funcionalidade ou aparência de parte do corpo."
+	 },
+	 {
+	   "title": "Cistite hemorrágica",
+	   "subtitle": "Condição",
+	   "text": "Inflamação da bexiga com sangramento.",
+	   "fullText": "A cistite é uma inflamação da bexiga, na maioria dos casos é causada por infecções. Em pacientes em tratamento com agenets quimioterápicos como a ifosfamida ou ciclofosfamida por ocorrer a cistite hemorrágica (sangue na urina por irritação da bexiga). Por esat razão, estes pacienets devem tomar bastante liquido durante a infusão e medicações específicas (MESNA)."
+	 },
+	 {
+	   "title": "Coagulação",
+	   "subtitle": "Condição",
+	   "text": "Parada do sangramento",
+	   "fullText": " A coagulação sanguínea consiste na transformação do sangue líquido num gel sólido, designado de coágulo sanguíneo ou trombo, com o objetivo de parar uma hemorragia."
+	 },
+	 {
+	   "title": "Constipação",
+	   "subtitle": "Condição",
+	   "text": "Prisão de ventre ou intestino preso",
+	   "fullText": "Prisão de ventre é um distúrbio caracterizado pela dificuldade persistente para evacuar. As causas mais comuns são dieta pobre em fibras, pouca ingestão de líquidos, sedentarismo e consumo excessivo de proteína animal."
+	 },
+	 {
+	   "title": "Convulsão",
+	   "subtitle": "Condição",
+	   "text": "Convulsão é um distúrbio que se caracteriza pela contratura muscular involuntária de todo o corpo ou de parte dele.",
+	   "fullText": "Convulsão é a contratura involuntária da musculatura, que provoca movimentos desordenados. Geralmente é acompanhada pela perda da consciência. As convulsões acontecem quando há a excitação da camada externa do cérebro. Elas podem ocorrer por ser associadas a doenças infecciosas, uso de medicações, alterações metabólicas ou alterações cerebrais de outras causas. "
+	 },
+	 {
+	   "title": "Culturais",
+	   "subtitle": "Objeto",
+	   "text": "Exames do sangue, urina, fezes, secreções e outros líquidos do organismo que procuram germes causadores de infecções.",
+	   "fullText": "O exame de cultura tem este nome porque o material é \"cultvado\", como se fosse plantado, em um meio específico para crescimento de microorganismos. Através dos culturais de sangue, urina ou outra secreção ou local, o médico busca saber o germe que está causando a infecção para dirigir o tratamento antibiótico de forma mais específica."
+	 },
+	 {
+	   "title": "Depressão",
+	   "subtitle": "Condição",
+	   "text": "Doença psiquiátrica crônica e recorrente que produz alteração do humor caracterizada por tristeza profunda e forte sentimento de desesperança. ",
+	   "fullText": "Depressão é uma doença psiquiátrica crônica e recorrente que produz uma alteração do humor caracterizada por uma tristeza profunda, sem fim, associada a sentimentos de dor, amargura, desencanto, desesperança, baixa autoestima e culpa, assim como a distúrbios do sono e do apetite.\n\n É importante distinguir a tristeza patológica daquela transitória provocada por acontecimentos difíceis e desagradáveis, mas que são inerentes à vida de todas as pessoas, como a morte de um ente querido, a perda de emprego, os desencontros amorosos, os desentendimentos familiares, as dificuldades econômicas, diagnóstico de uma doença grave etc. Na presença de sintomas depressivos, comunique seu médico para que ele possa auxilia-lo."
+	 },
+	 {
+	   "title": "Diarreia",
+	   "subtitle": "Condição",
+	   "text": "Evacuação de fezes amolecidas e/ou maior quantidade do que o usual (geralmente líquida).",
+	   "fullText": "Diarreia é definida como mais de duas evacuações aquosas (bastante líquidas) diárias ou mais do que é o habitual para aquela pessoa. Pode ocorrer ainda a perda da consistência das fezes com ou sem a presença de muco ou sangue."
+	 },
+	 {
+	   "title": "Droga",
+	   "subtitle": "Objeto",
+	   "text": "Medicação em geral (quimioterapia, antibióticos, etc).",
+	   "fullText": "Droga é toda e qualquer substância, natural ou sintética que, uma vez introduzida no organismo, modifica suas funções.\nApesar de frequentemente usarmos esta terminologia associada ao uso ilegal , ela se aplica também a todo e qualquer medicamento."
+	 },
+	 {
+	   "title": "Ecografia",
+	   "subtitle": "Procedimento",
+	   "text": "Exame indolor realizado para investigar órgãos internos. Não precisa de anestesia.",
+	   "fullText": "A ecografia ou ultrassonografia é um exame que utiliza ultrassons para avaliar as estruturas anatómicas do nosso organismo. O termo ecografia é, muitas vezes, abreviado para ECO na linguagem médica corrente.\n\n Este exame serve para auxiliar o médico no diagnóstico de várias doenças, assim como para avaliar a resposta ao tratamento. Nesta técnica é utilizado um aparelho, denominado ecógrafo que produz os ultrassons. Para avaliar diferentes áreas do nosso organismo são utilizados diferentes sondas, que emitem ultrassons com diferentes frequências, dependendo da profundidade do órgão que se pretende avaliar. Trata-se de um procedimento geralmente indolor, sem punção ou radiação para o qual não há necessidade de anestesia."
+	 },
+	 {
+	   "title": "Espinha dorsal",
+	   "subtitle": "Parte do corpo",
+	   "text": "Coluna, conjunto de vértebras nas costas",
+	   "fullText": "A coluna vertebral, também chamada de espinha dorsal, é uma estrutura óssea que existe nos animais vertebrados. Sua principal função é proteger a medula espinal, que faz parte do sistema nervoso central. Ela também dá sustentação ao corpo, dentre outras funções. Os ossos da coluna são chamados de vértebras."
+	 },
+	 {
+	   "title": "Esplenomegalia",
+	   "subtitle": "Condição",
+	   "text": "Aumento do baço.",
+	   "fullText": "A esplenomegalia consiste no aumento do tamanho do baço que pode ser causado por diversas doenças.\n\n A função do baço é regular, produzir e armazenar células sanguíneas e destruir células sanguíneas anormais. Na esplenomegalia, o funcionamento deste órgão é afetado e o número de células sanguíneas circulantes pode diminuir provocando anemia, infecções frequentes e distúrbios hemorrágicos."
+	 },
+	 {
+	   "title": "Equimose",
+	   "subtitle": "Condição",
+	   "text": "Mancha arroxeada no corpo ",
+	   "fullText": "Também chamado de hematoma, é uma mancha arroxeada pelo corpo, causada em geral por problemas na coagulação do sangue."
+	 },
+	 {
+	   "title": "Estágio",
+	   "subtitle": "",
+	   "text": "Grau em que a doença se encontra",
+	   "fullText": "Todos os cânceres passam por um estadiamento em que se vê qual a extensão da doença (presença de linfonodos doentes, outros órgãos, etc) nos tumores sólidos ou características de maior risco como alterações genéticas do tumor."
+	 },
+	 {
+	   "title": "Gânglio",
+	   "subtitle": "Parte do corpo",
+	   "text": "Também conhecido como linfonodo ou ingua",
+	   "fullText": "Responsáveis pela \"filtragem\" do sangue, estão localizados ao longo de todo o corpo. Mais frequentemente quando na presença de doenças podem ser palpaveis na região cervical, axilar ou inguinal."
+	 },
+	 {
+	   "title": "Hemácias",
+	   "subtitle": "Parte do corpo",
+	   "text": "Células vermelhas do sangue. ",
+	   "fullText": "Células vermelhas do sangue, responsáveis pelo transporte de oxigênio."
+	 },
+	 {
+	   "title": "Hematoma",
+	   "subtitle": "Condição",
+	   "text": "Também conhecido como equimose",
+	   "fullText": "É uma mancha arroxeada que pode acontecer em qualquer local do corpo, tanto após uma batida (queda ao solo ou pancada por exemplo) quanto espontanemente em situações em que há algum problema na coagulação do sangue."
+	 },
+	 {
+	   "title": "Hemocomponentes",
+	   "subtitle": "Procedimento",
+	   "text": "Elementos usados nas transfusões.",
+	   "fullText": "São componentes do sangue humano, como plasma, concentrado de plaquetas, concentrado de hemácias, etc que são doados por pessoas saudáveis previamente triadas para doenças. "
+	 },
+	 {
+	   "title": "Hemoderivados",
+	   "subtitle": "Procedimento",
+	   "text": "Substitutos de elementos sanguineos",
+	   "fullText": "São substâncias derivadas do plasma humano, como: fator VIII, fator X, imunoglobulinas, albumina, etc."
+	 },
+	 {
+	   "title": "Hemograma",
+	   "subtitle": "Procedimento",
+	   "text": "Exame de sangue",
+	   "fullText": "Exame que conta e avalia os principais elementos do sangue: células vermelhas (Hemáceas), células brancas (leucócitos) e plaquetas."
+	 },
+	 {
+	   "title": "Hepatomegalia",
+	   "subtitle": "Condição",
+	   "text": "Aumento do fígado.",
+	   "fullText": "Condição em que o fígado está em tamanho acima do normal para a idade."
+	 },
+	 {
+	   "title": "Infecção",
+	   "subtitle": "Condição",
+	   "text": "Doença provocada por microorganismos",
+	   "fullText": "As infecções são situações causadas por diversos microorganismos que causam doença no paciente, frequentemente associadas à febre. Podem tratar-se de vírus, bactérias, germes atípicos ou até mesmo fungos."
+	 },
+	 {
+	   "title": "Inflamação",
+	   "subtitle": "Condição",
+	   "text": "Reação do corpo ",
+	   "fullText": "A inflamação se caracteriza por vermelhidão, calor e edema. Mais frequentemente em pacientes em tratamento oncológico a inflamação está ligada a um processo infeccioso."
+	 },
+	 {
+	   "title": "Imunidade",
+	   "subtitle": "",
+	   "text": "Mecanismos de defesa do organismo ",
+	   "fullText": "A imunidade é um conjunto de mecanismos utilizados pelo organismo como uma resposta contra substâncias estranhas presentes no corpo. Ela é desencadeada pelo sistema imune, que atua pela ação de células de defesa e pela produção de anticorpos , que agirão contra determinados antígenos (elemento estranho ao corpo)."
+	 },
+	 {
+	   "title": "Imunodepressão",
+	   "subtitle": "Condição",
+	   "text": "Baixa da imunidade",
+	   "fullText": "A imunodepressão é a baixa das defesas do corpo. Ela pode ser ocasionada por medicamentos que reduzem as defesas como os agentes quimioterápicos ou os imunossupressores."
+	 },
+	 {
+	   "title": "Indução",
+	   "subtitle": "Medicamento",
+	   "text": "Etapa do tratamento para leucemias ",
+	   "fullText": "Indução é o nome dado à primeira fase do tratamento das leucemias linfóides agudas. Ela tem este nome porque busca induzir a remissão da medula óssea (ausência de doença visivel nos métodos disponiveis)."
+	 },
+	 {
+	   "title": "Íngua",
+	   "subtitle": "Condição",
+	   "text": "Ganglio",
+	   "fullText": "ver definição de gânglio"
+	 },
+	 {
+	   "title": "Insônia",
+	   "subtitle": "Condição",
+	   "text": "Incapacidade de dormir adequadamente",
+	   "fullText": "Dificuldade de adormecer ou de manter o sono."
+	 },
+	 {
+	   "title": "Leucócitos",
+	   "subtitle": "",
+	   "text": "Células brancas do sangue ",
+	   "fullText": "Leucócitos são células sanguíneas conhecidas por muitas pessoas como glóbulos brancos. Essas células podem ser classificadas em diversos tipos, entretanto, todos atuam em prol de um bem comum: a defesa do organismo."
+	 },
+	 {
+	   "title": "Leucopenia",
+	   "subtitle": "Condição",
+	   "text": "Número baixo de leucócitos",
+	   "fullText": "Cotagem de leucócitos inferior ao normal no hemograma."
+	 },
+	 {
+	   "title": "Leucemia",
+	   "subtitle": "Condição",
+	   "text": "Conhecido como câncer do sangue",
+	   "fullText": "As leucemias são um tipo de câncer que acomete a medula óssea (a fábrica do sangue). Elas podem ser subdivididas em agudas e crônicas ou linfóides e mielóides. Portanto, existem diversos tipos de leucemias com tratamentos e prognósticos diferentes."
+	 },
+	 {
+	   "title": "Linfócitos",
+	   "subtitle": "",
+	   "text": "Um tipo de célula branca do sangue.",
+	   "fullText": "Linfócito é um tipo de leucócito (glóbulo branco) presente no sangue que é produzido pela medula óssea. Estas células são responsáveis pela resposta imune e pela defesa do corpo. Há três tipos principais de linfócitos: células T (ou linfócitos T) que são responsáveis pelas respostas mediadas por células; células linfoides inatas que tem um papel importante na imunidade inata e células B (ou linfócitos B) que produzem anticorpos. "
+	 },
+	 {
+	   "title": "Linfonodos",
+	   "subtitle": "",
+	   "text": "Ínguas ou gânglios linfáticos.",
+	   "fullText": "ver definição de gânglio"
+	 },
+	 {
+	   "title": "Líquor",
+	   "subtitle": "",
+	   "text": "Líquido da espinha dorsal.",
+	   "fullText": "O líquor é o líquido que banha o sistema nervoso central. Através da análise do liquor podemos avalair quadros de infecção (como meningite) ou infiltração por outras doenças, inclusive alguns tipos de cânceres."
+	 },
+	 {
+	   "title": "Malignidade",
+	   "subtitle": "",
+	   "text": "Doenças oncológicas",
+	   "fullText": "O termo malignidade ou maligno se refere a doenças que tem o potencial de disseminação (espalhar pelo corpo), infiltração de órgãos e aumento progressiv, podendo levar à morte quando não tratados."
+	 },
+	 {
+	   "title": "Medicação",
+	   "subtitle": "Medicamento",
+	   "text": "Remédio",
+	   "fullText": "Medicamento é um produto farmacêutico, tecnicamente obtido ou elaborado, com finalidade profilática, terapêutica, paliativa ou para fins de diagnóstico."
+	 },
+	 {
+	   "title": "Medula óssea",
+	   "subtitle": "Parte do corpo",
+	   "text": "Chamada  “fábrica do sangue”.",
+	   "fullText": "A medula óssea, também conhecida como tutano, é um tecido líquido-gelatinoso que preenche a cavidade interna de vários ossos e fabrica os elementos figurados do sangue periférico como: hemácias (glóbulos vermelhos), leucócitos (glóbulos brancos) e plaquetas. A medula óssea é um órgão hematopoiético."
+	 },
+	 {
+	   "title": "Metástase",
+	   "subtitle": "Condição",
+	   "text": "Câncer a distância do local primário",
+	   "fullText": "Doenças malignas podem dar metástases. Isto acontece quando a doença se espalha no corpo e passa a crescer em um órgão ou local diferente do local primário. Elas podem estar presentes ao diagnósticos, surgirem ao longo do tratamento ou eventualmente aparecerem após o término do tratamento."
+	 },
+	 {
+	   "title": "Medulograma",
+	   "subtitle": "Procedimento",
+	   "text": "Exame da medula óssea",
+	   "fullText": "Também chamado de mielograma, é o exame que analisa o sangue retirado diretamente da medula óssea. É, em geral, realizado sob anestesia geral pois pode ser doloroso. Trata-se de uma punção com uma agulha mais calibrosa no osso buscando aspirar a medula óssea. Mais frequentemente é realizado nos ossos que formam a bacia."
+	 },
+	 {
+	   "title": "Mielograma",
+	   "subtitle": "Procedimento",
+	   "text": "Exame de medula óssea",
+	   "fullText": "ver mielograma"
+	 },
+	 {
+	   "title": "Mucosa",
+	   "subtitle": "Parte do corpo",
+	   "text": "Revestimento da boca e intestino.",
+	   "fullText": "Mucosa ou membrana mucosa é um tipo de tecido epitelial de revestimento interno das cavidades do corpo que têm contato com o meio externo. Ela exerce uma função de proteção, mas também pode exercer funções de absorção como no intestino."
+	 },
+	 {
+	   "title": "Mucosite",
+	   "subtitle": "Condição",
+	   "text": "Inflamação das mucosas",
+	   "fullText": "A mucosite é uma inflamação das mucosas que pode ocorrer por causas infecciosas ou inflamatórias. Uma das causas frequentes de mucosite na Oncologia Pediátrica são o uso de quimioterápicos ou radioterapia."
+	 },
+	 {
+	   "title": "Náuseas",
+	   "subtitle": "Condição",
+	   "text": "Enjoo",
+	   "fullText": "Náusea ou enjoo é uma sensação desagradável e difusa de desconforto e mal-estar, que em muitos casos se manifesta por vontade em vomitar. As náuseas são um sintoma inespecífico, o que significa que podem ter muitas causas possíveis. Algumas das causas mais comuns de náuseas são pouca glicose no sangue, gastroenterite ou intoxicação alimentar. As náuseas podem também ser um efeito secundário de muitos medicamentos, incluindo quimioterapia."
+	 },
+	 {
+	   "title": "Neoplasia",
+	   "subtitle": "Condição",
+	   "text": "Tumor",
+	   "fullText": "Crescimento descontrolado de células, podendo ser maligno (câncer) ou benigno."
+	 },
+	 {
+	   "title": "Neutropenia",
+	   "subtitle": "Condição",
+	   "text": "Baixa de neutrófilos",
+	   "fullText": "Neutropenia é o nível muito baixo dos neutrófilos, um tipo de glóbulo branco, que ajuda no combate das infecções destruindo bactérias e fungos. Pacientes com neutropenia tem um risco aumentado de desenvolver infecções graves. A neutropenia ocorre em cerca da metade dos pacientes em quimioterapia e é comum em pacientes com leucemia."
+	 },
+	 {
+	   "title": "Nutrição Parenteral",
+	   "subtitle": "Objeto",
+	   "text": "Dieta recebida através da veia.",
+	   "fullText": "Nutrição parenteral (NP) se refere a nutrição feita por uma via diferente da gastro-intestinal. A nutrição parenteral pode servir para complementar (parcial) ou para substituir completamente (total - NPT) a alimentação normal, pela via enteral. Consiste basicamente de uma solução ou emulsão preparada para estar em equilíbrio com as demandas do organismo de nutrientes como carboidratos, aminoácidos, lipídeos, vitaminas e minerais que é colocada na veia."
+	 },
+	 {
+	   "title": "Oncologia",
+	   "subtitle": "",
+	   "text": "Especialidade que trata câncer.",
+	   "fullText": "A Oncologia é a especialidade médica que estuda as neoplasias, ou tumores, benignas ou malignas. A origem da palavra vem do grego onkos, que significa volume, que sabemos atualmente ser causado pelo acúmulo de células cancerosas em regiões do organismo"
+	 },
+	 {
+	   "title": "Organismo",
+	   "subtitle": "Parte do corpo",
+	   "text": "Qualquer forma individual de vida",
+	   "fullText": "Forma individual de vida; qualquer corpo constituído por órgãos, organelas ou outras estruturas que interagem fisiologicamente, executando os diversos processos necessários à vida."
+	 },
+	 {
+	   "title": "Petéquia",
+	   "subtitle": "Condição",
+	   "text": "Manchinha vermelha ou arroxeada ",
+	   "fullText": "As petéquias podem ser causadas por doenças infeciosas, distúrbios dos vasos sanguíneos, reações alérgicas, doenças auto-imunes ou como efeito colateral de certos medicamentos, por exemplo, sendo por isso importante perceber a causa que está na sua origem, de forma a fazer o tratamento adequado. Mais frequentemente as petéquias em pacientes oncológicos estão relacionadas à baixa contagem de plaquetas."
+	 },
+	 {
+	   "title": "PICC",
+	   "subtitle": "Objeto",
+	   "text": "Cateter de longa permanência",
+	   "fullText": "O cateter venoso central de inserção periférica, mais conhecido como cateter de PICC, é um tubo de silicone, flexível, fino e longo, entre 20 a 65 cm de comprimento, que é introduzido na veia do braço até chegar na veia do coração e serve para administração de medicamentos como antibióticos, quimioterapia e soro."
+	 },
+	 {
+	   "title": "Plaquetas",
+	   "subtitle": "Parte do corpo",
+	   "text": "Fator do sangue responsáveis pela coagulação.",
+	   "fullText": "Uma plaqueta ou trombócito é uma componente do sangue cuja função (junto com os fatores de coagulação) é a de parar sangramentos aglomerando-se e formando coágulos em lesões nos vasos sanguíneos. Plaquetas não têm núcleos: são fragmentos de citoplasma derivados de Megacariócitos da medula óssea, que entram em circulação.Uma pessoa normal tem entre 150.000 e 450.000 plaquetas por milímetro cúbico de sangue. Sua diminuição ou disfunção pode levar a sangramentos, assim como seu aumento pode aumentar o risco de trombose."
+	 },
+	 {
+	   "title": "Plasma",
+	   "subtitle": "Parte do corpo",
+	   "text": "Componente do sangue",
+	   "fullText": "O plasma sanguíneo é um dos componentes do sangue e representa cerca de 55% do volume desse tecido. Ele corresponde à parte líquida e reúne os elementos celulares: hemácias ou eritrócitos, leucócitos e plaquetas."
+	 },
+	 {
+	   "title": "Portocath",
+	   "subtitle": "Objeto",
+	   "text": "É um cateter que fica totalmente embaixo da pele.",
+	   "fullText": "É um cateter que possui um pequeno reservatório que serve para infundir medicamentos facilmente, diminuindo dor e riscos de perda de veias.O cateter permite a infusão de medicamentos de quimioterapia e também facilita a introdução de fluídos, dieta parenteral e hemoderivados, além de auxiliar na coleta de exames."
+	 },
+	 {
+	   "title": "Punção Lombar",
+	   "subtitle": "Procedimento",
+	   "text": "Punção para análise do líquor ",
+	   "fullText": "A punção lombar é um procedimento que, geralmente, tem por objetivo a coleta de uma amostra do líquido cefalorraquidiano que banha o cérebro e a medula espinhal, através da inserção de uma agulha entre duas vértebras da região lombar até atingir o espaço subaracnoideo, que é um espaço entre camadas que revestem a medula espinhal, por onde o líquido passa."
+	 },
+	 {
+	   "title": "PL",
+	   "subtitle": "Procedimento",
+	   "text": "Sigla para Punção Lombar. ",
+	   "fullText": "Ver punção lombar"
+	 },
+	 {
+	   "title": "Quimioterapia",
+	   "subtitle": "Procedimento",
+	   "text": "São medicações que tratam câncer.",
+	   "fullText": "Quimioterapia é um tratamento que utiliza medicamentos para destruir as células doentes que formam um tumor. Estes medicamentos se misturam com o sangue e são levados a todas as partes do corpo, destruindo as células doentes que estão formando o tumor e impedindo, também, que elas se espalhem pelo corpo."
+	 },
+	 {
+	   "title": "Radioterapia",
+	   "subtitle": "Procedimento",
+	   "text": "Tratamento com Irradiação",
+	   "fullText": "A radioterapia é um tipo de tratamento que utiliza radiações especiais para causar danos nas células malignas, causando a destruição das mesmas."
+	 },
+	 {
+	   "title": "Recidiva",
+	   "subtitle": "Condição",
+	   "text": "Retorno da doença. Também chamada de recaída.",
+	   "fullText": "Recidiva, ou recorrência, significa “está acontecendo novamente”. É quando o paciente trata um câncer e, algum tempo depois, a doença volta a se manifestar. A recidiva pode acontecer pouco ou muito tempo depois da cura do primeiro tumor e exige, do paciente, uma nova perspectiva em relação à patologia e ao tratamento."
+	 },
+	 {
+	   "title": "Remissão",
+	   "subtitle": "Condição",
+	   "text": "Desaparecimento da doença( completo ou parcial).",
+	   "fullText": "A remissão completa acontece quando não encontramos sinais de câncer nos exames físicos, de imagem e laboratoriais. Diferente de uma remissão parcial, quando as células malignas diminuíram, mas podem ser encontradas."
+	 },
+	 {
+	   "title": "Ressecção",
+	   "subtitle": "Procedimento",
+	   "text": "Remoção cirúrgica",
+	   "fullText": "Ressecção cirúrgica é o termo médico para remover cirurgicamente parte de um tecido, estrutura ou órgão. Uma ressecção pode ser realizada para remover um tumor benigno ou maligno, um tecido infectado ou lesionado ou para corrigir um defeito estrutural."
+	 },
+	 {
+	   "title": "Sepse",
+	   "subtitle": "Condição",
+	   "text": "Infecção generalizada.",
+	   "fullText": ""
+	 },
+	 {
+	   "title": "Serviço Social",
+	   "subtitle": "",
+	   "text": "Membro da equipe multidisciplinar",
+	   "fullText": "Responsável pelo acompanhamento social do paciente e família.Orienta sobre políticas públicas e acesso a direitos."
+	 },
+	 {
+	   "title": "Sistema Nervoso Central",
+	   "subtitle": "Parte do corpo",
+	   "text": "Cérebro e medula espinhal",
+	   "fullText": "Em anatomia, chama-se sistema nervoso central (SNC), ou neuroeixo, ao conjunto do encéfalo e da medula espinhal dos vertebrados. Forma, junto com o sistema nervoso periférico, o sistema nervoso, e tem um papel fundamental no controle do corpo.\nÉ no SNC que chegam as informações relacionadas aos sentidos (audição, visão, olfato, paladar e tato) e é dele que partem ordens destinadas aos músculos e glândulas."
+	 },
+	 {
+	   "title": "SNC",
+	   "subtitle": "Parte do corpo",
+	   "text": "Sistema Nervoso Central. Cérebro.",
+	   "fullText": "Ver sistema nervoso central"
+	 },
+	 {
+	   "title": "Sonda Nasoenteral",
+	   "subtitle": "Objeto",
+	   "text": "Tubo para alimentação ",
+	   "fullText": "A sonda nasoenteral é um tubo de silicone usado para alimentação quando o alimento não pode passar pelo trajeto normal. É instalado por via nasal ou oral (nariz ou boca) e chega até o estômago passar pelo trajeto normal. É instalado por via nasal ou oral (nariz ou boca) e chega até o estômago passar pelo trajeto normal. É instalado por via nasal ou oral (nariz ou boca) e chega até o estômago passar pelo trajeto normal. É instalado por via nasal ou oral (nariz ou boca) e chega até o estômago ou intestino, dependendo da indicação do paciente"
+	 },
+	 {
+	   "title": "Transplante",
+	   "subtitle": "Procedimento",
+	   "text": "Reposição de um órgao/tecido",
+	   "fullText": "Na oncologia/hematologia pediátrica mais frequentemente é realizado o transplante de medula óssea (TMO). O transplante de medula óssea é um tipo de tratamento proposto para algumas doenças que afetam as células do sangue, como as leucemias e os linfomas ou em situações em que se faz quimioterapia de muito alta dose. O transplante pode ser autologo, quando a medula vem do próprio paciente ou alogênico. No transplante alogênico a medula vem de um doador. O transplante também pode ser feito a partir de células precursoras de medula óssea, obtidas do sangue circulante de um doador ou do sangue de cordão umbilical."
+	 },
+	 {
+	   "title": "Transfusão Sanguínea",
+	   "subtitle": "Procedimento",
+	   "text": "Transferência de sangue ou uma parte dele",
+	   "fullText": "Transfusão é o ato médico de transferir um sangue ou hemocomponentes deste (plasma sanguíneo, plaquetas, hemácias e leucócitos) de um doador para o sistema circulatório de um receptor."
+	 },
+	 {
+	   "title": "Tumor",
+	   "subtitle": "Condição",
+	   "text": "Crescimento de volume de parte do corpo",
+	   "fullText": "Um tumor é um crescimento anormal de células em qualquer tecido do corpo. Existem tumores malignos (câncer) e benignos. "
+	 },
+	 {
+	   "title": "Via Oral",
+	   "subtitle": "",
+	   "text": "Pela boca.",
+	   "fullText": "Via oral, VO, uso interno, enteral ou ainda per os (do latim, pela boca), em farmacologia é uma forma de administração de fármacos, caracterizada pela ingestão pela boca. É a via mais conveniente para administração de medicações."
+	 },
+	 {
+	   "title": "Via Endovenosa",
+	   "subtitle": "",
+	   "text": "Pela veia (pelo cateter).",
+	   "fullText": "Na via de administração endovenosa (EV), o medicamento é injetado na veia, diretamente na circulação sanguínea do paciente. A Via Endovenosa (EV) é também chamada de Intravenosa (IV)"
+	 },
+	 {
+	   "title": "Via Intramuscular",
+	   "subtitle": "",
+	   "text": "No músculo (injeção).",
+	   "fullText": "Preste atenção, a Via Endovenosa (EV) é também chamada de Intravenosa (IV)"
+	 },
+	 {
+	   "title": "Via Intra-tecal",
+	   "subtitle": "",
+	   "text": "Aplicação no liquor",
+	   "fullText": "Grande parte dos agentes antineoplásicos não atravessa a barreira hematoliquórica, o que torna difícil o tratamento e a profilaxia da leucemia meníngea e da carcinomatose meníngea decorrente do câncer de mama, linfoma e rabdomiossarcoma, entre outros tumores. Nesses casos tem lugar de destaque a quimioterapia intratecal, ou seja, administração dos antineoplásicos diretamente no líquor cefalorraquidiano. O objetivo do tratamento é expor o líquor, meninges e sistema nervoso a uma concentração efetiva de antineoplásico."
+	 }
+	]
+}

@@ -6,7 +6,7 @@ import NoteDroppableType from '../../../constants/note/NoteDroppableType'
 import NoteEntity from '../../../types/note/database/NoteEntity'
 import NoteColumnEntity from '../../../types/note/database/NoteColumnEntity'
 import NoteView from '../../../types/note/view/NoteView'
-import Loader from '../../../components/loader'
+import DinoLoader from '../../../components/loader'
 import NoteService from '../../../services/note/NoteService'
 import NoteColumnService from '../../../services/note/NoteColumnService'
 import './styles.css'
@@ -94,9 +94,11 @@ const Notes: React.FC = () => {
 
 	//#region Note
 
-	const questionAlreadyExists = (question: string): boolean =>
+	const questionAlreadyExists = (question: string, localId?: number): boolean =>
 		noteViews.some(noteView =>
-			noteView.notes.some(note => note.question === question),
+			noteView.notes.some(
+				note => note.question === question && localId !== note.localId,
+			),
 		)
 
 	const handleSaveNewNote = (
@@ -216,7 +218,7 @@ const Notes: React.FC = () => {
 
 	return (
 		<div className='notes'>
-			<Loader className='notes__loader' isLoading={isLoading}>
+			<DinoLoader className='notes__loader' isLoading={isLoading}>
 				<NoteHeader
 					onTagSearch={handleTagSearch}
 					onTextSearch={handleTextSearch}
@@ -236,7 +238,7 @@ const Notes: React.FC = () => {
 					tagSearch={tagSearch}
 					textSearch={textSearch}
 				/>
-			</Loader>
+			</DinoLoader>
 		</div>
 	)
 }

@@ -1,0 +1,198 @@
+.dinogotchi_screen__dino_pet {
+	position: absolute;
+	height: 75vh;
+    left: -18vmin;
+    bottom: 5vmin;
+}
+
+.dinogotchi_screen .customize_dino {
+	position: absolute;
+	width: 3rem;
+	height: 3rem;
+	margin: 1rem 1.5rem;
+	right: 0;
+	top: 0;
+}
+
+.dinogotchi_screen__dino_pet.first_login {
+	left: -35vmin;
+}
+
+.hat_selection .dinogotchi_screen__dino_pet {
+	top: 80vmin;
+	left: -36vmin;
+	height: 90vh;
+}
+
+.dinogotchi_screen__dino_pet.sleep_dino {
+	height: 30vh;
+}
+
+.hat_selection .dialog_chooser svg {
+	width: 25vmin;
+	height: 25vmin;
+}
+
+.hat_selection .dialog_chooser div {
+	font-size: 2.5rem;
+	font-weight: bold;
+	color: #121212;
+}
+
+.dialog_chooser {
+	position: absolute;
+	top: 3vh;
+	right: 3vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 5;
+	background-color: #fafafabf;
+	border-radius: 0.8rem;
+	padding: 0.5rem;
+}
+
+.dialog_chooser__button {
+	border: none;
+	border-radius: 50%;
+	text-decoration: none;
+	width: 17vmin;
+	height: 17vmin;
+	margin: 0.5rem;
+	box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.hat_chooser .dialog_chooser__button {
+	width: 22vmin;
+	height: 22vmin;
+}
+
+.dialog_chooser__button.green {
+	background-color: #69AF85;
+}
+
+.dialog_chooser__button.pink {
+	background-color: #FFAFCC;
+}
+
+.dialog_chooser__button.blue {
+	background-color: #89cff0;
+}
+
+.dialog_chooser__button.red {
+	background-color: #be5050;
+}
+
+.selection_button {
+	position:absolute;
+    width: 30vw;
+	top: 85vh;
+    left: 35vw;
+	background-color: #A977B5;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.speech_bubble {
+	position: absolute;
+	font-size: 1rem;
+	color: #121212;
+	left: 3vw;
+}
+
+.speech_bubble__square {
+	width: 60vw;
+	border-radius: 0.4rem;
+	padding: 1rem;
+	background-color: #fafafa;
+}
+
+.speech_bubble__triangle {
+	width: 0; 
+	height: 0;
+	margin: 0 1rem 0 auto;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-top: 20px solid #fafafa;
+}
+
+.color_selection .speech_bubble {
+	top: 12vh;
+}
+
+.hat_selection .speech_bubble {
+	top: 28vh;
+}
+
+.speech_bubble.hat_choosing {
+	top: 60vh;
+	left: 10vw;
+}
+
+.dinogotchi_loader {
+	position: initial;
+}
+
+#mascara,
+#bone,
+#laco,
+#moicano,
+#lenco,
+#gorro,
+#raiox {
+	visibility: hidden;
+}
+
+.has_bone #bone{
+	visibility: visible;
+}
+
+.has_laco #laco{
+	visibility: visible;
+}
+
+.has_gorro #gorro{
+	visibility: visible;
+}
+
+.has_moicano #moicano{
+	visibility: visible;
+}
+
+.has_lenco #lenco{
+	visibility: visible;
+}
+
+@media (orientation: landscape) {
+	.dinogotchi_screen__dino_pet {
+		left: 10vmin;
+	}
+
+	.dinogotchi_screen__dino_pet.first_login {
+		left: 0;
+	}
+
+	.color_chooser__color_button {
+		width: 8vmin;
+		height: 8vmin;
+	}
+
+	.selection_button {
+		width: 20vmin;
+		height: 8vmin;
+		font-size: var(--very-large-font);
+	}
+
+	.dinogotchi_screen .icon_button {
+		transform: scale(3);
+	}
+
+	.dinogotchi_screen .customize_dino {
+		transform: scale(2);
+	}
+
+	.status_item {
+		width: 6rem;
+		height: 6rem;
+	}
+}

@@ -1,0 +1,13 @@
+.message_dialog.set_password p {
+	font-size: var(--default-font);
+}
+
+.message_dialog.set_password input {
+	margin-bottom: 0.7rem;
+	width: 100%;
+	padding: 0.2rem;
+	border-radius: 1rem;
+	background-color: var(--dialog-input);
+	color: var(--base-font-color);
+	border: none;
+}

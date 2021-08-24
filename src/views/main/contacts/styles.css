@@ -1,11 +1,11 @@
 .contacts {
 	height: 100%;
 }
+.contacts .contacts__list.MuiList-padding {
+	padding-top: 0;
+}
 
-.contacts
-	.contacts__list__item__content
-	.MuiListItem-gutters
-	.MuiListItem-divider {
+.contacts .contacts__list__item__content .MuiListItem-gutters .MuiListItem {
 	padding: 0.5rem;
 }
 
@@ -13,14 +13,7 @@
 	padding: 0.5rem;
 }
 
-.contacts .contacts__list__item__content__phones {
-	padding: 0.313rem;
-}
-
 .contacts__list__item__text {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	text-align: start;
 	font-size: var(--default-font);
 	font-weight: 400;
 	line-height: 1.43;
@@ -51,12 +44,13 @@
 	background-color: Var(--avatar-color-5);
 }
 
-.add_contact_button {
-	position: absolute;
-	bottom: 1.2rem;
-	right: 1.2rem;
-}
-
 .contacts__loader {
 	height: 100%;
+}
+
+@media (orientation: landscape) {
+	body .dino__list {
+		width: 80vw;
+		margin: 0 10vw;
+	}
 }

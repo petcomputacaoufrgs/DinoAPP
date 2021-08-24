@@ -4,7 +4,7 @@
 	display: flex;
 	flex-direction: row;
 	overflow: auto;
-	background-color: var(--header-and-menu);
+	background-color: var(--menu-and-headers-background);
 	margin-left: -15rem;
 }
 
@@ -17,18 +17,26 @@
 .drawer_navigation__drawer__visible__menu__icon {
 	width: var(--very-large-font);
 	height: auto;
-	fill: var(--light-color);
+}
+
+.drawer_navigation__drawer__visible__menu__icon .st0{
+	fill: var(--base-font-color);
+}
+
+.drawer_navigation__drawer__visible__menu__icon .st1{
+	stroke: var(--base-font-color);
 }
 
 .drawer_navigation__drawer__visible .MuiListItemIcon-root {
 	margin-bottom: 0.25rem;
 	margin-right: 0.625rem;
 	min-width: 0rem;
+	max-height: 1.6rem;
 }
 
 .drawer_navigation__drawer__visible
 	.MuiTypography-root.MuiListItemText-primary {
-	color: var(--light-color);
+	color: var(--base-font-color);
 }
 
 .drawer_navigation__drawer__invisible {
@@ -38,7 +46,7 @@
 	left: 0rem;
 	height: 100%;
 	width: 100vw;
-	background-color: rgba(0, 0, 0, 0.3);
+	background-color: #0000004d;
 	border: none;
 }
 
@@ -70,7 +78,7 @@
 }
 
 .drawer_navigation__drawer__visible .user {
-	color: var(--light-color);
+	color: var(--base-font-color);
 	padding: 0.5rem 1rem;
 }
 
@@ -105,7 +113,7 @@
 
 .drawer_navigation__drawer__visible
 	.MuiTypography-root.MuiListItemText-primary {
-	text-align: justify;
+	text-align: left;
 }
 
 .user__avatar {
@@ -117,7 +125,40 @@
 	bottom: 0.5rem;
 	right: 2.8rem;
 	border-radius: 50%;
-	background-color: var(--header-and-menu);
+	background-color: var(--menu-and-headers-background);
 	width: 2rem;
 	height: 2rem;
+}
+
+@media (orientation: landscape) {
+	.drawer_navigation__drawer {
+		width: 20rem;
+		margin-left: -20rem;
+	}
+
+	.drawer_navigation__drawer__visible {
+		width: 20rem;
+	}
+
+	.drawer_navigation__drawer__visible
+	.MuiTypography-root.MuiListItemText-primary {
+		font-size: 1.25rem;
+	}
+
+	.drawer_navigation__drawer__visible .user .username {
+		font-size: 1.2rem;
+	}
+
+	.user__avatar__loader,
+	.user__avatar .avatar {
+		width: 11rem;
+		height: 11rem;
+	}
+
+	.user__avatar__sync_info {
+		width: 2.5rem;
+		height: 2.5rem;
+		right: 3.5rem;
+		bottom: 0.7rem;
+	}
 }

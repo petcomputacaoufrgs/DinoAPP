@@ -1,7 +1,7 @@
 import SockJS from 'sockjs-client'
 import Stomp, { Message } from 'stompjs'
 import APIHeaderConstants from '../../constants/api/APIHeaderConstants'
-import APIWebSocketDestConstants from '../../constants/api/APIWebSocketDestConstants'
+import APIWebSocketPathsConstants from '../../constants/api/APIWebSocketPathsConstants'
 import WebSocketConstants from '../../constants/api/WebSocketConstants'
 import WebSocketCallback from '../../types/web_socket/WebSocketCallback'
 import WebSocketSubscriber from '../../types/web_socket/WebSocketSubscriber'
@@ -127,7 +127,7 @@ class WebSocketService {
 	}
 
 	private getSocketBaseURL(token: string): string {
-		return `${APIWebSocketDestConstants.URL}?${APIHeaderConstants.WS_AUTHORIZATION}=${token}`
+		return `${APIWebSocketPathsConstants.ROOT}?${APIHeaderConstants.WS_AUTHORIZATION}=${token}`
 	}
 }
 

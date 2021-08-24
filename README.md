@@ -27,23 +27,14 @@
 - https://console.developers.google.com/
 
 ## Configuração
-#### Para executar o projeto crie os arquivos "api_config.json" e "google_config.json" em "src/environment" com os seguintes conteúdos:
-
-### api_config.json
+#### Para executar o projeto crie o arquivo .env na pasta raiz do projeto com o seguinte conteúdo:
 
 ```javascript
-{
-    "URL":"{Endereço da DinoAPI}/"
-}
+REACT_APP_API_URL={URL DE DEPLOY DA SUA API COM '/' AO FINAL}
+REACT_APP_GOOGLE_CLIENT_ID={DEVELOPMENT GOOGLE CLIENT ID}
 ```
 
-### google_config.json
-
-```javascript
-{
-    "client_id": "{Google Cloud Client Id}"
-}
-```
+#### Você pode usar a API de desenvolvimento: https://queridino-api-dev.herokuapp.com/
 
 ## Execução
 ### Instalação

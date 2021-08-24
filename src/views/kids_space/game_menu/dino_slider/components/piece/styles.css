@@ -1,0 +1,85 @@
+.dino_slider .dino_slider__piece {
+  font-size: 30px;
+  font-weight: bold;
+  height: 20vmin;
+  width: 20vmin;
+  background-color: #ff860d;
+  margin: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+  border-radius: 40%;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), inset 0px 4px 4px rgb(255 255 255 / 25%);
+  align-self: center;
+  justify-self: center;
+}
+
+.dino_slider .dino_slider__piece .dino_slider__piece.reduced {
+  font-size: 45px;
+}
+
+.dino_slider .dino_slider__piece.piece_0{
+  background-color: #C2B3A3;
+  color: #C2B3A3;
+}
+
+.dino_slider .dino_slider__piece.piece_2 {
+  font-size: 45px;
+  background-color: #e9b90c;
+}
+
+.dino_slider .dino_slider__piece.piece_4 {
+  font-size: 45px;
+  background-color: #c6e030;
+}
+
+.dino_slider .dino_slider__piece.piece_8 {
+  font-size: 45px;
+  background-color: #93FF60;
+}
+
+.dino_slider .dino_slider__piece.piece_16 {
+  font-size: 45px;
+  background-color: #50d693;
+}
+
+.dino_slider .dino_slider__piece.piece_32 {
+  font-size: 45px;
+  background-color: #31d4cc;
+}
+
+.dino_slider .dino_slider__piece.piece_64 {
+  font-size: 45px;
+  background-color: #60B0FF;
+}
+
+.dino_slider .dino_slider__piece.piece_128 {
+  font-size: 40px;
+  background-color: #6060FF;
+}
+
+.dino_slider .dino_slider__piece.piece_256 {
+  font-size: 40px;
+  background-color: #B060FF;
+}
+
+.dino_slider .dino_slider__piece.piece_512 {
+  font-size: 40px;
+  background-color: #FF60FF;
+}
+
+.dino_slider .dino_slider__piece.piece_1024 {
+  background-color: #FF409F;
+}
+
+.dino_slider .dino_slider__piece.piece_2048 {
+  background-color: #FF4040;
+}
+
+@media(vi) {
+  .dino_slider .dino_slider__piece {
+    height: 18vmin;
+    width: 18vmin;
+  }
+}

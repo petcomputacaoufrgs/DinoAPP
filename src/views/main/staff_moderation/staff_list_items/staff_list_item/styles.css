@@ -1,0 +1,9 @@
+.staff_item.MuiTypography-root {
+  font-size: var(--small-font);
+  text-align: left;
+}
+
+.staff_item.MuiTypography-root .invitation_pending {
+  display: flex;
+  align-items: center;
+}

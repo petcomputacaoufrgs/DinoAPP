@@ -1,0 +1,19 @@
+.note__card__header {
+	display: flex;
+	flex-direction: row;
+	outline: none;
+}
+
+.note__card__header .MuiCardHeader-root {
+	width: 100%;
+}
+
+.note__card__header :is(.MuiCardHeader-root, .MuiCardHeader-content, span) {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow-x: hidden;
+}
+
+.note__card__header.MuiDialogTitle-root {
+	padding-bottom: 0.5rem;
+}

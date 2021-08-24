@@ -4,19 +4,19 @@ import LoaderProps from './props'
 import './styles.css'
 import StringUtils from '../../utils/StringUtils'
 
-const Loader: React.FC<LoaderProps> = ({
-	isLoading: loading,
+const DinoLoader: React.FC<LoaderProps> = ({
+	isLoading,
 	children,
 	className,
 	iconClassName,
 	disableBackground,
 	hideChildren,
 }): ReactElement => {
-	const [showLoader, setShowLoader] = useState(false)
+	const [showLoader, setShowLoader] = useState(isLoading)
 
 	useEffect(() => {
-		setShowLoader(loading)
-	}, [loading])
+		setShowLoader(isLoading)
+	}, [isLoading])
 
 	const getIconClassName = (): string => {
 		let className = StringUtils.concatUndefinedSafe(
@@ -46,7 +46,7 @@ const Loader: React.FC<LoaderProps> = ({
 				<div className={getClassName()}>
 					{children}
 					<div className={getIconClassName()}>
-						<RingLoader size={40} color={'#B32E55'} loading={loading} />
+						<RingLoader size={40} color={'#B32E55'} loading={isLoading} />
 					</div>
 				</div>
 			) : (
@@ -56,4 +56,4 @@ const Loader: React.FC<LoaderProps> = ({
 	)
 }
 
-export default Loader
+export default DinoLoader

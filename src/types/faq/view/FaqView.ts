@@ -1,7 +1,7 @@
-import FaqEntity from '../database/FaqEntity'
+import TreatmentEntity from '../../treatment/database/TreatmentEntity'
 import FaqItemEntity from '../database/FaqItemEntity'
 
 export default interface FaqView {
-	faq: FaqEntity
-	items: Array<FaqItemEntity>
+	treatment: TreatmentEntity
+	faqItems?: Array<FaqItemEntity>
 }

@@ -1,0 +1,53 @@
+.staff_moderation {
+  height: 100%;
+}
+
+.staff_moderation .dialog_form__content {
+  width: 100%;
+  height: 100%;
+	padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.staff_moderation__save_button {
+  margin-top: 24px;
+  align-self: center;
+}
+.staff_moderation .MuiListItemText-root .MuiTypography-body1 {
+  white-space: inherit;
+}
+
+.staff_moderation .MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary.MuiTab-fullWidth {
+  outline: none;
+}
+
+
+.staff_moderation .invitation_pending {
+  margin-left: auto;
+  margin-bottom: 0px;
+  background-color: gray;
+  border-radius: 4px;
+  padding: 0px 4px;
+  width: fit-content;
+}
+
+.staff_moderation .add_staff {
+	width: 100%;
+	padding: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+  font-size: var(--default-font);
+}
+
+.staff_moderation .add_staff p.add_staff__title  {
+	font-size: var(--big-font);
+	margin-bottom: 1rem;
+}
+
+.staff_moderation .dialog_form__content {
+  padding: 0px;
+}

@@ -1,0 +1,169 @@
+body .MuiListItemText-root .MuiTypography-body1 {
+	font-size: var(--default-font);
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+body .MuiFormLabel-root {
+	font-size: var(--default-font);
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+body .PrivateNotchedOutline-legendLabelled-3 span {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+body .MuiDialogActions-spacing > :not(:first-child) {
+	margin-left: 0;
+}
+
+body .MuiIconButton-root,
+body .MuiSelect-icon,
+body .MuiSvgIcon-root {
+	fill: var(--base-font-color);
+}
+
+body .MuiInput-underline:before {
+	border-bottom: 0.063rem solid var(--base-font-color);
+}
+
+.MuiDialog-root {
+	outline: none;
+}
+
+.MuiButtonBase-root.MuiIconButton-root {
+	outline: none;
+}
+
+body .MuiInputBase-root {
+	font-size: var(--default-font);
+}
+
+/* para as labels dos textos deixarem de ser cortadas verticalmente */
+body .MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-animated {
+	overflow: inherit;
+	overflow-x: clip;
+}
+
+.MuiPaper-root.MuiMenu-paper,
+.MuiPaper-root.MuiDialog-paper {
+	background-color: var(--dialog-background);
+	color: var(--base-font-color);
+}
+
+.app .MuiPaper-root,
+.app .card {
+	background-color: var(--selection-tab-background);
+	color: var(--base-font-color);
+}
+
+.app .MuiPaper-root .MuiButtonBase-root {
+	color: var(--base-font-color);
+}
+
+.MuiTypography-root.MuiDialogContentText-root {
+	color: var(--base-font-color);
+}
+
+.MuiAutocomplete-popper {
+	background-color: var(--background-color);
+}
+
+.MuiCardHeader-action button.button.icon_button {
+	margin: 0rem 0.125rem;
+}
+.MuiPaper-root.MuiDialog-paper .MuiCardHeader-action {
+	align-self: center;
+}
+
+.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-animated {
+	text-overflow: ellipsis;
+	width: 100%;
+	overflow: hidden;
+}
+
+.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-animated.MuiInputLabel-shrink {
+	width: 135%;
+}
+
+.MuiTabs-root .MuiTabs-indicator {
+	background-color: var(--selected-tab-header-font-color);
+}
+
+.MuiTabs-root .MuiTab-textColorPrimary.Mui-selected {
+	color: var(--selected-tab-header-font-color);
+}
+
+.MuiBadge-root .MuiBadge-colorSecondary {
+	background-color: var(--badge-color);
+}
+
+.app .MuiFormLabel-root.Mui-focused,
+.dino_dialog .MuiFormLabel-root.Mui-focused {
+	color: var(--focused-input-font-color);
+}
+.app .MuiInput-underline:after,
+.dino_dialog .MuiInput-underline:after {
+	border-bottom: 2px solid var(--focused-input-font-color);
+}
+
+.MuiAvatar-root.colorDefault .MuiSvgIcon-root {
+	fill: var(--buttons-font-color);
+}
+
+.treatment__list_item .MuiBadge-anchorOriginTopRightCircle {
+	top: 10%;
+	right: 10%;
+	transform: scale(0.8) translate(50%, -50%);
+	transform-origin: 100% 0%;
+}
+
+body .MuiCheckbox-colorSecondary.Mui-checked {
+	color: var(--hover-link-font-color);
+}
+
+body .MuiFormHelperText-root.MuiFormHelperText-marginDense {
+	color: var(--base-font-color);
+}
+
+@media (orientation: landscape) {
+	body .MuiListItemText-root .MuiTypography-body1 {
+		font-size: 1.6rem;
+	}
+
+	body .MuiAvatar-root {
+		width: 50px;
+		height: 50px;
+		margin-right: 10px;
+	}
+
+	body .MuiFormLabel-root,
+	body .MuiInputBase-root,
+	body .MuiMenuItem-root,
+	body .MuiAutocomplete-popper {
+		font-size: 1.4rem;
+	}
+
+	body .MuiSvgIcon-root {
+		transform: scale(1.5);
+	}
+
+	label + .MuiInput-formControl {
+		margin-top: 30px !important;
+	}
+
+	.treatment__list_item
+		.treatment__list_item__action
+		.dino_icon_button__tooltip {
+		margin-left: 3em;
+	}
+
+	.treatment__list_item .MuiBadge-anchorOriginTopRightCircle {
+		top: -5%;
+		right: 0;
+		transform: scale(1) translate(50%, -50%);
+		transform-origin: 100% 0%;
+	}
+}

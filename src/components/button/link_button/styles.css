@@ -1,16 +1,17 @@
 button.link_button {
-	text-decoration: underline;
-	color: var(--button-font-color);
+	color: var(--link-font-color);
 	border: none;
 	background: none;
 	cursor: pointer;
 	display: block;
 	padding: 0.438rem;
 	margin: auto;
+	font-size: var(--small-font);
 }
 
 button.link_button:hover,
 button.link_button:focus {
-	color: var(--button-selected-font-color);
+	color: var(--hover-link-font-color);
 	outline: none;
+	text-decoration: underline;
 }

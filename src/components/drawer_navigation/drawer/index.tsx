@@ -4,9 +4,9 @@ import { Divider } from '@material-ui/core'
 import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import MenuItemViewModel from '../../../types/menu/MenuItemViewModel'
 import { Avatar } from '@material-ui/core'
-import IconButton from '../../button/icon_button'
-import { ReactComponent as ChevronLeftIconSVG } from '../../../assets/icons/chevron_left.svg'
-import Loader from '../../loader'
+import DinoIconButton from '../../button/icon_button'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import DinoLoader from '../../loader'
 import { useLanguage } from '../../../context/language'
 import UserEntity from '../../../types/user/database/UserEntity'
 import UserService from '../../../services/user/UserService'
@@ -94,14 +94,14 @@ const Drawer: React.FC<DrawerProps> = ({ open, groupedItems, onClose }) => {
 	const renderUser = (): JSX.Element => (
 		<div className='user'>
 			<div className='user__avatar'>
-				<Loader className='user__avatar__loader' isLoading={isLoading}>
+				<DinoLoader className='user__avatar__loader' isLoading={isLoading}>
 					<Avatar
 						src={UserService.getPicture(user)}
 						alt={language.data.AVATAR_ALT}
 						className='avatar'
 					/>
 					<SyncInfo className='user__avatar__sync_info' />
-				</Loader>
+				</DinoLoader>
 			</div>
 			<p className='username'>{UserService.getName(user)}</p>
 		</div>
@@ -120,11 +120,12 @@ const Drawer: React.FC<DrawerProps> = ({ open, groupedItems, onClose }) => {
 			<div className='drawer_navigation__drawer'>
 				<div className='drawer_navigation__drawer__visible'>
 					<div className='drawer_navigation__drawer__header'>
-						<IconButton
+						<DinoIconButton
 							ariaLabel={language.data.CLOSE_MENU_BUTTON_ARIA_LABEL}
-							icon={ChevronLeftIconSVG}
+							icon={ChevronLeftIcon}
 							onClick={handleCloseClick}
 							bigger
+							lum='light'
 						/>
 					</div>
 					<Divider />

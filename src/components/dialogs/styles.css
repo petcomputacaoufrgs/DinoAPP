@@ -1,0 +1,34 @@
+.dino_dialog__header {
+	background-color: var(--menu-and-headers-background);
+	display: flex;
+	flex-direction: row;
+	padding: 1rem;
+}
+
+.dino_dialog__header svg {
+	margin-left: auto;
+	width: 3rem;
+}
+
+.dino_dialog__header .dino_dialog__header__title {
+	text-align: initial;
+	display: flex;
+	align-items: center;
+	margin-right: 8px;
+	color: white;
+	font-size: var(--default-font);
+}
+
+.dino_dialog__header h5,
+.dino_dialog__header h3 {
+	margin-bottom: 0px;
+}
+
+.dino_dialog__content {
+	padding: 1.3rem;
+	font-size: var(--default-font);
+}
+
+.dino_dialog .MuiDialogContent-dividers {
+	padding: 0;
+}

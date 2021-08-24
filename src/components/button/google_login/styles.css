@@ -13,7 +13,7 @@
 }
 
 .google_login_button__button button {
-	background-color: var(--note-background);
+	background-color: var(--light-color);
 	padding-top: 0.625rem;
 	padding-bottom: 0.625rem;
 	padding-left: 1.563rem;
@@ -25,8 +25,8 @@
 }
 
 .google_login_button__text_button {
-	background-color: var(--contrast-color);
-	color: var(--inv-contrast-color);
+	background-color: var(--light-color);
+	color: var(--dark-color);
 	border-radius: 2rem;
 }
 

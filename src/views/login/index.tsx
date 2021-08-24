@@ -1,10 +1,10 @@
 import React from 'react'
 import { useAlert } from '../../context/alert'
-import { ReactComponent as Dinosaur1 } from '../../assets/logos/dinosaur_1.svg'
+import { ReactComponent as Dinosaur1 } from '../../assets/logos/dino_logo.svg'
 import { ReactComponent as Dinosaur2 } from '../../assets/icons/dino/dinosaur_2.svg'
 import GoogleLoginButton from '../../components/button/google_login'
 import { useLanguage } from '../../context/language'
-import Loader from '../../components/loader'
+import DinoLoader from '../../components/loader'
 import LinkButton from '../../components/button/link_button'
 import HistoryService from '../../services/history/HistoryService'
 import PathConstants from '../../constants/app/PathConstants'
@@ -42,7 +42,7 @@ const Login = (): JSX.Element => {
 	)
 
 	return (
-		<Loader isLoading={language.loading}>
+		<DinoLoader isLoading={language.loading}>
 			<div className='login'>
 				<Dinosaur2 className='login__curious' />
 				<Dinosaur1 className='login__logo' />
@@ -50,9 +50,9 @@ const Login = (): JSX.Element => {
 					{language.data.WELCOME_MESSAGE}
 				</h1>
 				<div className='login__content__button'>{renderLoginButton()}</div>
-				<div className='login__content__info'>
+				<div className='login__content__info dino__flex_row'>
 					<LinkButton
-						text={language.data.MENU_ABOUT_US}
+						text={language.data.ABOUT_US}
 						onClick={() => HistoryService.push(PathConstants.ABOUT_US)}
 					/>
 					<LinkButton
@@ -65,7 +65,7 @@ const Login = (): JSX.Element => {
 					/>
 				</div>
 			</div>
-		</Loader>
+		</DinoLoader>
 	)
 }
 

@@ -1,0 +1,17 @@
+.save_button {
+	width: 100%;
+	margin: auto;
+	margin-top: 1rem;
+	max-width: 50vh;
+}
+
+.save_button__icon {
+	width: 1.125rem;
+	height: 1.125rem;
+	margin-right: 0.6rem;
+	fill: var(--inv-contrast-color);
+}
+
+.save_button .MuiButton-label {
+	color: var(--light-color);
+}

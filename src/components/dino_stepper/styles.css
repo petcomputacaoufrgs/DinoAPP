@@ -2,22 +2,13 @@
 	display: flex;
 	flex-direction: row;
 	padding: 0 0 0.5rem 0;
+	background: var(--dialog-background);
+	color: var(--base-font-color);
+	width: 100%;
 }
 
-.dino_stepper.MuiMobileStepper-root > :nth-child(1),
-.dino_stepper.MuiMobileStepper-root > :nth-child(2),
-.dino_stepper.MuiMobileStepper-root > :nth-child(3) {
-	display: flex;
-	align-items: center;
-}
-
-.dino_stepper.MuiMobileStepper-root > :nth-child(1),
-.dino_stepper.MuiMobileStepper-root > :nth-child(3) {
-	width: 40%;
-}
-
-.dino_stepper.MuiMobileStepper-root > :nth-child(1) {
-	justify-content: flex-start;
+.dino_stepper .MuiLinearProgress-colorPrimary {
+	background-color: rgba(204, 204, 204, 0.5);
 }
 
 .dino_stepper.MuiMobileStepper-root > :nth-child(2) {
@@ -25,24 +16,15 @@
 	width: 20%;
 }
 
-.dino_stepper.MuiMobileStepper-root > :nth-child(3) {
-	justify-content: flex-end;
-}
-
-.dino_stepper.MuiMobileStepper-root {
-	background: var(--other-details);
-	color: var(--base-font-color);
-	width: 100%;
-}
-
 .dino_stepper .MuiMobileStepper-dotActive {
 	background-color: #c2740f;
 }
 
-.dino_stepper .save__button,
-.dino_stepper .cancel__button,
-.dino_stepper .back__button,
-.dino_stepper .next__button {
+.dino_stepper .MuiLinearProgress-barColorPrimary {
+	background-color: var(--note-card-background);
+}
+
+.dino_stepper :is(.save__button, .cancel__button, .back__button, .next__button) {
 	margin: 0rem;
 	padding: 0rem;
 	margin-right: 0.3rem;

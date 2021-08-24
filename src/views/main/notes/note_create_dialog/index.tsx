@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import Button from '../../../../components/button/text_button'
 import NoteCreateDialogProps from './props'
-import TextField from '@material-ui/core/TextField'
-import Dialog from '@material-ui/core/Dialog'
-import DialogContent from '@material-ui/core/DialogContent'
-import Autocomplete from '@material-ui/lab/Autocomplete'
 import NoteConstants from '../../../../constants/note/NoteConstants'
-import { DialogTitle, DialogActions } from '@material-ui/core'
-import TransitionSlide from '../../../../components/slide_transition'
 import { useLanguage } from '../../../../context/language'
 import './styles.css'
+import DinoDialog from '../../../../components/dialogs/dino_dialog'
+import { DinoTextfield } from '../../../../components/textfield'
+import DataConstants from '../../../../constants/app_data/DataConstants'
+import { NoteTagTextfield } from '../tag_textfield'
+import { NoteCardHeader } from '../card_header'
+import DateUtils from '../../../../utils/DateUtils'
 
 const NoteCreateDialog: React.FC<NoteCreateDialogProps> = ({
 	onClose,
@@ -21,8 +20,7 @@ const NoteCreateDialog: React.FC<NoteCreateDialogProps> = ({
 	const language = useLanguage()
 
 	const [question, setQuestion] = useState('')
-	const [questionWithError, setQuestionWithError] = useState(false)
-	const [questionErrorHelper, setQuestionErrorHelper] = useState('')
+	const [errorMessage, setErrorMessage] = useState<string>()
 
 	const [tagList, setTagList] = useState<string[]>([])
 
@@ -36,17 +34,13 @@ const NoteCreateDialog: React.FC<NoteCreateDialogProps> = ({
 		const newQuestion = question.trim()
 
 		if (newQuestion.length === 0) {
-			setQuestionWithError(true)
-			setQuestionErrorHelper(language.data.EMPTY_FIELD_ERROR)
-
+			setErrorMessage(language.data.EMPTY_FIELD_ERROR)
 			return
 		}
 
 		const questionConflict = questionAlreadyExists(newQuestion)
 		if (questionConflict) {
-			setQuestionWithError(true)
-			setQuestionErrorHelper(language.data.QUESTION_ALREADY_EXISTS_ERROR)
-
+			setErrorMessage(language.data.itemAlreadyExists(language.data.QUESTION))
 			return
 		}
 
@@ -56,12 +50,7 @@ const NoteCreateDialog: React.FC<NoteCreateDialogProps> = ({
 	const handleQuestionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value
 
-		const newQuestion = value.substring(0, NoteConstants.QUESTION_MAX_LENGTH)
-
-		if (questionWithError) {
-			setQuestionWithError(false)
-			setQuestionErrorHelper('')
-		}
+		const newQuestion = value.substring(0, DataConstants.NOTE_QUESTION.MAX)
 
 		setQuestion(newQuestion)
 	}
@@ -70,71 +59,43 @@ const NoteCreateDialog: React.FC<NoteCreateDialogProps> = ({
 		if (open) {
 			setTagList([])
 			setQuestion('')
-			setQuestionWithError(false)
-			setQuestionErrorHelper('')
+			setErrorMessage(undefined)
 		}
 	}, [open])
 
 	const renderDialogContent = (): JSX.Element => {
 		return (
-			<DialogContent>
-				<TextField
-					error={questionWithError}
-					helperText={questionErrorHelper}
-					label={
-						language.data.QUESTION_NOTE_DIALOG_TITLE +
-						' (' +
-						language.data.MAX +
-						NoteConstants.ANSWER_MAX_LENGTH +
-						')'
-					}
-					type='text'
-					multiline
-					variant='outlined'
+			<div className='note_create__dialog_content'>
+				<DinoTextfield
 					value={question}
 					onChange={handleQuestionChange}
+					errorMessage={errorMessage}
+					multiline
+					label={`${language.data.QUESTION_NOTE_DIALOG_TITLE}`}
+					dataProps={DataConstants.NOTE_QUESTION}
 				/>
-				<Autocomplete
-					multiple
-					freeSolo
+				<NoteTagTextfield
 					value={tagList}
-					limitTags={1}
 					onChange={handleTagChange}
 					options={tagOptions}
-					renderInput={params => (
-						<TextField
-							{...params}
-							fullWidth
-							label={`${language.data.NOTE_TAG_LABEL} (${language.data.MAX} ${NoteConstants.TAG_LIMIT})`}
-							variant='outlined'
-							inputProps={{
-								...params.inputProps,
-								maxLength: NoteConstants.TAG_MAX_LENGTH,
-							}}
-						/>
-					)}
 				/>
-			</DialogContent>
+			</div>
 		)
 	}
 	return (
-		<Dialog
+		<DinoDialog
 			open={open}
-			className='note_create_dialog'
 			onClose={onClose}
-			TransitionComponent={TransitionSlide}
+			onSave={handleSave}
+			header={
+				<NoteCardHeader
+					title={language.data.NOTE_EDIT_DIALOG_NEW_NOTE_TITLE}
+					subheader={DateUtils.getDateStringFormated(new Date(), language.data)}
+				/>
+			}
 		>
-			<DialogTitle>{language.data.NOTE_EDIT_DIALOG_NEW_NOTE_TITLE}</DialogTitle>
 			{renderDialogContent()}
-			<DialogActions>
-				<Button onClick={onClose}>
-					{language.data.DIALOG_CANCEL_BUTTON_TEXT}
-				</Button>
-				<Button onClick={handleSave}>
-					{language.data.DIALOG_SAVE_BUTTON_TEXT}
-				</Button>
-			</DialogActions>
-		</Dialog>
+		</DinoDialog>
 	)
 }
 

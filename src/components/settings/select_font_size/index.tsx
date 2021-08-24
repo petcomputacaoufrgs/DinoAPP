@@ -1,20 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { InputLabel, MenuItem, Select } from '@material-ui/core'
-import SelectFontSizeProps from './props'
 import { useLanguage } from '../../../context/language'
 import UserSettingsService from '../../../services/user/UserSettingsService'
+import UserSettingsEntity from '../../../types/user/database/UserSettingsEntity'
 import './styles.css'
 
-const SelectFontSize: React.FC<SelectFontSizeProps> = ({
-	fontSize, 
-	setFontSize 
-}) => {
+const SelectFontSize: React.FC<{
+	settings?: UserSettingsEntity
+}> = ({ settings }) => {
 	const language = useLanguage()
 	const fontSizeList = UserSettingsService.getFontSizeOptions(language.data)
 
-	const handleSelectedFontSizeChanged = (event: any) => {
-		if (event && event.target && event.target.value) {
-			setFontSize(event.target.value as number)
+	const [selectedFontSize, setSelectedFontSize] = useState(
+		UserSettingsService.getFontSizeCode(settings),
+	)
+
+	const handleChange = (newFontSize: number) => {
+		setSelectedFontSize(newFontSize)
+
+		if (settings && settings.fontSize !== newFontSize) {
+			settings.fontSize = newFontSize
+			UserSettingsService.save(settings)
 		}
 	}
 
@@ -25,8 +31,8 @@ const SelectFontSize: React.FC<SelectFontSizeProps> = ({
 			</InputLabel>
 			<Select
 				labelId='font_size__select_label'
-				value={fontSize}
-				onChange={handleSelectedFontSizeChanged}
+				value={selectedFontSize}
+				onChange={e => handleChange(e.target.value as number)}
 				fullWidth
 			>
 				{fontSizeList.map((option, index) => (

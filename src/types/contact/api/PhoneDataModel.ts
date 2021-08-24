@@ -5,6 +5,5 @@ export default interface PhoneDataModel
 	number: string
 	type: number
 	contactId?: number
-	essentialContactId?: number
-	originalEssentialPhoneId?: number
+	essentialPhoneId?: number
 }

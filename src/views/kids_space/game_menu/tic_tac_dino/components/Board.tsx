@@ -1,17 +1,19 @@
 import React from 'react'
-import Square from './Square'
 
 interface BoardProps {
 	squares: number[]
 	onClick: (index: number) => void
 }
 
-const Board: React.FC<BoardProps> = ({ squares, onClick }) => (
-	<div className='board'>
-		{squares.map((square, i) => (
-			<Square key={i} value={square} onClick={() => onClick(i)} />
-		))}
+const TicTacBoard: React.FC<BoardProps> = ({ squares, onClick }) => (
+	<div className='tic_tac__board'>
+		{squares.map((square, i) =>
+			<button 
+				className={`tic_tac_dino__square ${square || ''}`} 
+				onClick={() => onClick(i)} 
+			/>
+		)}
 	</div>
 )
 
-export default Board
+export default TicTacBoard

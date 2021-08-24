@@ -1,0 +1,18 @@
+.filterlist .filterlist__label {
+  font-size: var(--default-font);
+  color: var(--base-font-color);
+  display: flex;
+  margin-right: 4px;
+}
+.filterlist__menu .MuiList-root.MuiMenu-list {
+  margin-left: 16px;
+  display: flex;
+  flex-direction: column;
+}
+.filterlist svg{
+  margin: 4px;
+}
+
+.filterlist .MuiButtonBase-root.MuiIconButton-root {
+  padding-left: 0;
+}

@@ -1,0 +1,14 @@
+.contacts__list__item .MuiTypography-root {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font-size: var(--small-font);
+}
+
+.MuiListItemSecondaryAction-root {
+	display: flex;
+}
+
+.list__item__text {
+  margin-right: 1.2em;
+}

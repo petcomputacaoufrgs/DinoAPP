@@ -1,6 +1,6 @@
 .dino_hr {
 	margin: 0.625rem 0rem;
-	border-color: var(--contrast-color);
+	border-color: var(--base-font-color);
 	opacity: 0.1;
 }
 

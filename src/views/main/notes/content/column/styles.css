@@ -1,20 +1,15 @@
 .note__note_content__column {
 	flex: 0 0 auto;
 	height: 100%;
-	margin-right: 0.313rem;
-	margin-left: 0.313rem;
-}
-
-.note__note_content__column.desktop {
-	width: 15%;
+	padding: 0 0.313rem;
 }
 
 .note__note_content__column__draggable {
-	border: 0.063rem solid var(--column-border);
-	background-color: var(--board-background);
-	border-radius: 0.5rem;
-	padding: 0.625rem 0.938rem 0.625rem 0.938rem;
-	width: 16.875rem;
+	background-color: var(--note-column-background);
+	border-radius: 8px;
+	padding: 10px 15px 10px 15px;
+	width: 270px;
+	height: inherit;
 }
 
 .note__note_content__column:first-of-type {
@@ -35,4 +30,8 @@
 	height: calc(100% - 0.625rem);
 	overflow-y: auto;
 	margin-top: 1.5rem;
+}
+
+.note__note_content__column__column_card.MuiPaper-elevation1.MuiPaper-rounded {
+	background-color: var(--note-card-background);
 }

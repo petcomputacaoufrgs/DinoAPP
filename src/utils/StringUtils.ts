@@ -1,9 +1,11 @@
-import Utils from './Utils'
+import { hasNoValue } from './Utils'
 
 class StringUtils {
-	isEmpty(value: any | undefined): boolean {
-		return Utils.isEmpty(value) || value === '' || value === ' '
+	isEmpty(value: string | undefined): boolean {
+		return hasNoValue(value) || value?.trim() === ''
 	}
+
+	isNotEmpty = (value: string | undefined) => !this.isEmpty(value)
 
 	upperCaseFirstLetter = (str: string): string =>
 		`${str.charAt(0).toUpperCase()}${str.slice(1)}`
@@ -63,14 +65,6 @@ class StringUtils {
 		return str.replace(/[^0-9]/g, replacer)
 	}
 
-	sortByAttr = (array: Array<any>, attr: string): Array<any> => {
-		if (array)
-			return array.sort((a, b) =>
-				this.normalize(a[attr]) < this.normalize(b[attr]) ? -1 : 1,
-			)
-		return array
-	}
-
 	concatUndefinedSafe = (
 		separator: string,
 		s1: string,
@@ -81,6 +75,12 @@ class StringUtils {
 		}
 
 		return s1
+	}
+
+	validateEmail = (email: string) => {
+		const re =
+			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+		return re.test(String(email).toLowerCase())
 	}
 }
 

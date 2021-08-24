@@ -11,57 +11,8 @@ body .MuiInputBase-root,
 .dino_dialog__header,
 .dino_dialog__content {
 	font-family: var(--font-base);
-	text-align: justify;
+	/* text-align: justify; */
 	color: var(--base-font-color);
-}
-
-body .MuiInputBase-root {
-	font-size: var(--default-font);
-}
-
-body .MuiListItemText-root .MuiTypography-body1 {
-	font-size: var(--default-font);
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-body .MuiFormLabel-root {
-	font-size: var(--default-font);
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-body .MuiFormControl-root.MuiTextField-root {
-	overflow: hidden;
-}
-
-body .PrivateNotchedOutline-legendLabelled-3 span {
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-body .MuiDialogActions-spacing > :not(:first-child) {
-	margin-left: 0;
-}
-
-body .MuiIconButton-root,
-body .MuiSelect-icon,
-body .MuiSvgIcon-root {
-	fill: var(--contrast-color);
-}
-
-body .MuiInput-underline:before {
-	border-bottom: 0.063rem solid var(--base-font-color);
-}
-
-.MuiDialog-root {
-	outline: none;
-}
-
-.MuiButtonBase-root.MuiIconButton-root {
-	outline: none;
 }
 
 .app {
@@ -73,28 +24,4 @@ body .MuiInput-underline:before {
 	font-family: var(--font-base);
 	overflow: hidden;
 	color: var(--base-font-color);
-}
-
-.MuiPaper-root.MuiMenu-paper,
-.MuiPaper-root.MuiDialog-paper {
-	background-color: var(--other-details);
-	color: var(--base-font-color);
-}
-
-.app .MuiPaper-root,
-.app .card {
-	background-color: var(--other-details);
-	color: var(--base-font-color);
-}
-
-.MuiTypography-root.MuiDialogContentText-root {
-	color: var(--base-font-color);
-}
-
-.MuiAutocomplete-popper {
-	background-color: var(--other-details);
-}
-
-.MuiCardHeader-action button.button.icon_button {
-	margin: 0rem 0.125rem;
 }

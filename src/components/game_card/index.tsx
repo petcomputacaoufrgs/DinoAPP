@@ -10,7 +10,7 @@ const GameCard: React.FC<GameCardProps> = ({
 }) => {
 	return (
 		<button
-			className={'game_card'}
+			className='game_card'
 			onClick={onClick}
 			aria-label={ariaLabel}
 			style={{ backgroundColor: backgroundColor }}

@@ -1,0 +1,17 @@
+.google_grant_dialog p {
+	font-size: var(--default-small-font);
+}
+
+.google_grant_dialog h1 {
+	font-size: var(--big-font);
+}
+
+.google_grant_dialog__buttons {
+	margin-left: auto;
+	padding: 0.5rem;
+}
+
+.google_grant_dialog__buttons__accept_button.MuiButtonBase-root {
+	background-color: transparent;
+	margin-left: 0.5rem;
+}

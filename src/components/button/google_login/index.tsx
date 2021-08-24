@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Loader from '../../loader'
+import DinoLoader from '../../loader'
 import { ReactComponent as GoogleLogoSVG } from '../../../assets/logos/google.svg'
 import LoginButtonProps from './props'
 import LoginStatusConstants from '../../../constants/login/LoginStatusConstants'
@@ -91,7 +91,7 @@ const GoogleLoginButton: React.FC<LoginButtonProps> = ({
 	}
 
 	return (
-		<Loader
+		<DinoLoader
 			iconClassName='google_login_button__loader'
 			isLoading={loading || googleOAuth2.loading}
 		>
@@ -111,7 +111,7 @@ const GoogleLoginButton: React.FC<LoginButtonProps> = ({
 					</p>
 				)}
 			</div>
-		</Loader>
+		</DinoLoader>
 	)
 }
 

@@ -1,4 +1,3 @@
-.note__column_dialog
-	.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary {
-	color: var(--column-font-color);
+.note__column_dialog__content {
+	padding: 16px 24px;
 }

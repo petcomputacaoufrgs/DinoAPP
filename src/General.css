@@ -1,0 +1,50 @@
+.save_button__icon {
+	margin-right: 0.5rem;
+	width: 18px;
+	height: 18px;
+	fill: var(--light-color);
+}
+
+.dino__history_link {
+	color: var(--link-font-color);
+	font-size: var(--default-font);
+}
+
+.dino__textfield .MuiFormHelperText-root {
+	text-align: right;
+	display: block;
+	color: var(--base-font-color);
+	margin-bottom: -8px;
+}
+
+.dino__flex_row {
+	display: flex;
+	flex-direction: row;
+}
+
+.dino__accordion {
+	padding: 4px 8px;
+}
+
+.dino__text__wrap {
+	overflow-wrap: anywhere;
+	white-space: normal;
+}
+
+/* para dar um espaço para scrollar o ultimo item da lista sem o botao de add atrapalhar */
+.app .dino__list__padding {
+	padding-bottom: 4.5em;
+}
+
+.app .dino__list_and_filter {
+	flex: auto;
+	align-items: flex-end;
+}
+
+.dino__list__char_divider h4 {
+	padding: 0.6em 1.15em 0;
+}
+
+.dino__list__char_divider .dino_hr {
+	margin: 0 16px 4px;
+}

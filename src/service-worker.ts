@@ -7,7 +7,7 @@ import { registerRoute } from 'workbox-routing'
 import Database from './storage/Database'
 import PostMessageType from './types/service_worker/PostMessageType'
 import PostMessageData from './types/service_worker/PostMessageData'
-import Utils from './utils/Utils'
+import { hasNoValue, hasValue } from './utils/Utils' 
 import TabEntity from './types/tab_control/TabEntity'
 
 declare const self: ServiceWorkerGlobalScope
@@ -59,7 +59,7 @@ const getTabByInData = async (
 	tabId: number,
 	table: Dexie.Table<TabEntity, number>,
 ): Promise<TabEntity | undefined> => {
-	if (Utils.isEmpty(tabId)) return
+	if (hasNoValue(tabId)) return
 
 	return await table.where('id').equals(tabId).first()
 }
@@ -157,7 +157,7 @@ const registerNewTab = async (tabId: number) => {
 }
 
 self.addEventListener('message', event => {
-	if (event.data && Utils.isNotEmpty(event.data.type)) {
+	if (event.data && hasValue(event.data.type)) {
 		if (event.data.type === PostMessageType.TAB_CLOSED) {
 			onTabClosed(event.data.info)
 			return

@@ -1,9 +1,0 @@
-.calendar__month__content__week_day_column {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	font-size: 1em;
-	width: 14.29%;
-	height: 100%;
-}

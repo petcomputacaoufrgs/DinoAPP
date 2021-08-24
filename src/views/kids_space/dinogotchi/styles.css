@@ -5,6 +5,15 @@
 	display: flex;
 }
 
+.dinogotchi_screen .dino_icon_button__button svg {
+	fill: #0C1E59;
+}
+
+.dinogotchi_screen__background .painting {
+	transform-box: fill-box;
+	transform-origin: top;
+}
+
 .dinogotchi_screen.inside {
 	justify-content: center;
 }
@@ -118,49 +127,6 @@
 	stroke: none;
 }
 
-.dinogotchi_screen__dino_pet {
-	position: absolute;
-	bottom: 4rem;
-	width: 80vmin;
-	left: 10vmin;
-}
-
-.dinogotchi_screen__options {
-	position: absolute;
-	right: 7vw;
-	top: 15vh;
-}
-
-.dinogotchi_screen__options .circular_button {
-	height: 4.5rem;
-	width: 4.5rem;
-	background-color: #a594ab;
-	margin-bottom: 1.5rem;
-	padding: 0.85rem;
-}
-
-.dinogotchi_screen__options svg {
-	width: 4rem;
-	height: 4rem;
-}
-
-.dinogotchi_screen .icon_button {
-	position:absolute;
-	top: 3vmin;
-	left: 3vmin;
-	width: 16vmin;
-	height: 16vmin;
-}
-
-.dinogotchi_screen .icon_button svg {
-	fill: #A594AB;
-}
-
-.dinogotchi_screen__background .painting {
-	transform-box: fill-box;
-	transform-origin: top;
-}
-
 @keyframes dinogotchi_screen__background__dinogotchi__inside__cloud_one {
 	from {
 		transform: translate3d(-300%, 0, 0);
@@ -203,5 +169,23 @@
 	}
 	to {
 		transform: translate3d(450%, 0, 0);
+	}
+}
+
+
+@media (width: 375px) and (height: 812px) {
+	.dinogotchi_screen__dino_pet.first_login {
+		left: -48vmin;
+	}
+
+	.dinogotchi_screen__dino_pet {
+		left: -32vmin;
+	}
+}
+
+@media (orientation: landscape) {
+	.dinogotchi_screen__background {
+		height: 115vh;
+		bottom: 0;
 	}
 }

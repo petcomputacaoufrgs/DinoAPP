@@ -1,5 +1,5 @@
 import { foodAte, onSnake, growSnake } from './snake'
-import FOOD from '../../../../../assets/kids_space/snake/food.png'
+import FOOD from '../../../../../assets/kids_space/games/snake/food.png'
 
 type CoordinatePosition = {
 	x: number

@@ -1,7 +1,0 @@
-.logout_button .MuiButton-contained {
-	background-color: white;
-}
-
-.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary {
-	color: var(--column-font-color);
-}

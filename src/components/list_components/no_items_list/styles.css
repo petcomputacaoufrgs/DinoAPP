@@ -1,0 +1,7 @@
+.no_items h5 {
+  display: flex;
+  justify-content: center;
+  padding: 128px 0px;
+  line-height: 128px;
+  opacity: 50%;
+}

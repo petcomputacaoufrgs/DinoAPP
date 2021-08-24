@@ -1,20 +1,26 @@
 import React, { useState, useEffect } from 'react'
-import GlossaryItems from './glossary_items'
-import MuiSearchBar from '../../../components/mui_search_bar'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import GlossaryItems from './glossary_list_items'
+import DinoSearchBar from '../../../components/search_bar'
 import GlossaryItemEntity from '../../../types/glossary/database/GlossaryItemEntity'
-import Loader from '../../../components/loader'
+import DinoLoader from '../../../components/loader'
 import { useLanguage } from '../../../context/language'
 import GlossaryService from '../../../services/glossary/GlossaryService'
+import { HasStaffPowers } from '../../../context/private_router'
+import AddButton from '../../../components/button/icon_button/add_button'
+import GlossaryItemForm from './glossary_item_form'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './styles.css'
 
 const Glossary: React.FC = () => {
+
+	const isStaff = HasStaffPowers()
 	const language = useLanguage()
 
 	const [glossary, setGlossary] = useState<GlossaryItemEntity[]>([])
 	const [searchTerm, setSearchTerm] = useState('')
 	const [isLoading, setIsLoading] = useState(true)
-
+	const [add, setAdd] = useState(false)
+	
 	useEffect(() => {
 		const loadData = async () => {
 			const glossary = await GlossaryService.getAll()
@@ -49,14 +55,23 @@ const Glossary: React.FC = () => {
 
 	return (
 		<div className='glossary'>
-			<MuiSearchBar
+			<DinoSearchBar
 				value={searchTerm}
 				onChange={handleChange}
-				placeholder={language.data.SEARCH_HOLDER}
 			/>
-			<Loader className='glossary_loader' isLoading={isLoading}>
+			<DinoLoader className='glossary_loader' isLoading={isLoading}>
 				<GlossaryItems items={filteredGlossary} />
-			</Loader>
+			</DinoLoader>
+			{ isStaff && 
+				<AddButton
+					handleAdd={() => setAdd(true)}
+					label={language.data.NEW_GLOSSARY_ITEM}
+				/>
+			}
+			<GlossaryItemForm 
+				open={add}
+				handleClose={() => setAdd(false)}
+			/>
 		</div>
 	)
 }

@@ -1,7 +1,7 @@
 .privacy_policy {
 	font-family: var(--font-base);
 	font-size: var(--default-font);
-	background-color: var(--background-main);
+	background-color: var(--background-color);
 	color: var(--base-font-color);
 	width: 100%;
 	height: 100%;
@@ -23,8 +23,8 @@
 	margin-bottom: 0.625rem;
 }
 
-.privacy_policy .icon_button.arrow_back svg {
-	fill: var(--contrast-color);
+.privacy_policy .dino_icon_button__button.arrow_back svg {
+	fill: var(--base-font-color);
 }
 
 .privacy_policy h2 {
@@ -54,15 +54,15 @@
 
 .privacy_policy a {
 	text-decoration: none;
-	color: var(--tag-color);
+	color: var(--link-font-color);
 }
 
 .privacy_policy a:hover {
 	text-decoration: none;
-	color: var(--board-background);
+	color: var(--hover-link-font-color);
 }
 
 .privacy_policy a:active {
 	text-decoration: none;
-	color: var(--tag-color);
+	color: var(--link-font-color);
 }

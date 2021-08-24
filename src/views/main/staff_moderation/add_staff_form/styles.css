@@ -1,0 +1,13 @@
+.dialog_form__content .save_button {
+  margin-top: 16px;
+  align-self: center;
+}
+.dialog_form__content .email_textfield {
+  margin: 16px 0px;
+}
+.dialog_form__content button.dialog_form__content__save_button {
+  padding: 16px;
+}
+.add_staff__text {
+  text-align: center;
+}

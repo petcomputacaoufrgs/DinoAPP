@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import BoardProps from './props'
-import Piece from '../piece'
+import MemoryPiece from '../piece'
 import './styles.css'
 
 const BASE_ANIMATION_DELAY = 500
@@ -9,7 +9,7 @@ function sleep(ms:number) {
     return new Promise<void>(resolve => setTimeout(resolve, ms));
 }
 
-const Board: React.FC<BoardProps> = ({
+const MemoryBoard: React.FC<BoardProps> = ({
     pieceList,
     onGameOver,
     restart
@@ -37,7 +37,7 @@ const Board: React.FC<BoardProps> = ({
             onGameOver()
             setBlocked(true)
         }
-    }, [blocked, score, pieceList, onGameOver])
+    }, [blocked, score, onGameOver, pieceList.length])
 
     const handleOnClick = async(index: number) => {
         if(!pieceState[index].turned && !blocked) {
@@ -84,13 +84,9 @@ const Board: React.FC<BoardProps> = ({
     }
 
     return (
-        <>
-        <div className="score_board">
-            {score}
-        </div>
         <div className="Board">
             {pieceState.map((piece, index) => 
-                <Piece 
+                <MemoryPiece 
                     key={index} 
                     piece={piece} 
                     turnedBack={turnBack} 
@@ -99,8 +95,7 @@ const Board: React.FC<BoardProps> = ({
                 />
             )}
         </div>
-        </>
     )
 }
 
-export default Board
+export default MemoryBoard

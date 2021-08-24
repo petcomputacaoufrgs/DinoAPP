@@ -1,7 +1,7 @@
 .drawer__navigation__app_bar {
 	width: 100%;
 	height: 2.813rem;
-	background-color: var(--header-and-menu);
+	background-color: var(--menu-and-headers-background);
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -11,7 +11,19 @@
 	fill: var(--light-color);
 }
 
-.drawer__navigation__app_bar__button svg {
+.drawer__navigation__app_bar__button .dino_icon_button__button svg {
 	margin-left: 0.8rem;
 	margin-right: 0.8rem;
+}
+
+@media (orientation: landscape) {
+	.drawer__navigation__app_bar {
+		height: 4rem;
+	}
+
+	.drawer__navigation__app_bar .dino_icon_button__button .button svg {
+		width: 3.2rem;
+		height: 3.2rem;
+		margin: 0 1.2rem;
+	}
 }

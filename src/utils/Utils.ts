@@ -1,11 +1,7 @@
-class Utils {
-	isEmpty(value: any | undefined): boolean {
+	export const hasNoValue = (value: any | undefined): boolean => {
 		return value === null || value === undefined
 	}
 
-	isNotEmpty(value: any | undefined): boolean {
-		return !this.isEmpty(value)
+	export const hasValue = (value: any | undefined): boolean => {
+		return !hasNoValue(value)
 	}
-}
-
-export default new Utils()

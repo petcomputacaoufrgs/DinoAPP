@@ -1,5 +1,5 @@
 import Superagent from 'superagent'
-import APIRequestMappingConstants from '../../constants/api/APIRequestMappingConstants'
+import APIHTTPPathsConstants from '../../constants/api/APIHTTPPathsConstants'
 import sleep from '../../utils/SleepUtils'
 import ArrayUtils from '../../utils/ArrayUtils'
 import HttpStatus from '../../types/http/HttpStatus'
@@ -58,7 +58,7 @@ class ConnectionService {
 
 	private internalIsDinoConnected = async (): Promise<Boolean> => {
 		try {
-			const request = Superagent.get(APIRequestMappingConstants.TEST_CONNECTION)
+			const request = Superagent.get(APIHTTPPathsConstants.TEST_CONNECTION)
 
 			const response = await request
 

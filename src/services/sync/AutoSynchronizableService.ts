@@ -1,4 +1,4 @@
-import { IndexableType } from 'dexie'
+import Dexie, { IndexableType } from 'dexie'
 import DinoAgentService from '../../agent/DinoAgentService'
 import LogAppErrorService from '../log_app_error/LogAppErrorService'
 import SynchronizableDataResponseModel from '../../types/sync/api/response/SynchronizableDataResponseModel'
@@ -20,7 +20,7 @@ import DateUtils from '../../utils/DateUtils'
 import SynchronizableService from './SynchronizableService'
 import WebSocketURLService from '../websocket/path/WebSocketPathService'
 import WebSocketSubscriber from '../../types/web_socket/WebSocketSubscriber'
-import Utils from '../../utils/Utils'
+import { hasValue } from '../../utils/Utils'
 
 /**
  * @description Generic service with basic methods (save and delete) that auto synchronize entity with API
@@ -32,7 +32,7 @@ import Utils from '../../utils/Utils'
 export default abstract class AutoSynchronizableService<
 	ID extends IndexableType,
 	DATA_MODEL extends SynchronizableDataLocalIdModel<ID>,
-	ENTITY extends SynchronizableEntity<ID>
+	ENTITY extends SynchronizableEntity<ID>,
 > extends SynchronizableService {
 	protected apiBaseURL: string
 	protected table: Dexie.Table<ENTITY, number>
@@ -75,6 +75,8 @@ export default abstract class AutoSynchronizableService<
 		return []
 	}
 
+	protected async beforeDelete(entity: ENTITY) {}
+
 	//#endregion
 
 	//#region CONVERSION MODEL <-> ENTITY
@@ -101,9 +103,9 @@ export default abstract class AutoSynchronizableService<
 				model.lastUpdate!,
 			)
 
-			if (Utils.isNotEmpty(model.localId)) {
+			if (hasValue(model.localId)) {
 				entity.localId = model.localId
-			} else if (Utils.isNotEmpty(model.id)) {
+			} else if (hasValue(model.id)) {
 				const savedEntity = await this.dbGetById(model.id!)
 
 				if (savedEntity) {
@@ -181,7 +183,7 @@ export default abstract class AutoSynchronizableService<
 	 * @description Get all entities
 	 */
 	getAll = async (): Promise<ENTITY[]> => {
-		return this.dbGetAllNotFakeDeleted()
+		return this.dbGetAllNotFakeDeletedEntities()
 	}
 
 	/**
@@ -197,7 +199,11 @@ export default abstract class AutoSynchronizableService<
 	 * @param entity Entity to save
 	 */
 	save = async (entity: ENTITY): Promise<ENTITY | undefined> => {
-		this.updateLastUpdate(entity)
+		const cantEdit = await this.hasNotNecessaryPermissionToEdit()
+
+		if (cantEdit) return undefined
+
+		this.setLastUpdate(entity)
 		entity.localState = SynchronizableLocalState.SAVED_LOCALLY
 
 		const dbEntity = await this.dbSave(entity)
@@ -239,8 +245,11 @@ export default abstract class AutoSynchronizableService<
 	 * @param entities Entities to save
 	 */
 	saveAll = async (entities: ENTITY[]) => {
+		const cantEdit = await this.hasNotNecessaryPermissionToEdit()
+		if (cantEdit) return
+
 		entities.forEach(entity => {
-			this.updateLastUpdate(entity)
+			this.setLastUpdate(entity)
 			entity.localState = SynchronizableLocalState.SAVED_LOCALLY
 		})
 
@@ -266,6 +275,10 @@ export default abstract class AutoSynchronizableService<
 	 * @param model Data model of entity
 	 */
 	saveFromDataModelLocally = async (model: DATA_MODEL) => {
+		const cantEdit = await this.hasNotNecessaryPermissionToEdit()
+
+		if (cantEdit) return
+
 		const entity = await this.internalConvertModelToEntity(model)
 		if (entity) {
 			await this.saveOnlyLocally(entity)
@@ -277,6 +290,10 @@ export default abstract class AutoSynchronizableService<
 	 * @param models Data models of each entity
 	 */
 	saveAllFromDataModelLocally = async (models: DATA_MODEL[]) => {
+		const cantEdit = await this.hasNotNecessaryPermissionToEdit()
+
+		if (cantEdit) return
+
 		const entities = await this.internalConvertModelsToEntities(models)
 		if (entities.length > 0) {
 			await this.saveAllOnlyLocally(entities)
@@ -288,6 +305,10 @@ export default abstract class AutoSynchronizableService<
 	 * @param entity Entity to save
 	 */
 	saveOnlyLocally = async (entity: ENTITY) => {
+		const cantEdit = await this.hasNotNecessaryPermissionToEdit()
+
+		if (cantEdit) return
+
 		await this.dbSave(entity)
 		this.triggerUpdateEvent()
 	}
@@ -297,6 +318,10 @@ export default abstract class AutoSynchronizableService<
 	 * @param entities Entities to save
 	 */
 	saveAllOnlyLocally = async (entities: ENTITY[]) => {
+		const cantEdit = await this.hasNotNecessaryPermissionToEdit()
+
+		if (cantEdit) return
+
 		await this.dbSaveAll(entities)
 		this.triggerUpdateEvent()
 	}
@@ -305,52 +330,69 @@ export default abstract class AutoSynchronizableService<
 	 * @description Delete a entity locally and, if possible, in API
 	 * @param entity Entity to delete
 	 */
-	delete = async (entity: ENTITY) => {
-		if (entity.id === undefined) {
-			await this.dbDelete(entity)
-			this.triggerUpdateEvent()
+	delete = async (entity: ENTITY): Promise<void> => {
+		const cantEdit = await this.hasNotNecessaryPermissionToEdit()
+
+		if (cantEdit) return
+
+		await this.beforeDelete(entity)
+
+		if (entity.id === undefined) return this.deleteLocalItem(entity)
+
+		this.setLastUpdate(entity)
+
+		const deleted = await this.dbFakeDelete(entity)
+		const errorDeletingLocally = !deleted
+		if (errorDeletingLocally) return
+
+		this.triggerUpdateEvent()
+
+		const model = await this.internalConvertEntityToModel(entity)
+		const errorGeneratingModel = model === undefined
+		if (errorGeneratingModel) {
+			this.logErrorGeneratingModel(entity)
 			return
 		}
 
-		this.updateLastUpdate(entity)
-		const deleted = await this.dbFakeDelete(entity)
+		const response = await this.apiDelete(model!!)
+		const errorOnRequest = response === undefined
+		if (errorOnRequest) return
 
-		if (deleted) {
-			this.triggerUpdateEvent()
-			const model = await this.internalConvertEntityToModel(entity)
-
-			if (model) {
-				const response = await this.apiDelete(model)
-
-				if (response) {
-					if (response.success) {
-						await this.dbDelete(entity)
-
-						return true
-					} else if (response.data) {
-						const apiEntity = await this.internalConvertModelToEntity(
-							response.data,
-						)
-						if (apiEntity) {
-							apiEntity.localId = entity.localId
-							apiEntity.localState = SynchronizableLocalState.SAVED_ON_API
-							await this.dbSave(apiEntity)
-							this.triggerUpdateEvent()
-						} else {
-							LogAppErrorService.logMessage(
-								JSON.stringify(response.data),
-								SyncConstants.CONVERT_MODEL_TO_ENTITY_ERROR,
-							)
-						}
-					}
-				}
-			} else {
-				LogAppErrorService.logMessage(
-					JSON.stringify(entity),
-					SyncConstants.CONVERT_ENTITY_TO_MODEL_ERROR,
-				)
-			}
+		if (response!.success) {
+			await this.dbDelete(entity)
+		} else if (response!.data) {
+			await this.saveUpdatedItem(response!, entity)
 		}
+	}
+
+	private saveUpdatedItem = async (
+		response: SynchronizableDataResponseModel<ID, DATA_MODEL>,
+		entity: ENTITY,
+	) => {
+		const apiEntity = await this.internalConvertModelToEntity(response.data)
+		if (apiEntity) {
+			apiEntity.localId = entity.localId
+			apiEntity.localState = SynchronizableLocalState.SAVED_ON_API
+			await this.dbSave(apiEntity)
+			this.triggerUpdateEvent()
+		} else {
+			LogAppErrorService.logMessage(
+				JSON.stringify(response.data),
+				SyncConstants.CONVERT_MODEL_TO_ENTITY_ERROR,
+			)
+		}
+	}
+
+	private logErrorGeneratingModel = (entity: ENTITY): void => {
+		LogAppErrorService.logMessage(
+			JSON.stringify(entity),
+			SyncConstants.CONVERT_ENTITY_TO_MODEL_ERROR,
+		)
+	}
+
+	private deleteLocalItem = async (entity: ENTITY): Promise<void> => {
+		await this.dbDelete(entity)
+		this.triggerUpdateEvent()
 	}
 
 	/**
@@ -358,8 +400,14 @@ export default abstract class AutoSynchronizableService<
 	 * @param entities Entities to delete
 	 */
 	deleteAll = async (entities: ENTITY[]) => {
+		const cantEdit = await this.hasNotNecessaryPermissionToEdit()
+
+		if (cantEdit) return
+
+		await Promise.all(entities.map(entity => this.beforeDelete(entity)))
+
 		const filterById = ArrayUtils.partition(entities, entity =>
-			Utils.isNotEmpty(entity.id),
+			hasValue(entity.id),
 		)
 
 		await this.dbDeleteAll(filterById.notSelected)
@@ -448,7 +496,7 @@ export default abstract class AutoSynchronizableService<
 			entities.forEach(entity => (entity.localId = undefined))
 
 			const orderedEntities = entities
-				.filter(entity => Utils.isNotEmpty(entity.id))
+				.filter(entity => hasValue(entity.id))
 				.sort(this.sortEntityById)
 
 			const dbEntities = await this.dbGetAllById(orderedEntities)
@@ -489,27 +537,37 @@ export default abstract class AutoSynchronizableService<
 	//#region SYNC
 
 	/**
-	 * @description Start entity save sync with API.
+	 * @description Start entity sync with API.
+	 * Based in user permissions, sync process can edit or only read data from server
 	 */
-	protected syncSave = async (): Promise<boolean> => {
+	protected sync = async (): Promise<boolean> => {
+		const canEdit = await this.hasNecessaryPermissionToEdit()
+		if (canEdit) {
+			return this.syncWithEdit()
+		}
+		const canRead = await this.hasNecessaryPermissionToRead()
+		if (canRead) {
+			return this.syncWithoutEdit()
+		}
+
+		return true
+	}
+
+	private getNotSavedModels = async (): Promise<DATA_MODEL[]> => {
 		const notSavedEntities = await this.dbGetAllNotSavedOnAPI()
 
-		const notSavedModels = await this.internalConvertEntitiesToModels(
-			notSavedEntities,
-		)
+		return this.internalConvertEntitiesToModels(notSavedEntities)
+	}
 
-		const saveResponse = await this.apiSaveSync(notSavedModels)
+	private syncWithEdit = async (): Promise<boolean> => {
+		const notSavedModels = await this.getNotSavedModels()
 
-		if (saveResponse && saveResponse.success) {
-			await this.dbDeleteAllFakeDeleteds()
+		const response = await this.apiSaveSync(notSavedModels)
 
-			const entities = await this.internalConvertModelsToEntities(
-				saveResponse.data,
-			)
+		if (response && response.success) {
+			const entities = await this.internalConvertModelsToEntities(response.data)
 
-			await this.dbClear()
-
-			await this.dbSaveAll(entities)
+			await this.dbClearAndSaveAll(entities)
 
 			this.triggerUpdateEvent()
 
@@ -519,22 +577,32 @@ export default abstract class AutoSynchronizableService<
 		return false
 	}
 
+	private syncWithoutEdit = async (): Promise<boolean> => {
+		const response = await this.apiGetAll()
+		if (response && response.success) {
+			const entities = await this.internalConvertModelsToEntities(response.data)
+			await this.dbClearAndSaveAll(entities)
+			this.triggerUpdateEvent()
+			return true
+		}
+		return false
+	}
+
 	/**
 	 * @description Start entity delete sync with API.
 	 */
 	protected syncDelete = async (): Promise<boolean> => {
-		const deletedEntities = await this.dbGetAllFakeDeleted()
+		const deletedEntities = await this.dbGetAllFakeDeletedEntities()
+		const hasNotEntitiesToDelete = deletedEntities.length === 0
 
-		if (deletedEntities.length === 0) return true
+		if (hasNotEntitiesToDelete) return true
 
-		const deletedModels = await this.internalConvertEntitiesToModels(
-			deletedEntities,
-		)
+		const models = await this.internalConvertEntitiesToModels(deletedEntities)
 
-		const deleteResponse = await this.apiDeleteAll(deletedModels)
+		const response = await this.apiDeleteAll(models)
 
-		if (deleteResponse && deleteResponse.success) {
-			await this.dbDeleteAllFakeDeleteds()
+		if (response && response.success) {
+			await this.dbClearFakeDeletedEntities()
 
 			this.triggerUpdateEvent()
 
@@ -548,6 +616,26 @@ export default abstract class AutoSynchronizableService<
 
 	//#region DATABASE
 
+	/**
+	 * @description Filter database query removing invalid data and returning a list.
+	 */
+	protected toList = (collection: Dexie.Collection<ENTITY, number>) => {
+		return this.filterValidData(collection).toArray()
+	}
+
+	/**
+	 * @description Filter database query removing invalid data and returning first item.
+	 */
+	protected toFirst = (collection: Dexie.Collection<ENTITY, number>) => {
+		return this.filterValidData(collection).first()
+	}
+
+	private filterValidData = (collection: Dexie.Collection<ENTITY, number>) => {
+		return collection.filter(
+			item => item.localState !== SynchronizableLocalState.DELETED_LOCALLY,
+		)
+	}
+
 	private dbGetById = async (id: ID) => {
 		return this.table.where('id').equals(id).first()
 	}
@@ -558,7 +646,7 @@ export default abstract class AutoSynchronizableService<
 
 	private dbGetAllById = async (entities: ENTITY[]): Promise<ENTITY[]> => {
 		const ids = entities
-			.filter(entity => Utils.isNotEmpty(entity.id))
+			.filter(entity => hasValue(entity.id))
 			.map(entity => entity.id!)
 		return this.table.where('id').anyOf(ids).toArray()
 	}
@@ -597,7 +685,7 @@ export default abstract class AutoSynchronizableService<
 		const lastUpdate = this.getLastUpdate()
 
 		const entitiesIds = entities
-			.filter(entity => Utils.isNotEmpty(entity.localId))
+			.filter(entity => hasValue(entity.localId))
 			.map(entity => entity.localId!)
 
 		return await this.table
@@ -611,7 +699,7 @@ export default abstract class AutoSynchronizableService<
 
 	private dbDeleteAll = async (entities: ENTITY[]) => {
 		const localIds = entities
-			.filter(entity => Utils.isNotEmpty(Utils.isNotEmpty(entity.localId)))
+			.filter(entity => hasValue(hasValue(entity.localId)))
 			.map(entity => entity.localId!)
 
 		return this.table.where('localId').anyOf(localIds).delete()
@@ -631,14 +719,14 @@ export default abstract class AutoSynchronizableService<
 		return entity
 	}
 
-	private dbGetAllNotFakeDeleted = async (): Promise<ENTITY[]> => {
+	private dbGetAllNotFakeDeletedEntities = async (): Promise<ENTITY[]> => {
 		return this.table
 			.where('localState')
 			.notEqual(SynchronizableLocalState.DELETED_LOCALLY)
 			.toArray()
 	}
 
-	private dbGetAllFakeDeleted = async (): Promise<ENTITY[]> => {
+	private dbGetAllFakeDeletedEntities = async (): Promise<ENTITY[]> => {
 		return this.table
 			.where('localState')
 			.equals(SynchronizableLocalState.DELETED_LOCALLY)
@@ -658,7 +746,7 @@ export default abstract class AutoSynchronizableService<
 		entities.forEach((entity, index) => (entity.localId = ids[index]))
 	}
 
-	private dbDeleteAllFakeDeleteds = async () => {
+	private dbClearFakeDeletedEntities = async () => {
 		await this.table
 			.where('localState')
 			.equals(SynchronizableLocalState.DELETED_LOCALLY)
@@ -669,6 +757,11 @@ export default abstract class AutoSynchronizableService<
 		await this.table.clear()
 	}
 
+	private dbClearAndSaveAll = async (entities: ENTITY[]) => {
+		await this.dbClear()
+		await this.dbSaveAll(entities)
+	}
+
 	//#endregion
 
 	//#region API
@@ -677,16 +770,19 @@ export default abstract class AutoSynchronizableService<
 		return this.apiBaseURL
 	}
 
+	private getRequestURL = (): string => `${this.getBaseRequestURL()}get/`
+
 	private saveRequestURL = (): string => `${this.getBaseRequestURL()}save/`
 
 	private deleteRequestURL = (): string => `${this.getBaseRequestURL()}delete/`
+
+	private getAllRequestURL = (): string => `${this.getRequestURL()}all/`
 
 	private saveAllRequestURL = (): string => `${this.saveRequestURL()}all/`
 
 	private deleteAllRequestURL = (): string => `${this.deleteRequestURL()}all/`
 
-	private syncSaveRequestURL = (): string =>
-		`${this.getBaseRequestURL()}sync_save/`
+	private syncRequestURL = (): string => `${this.getBaseRequestURL()}sync/`
 
 	private apiSave = async (
 		data: DATA_MODEL,
@@ -753,6 +849,24 @@ export default abstract class AutoSynchronizableService<
 		return undefined
 	}
 
+	private apiGetAll = async (): Promise<
+		SynchronizableListDataResponseModel<ID, DATA_MODEL> | undefined
+	> => {
+		const request = await DinoAgentService.get(this.getAllRequestURL())
+
+		if (request.canGo) {
+			try {
+				const authRequest = await request.authenticate()
+				const response = await authRequest.go()
+				return response.body
+			} catch (e) {
+				LogAppErrorService.logError(e)
+			}
+		}
+
+		return undefined
+	}
+
 	private apiDeleteAll = async (
 		models: DATA_MODEL[],
 	): Promise<SynchronizableGenericDataResponseModel<Array<ID>> | undefined> => {
@@ -782,7 +896,7 @@ export default abstract class AutoSynchronizableService<
 		toSave: Array<DATA_MODEL>,
 	): Promise<SynchronizableSyncResponseModel<ID, DATA_MODEL> | undefined> => {
 		try {
-			const request = await DinoAgentService.put(this.syncSaveRequestURL())
+			const request = await DinoAgentService.put(this.syncRequestURL())
 
 			if (request.canGo) {
 				const requestModel: SynchronizableSyncModel<ID, DATA_MODEL> = {
@@ -808,7 +922,7 @@ export default abstract class AutoSynchronizableService<
 		return new Date()
 	}
 
-	private updateLastUpdate = (entity: ENTITY) => {
+	private setLastUpdate = (entity: ENTITY) => {
 		entity.lastUpdate = this.getLastUpdate()
 	}
 

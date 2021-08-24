@@ -2,7 +2,7 @@ import React from 'react'
 import './styles.css'
 import PieceProps from './props'
 
-const Piece: React.FC<PieceProps> = ({
+const MemoryPiece: React.FC<PieceProps> = ({
     piece,
     onClick,
     turnedBack,
@@ -35,4 +35,4 @@ const Piece: React.FC<PieceProps> = ({
     )
 }
 
-export default Piece
+export default MemoryPiece

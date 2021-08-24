@@ -1,10 +1,10 @@
-.dialog_form__content .add-phone__button {
+.contact__dialog_form__content .add_phone__button {
 	justify-content: center;
 	width: 100%;
 	padding: 0;
 	margin-top: 1rem;
 }
 
-.dialog_form__content .add-phone__button p {
+.contact__dialog_form__content .add_phone__button p {
 	font-size: var(--small-font);
 }

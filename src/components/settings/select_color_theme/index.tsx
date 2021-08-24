@@ -1,20 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { InputLabel, MenuItem, Select } from '@material-ui/core'
-import SelectColorThemeProps from './props'
 import { useLanguage } from '../../../context/language'
 import UserSettingsService from '../../../services/user/UserSettingsService'
+import UserSettingsEntity from '../../../types/user/database/UserSettingsEntity'
 
-const SelectColorTheme: React.FC<SelectColorThemeProps> = ({
-	colorTheme,
-	setColorTheme,
-}) => {
+const SelectColorTheme: React.FC<{
+	settings?: UserSettingsEntity
+}> = ({ settings }) => {
 	const language = useLanguage()
+
+	const [selectedColorTheme, setSelectedColorTheme] = useState(
+		UserSettingsService.getColorThemeCode(settings),
+	)
 
 	const colorThemeList = UserSettingsService.getColorThemeOptions(language.data)
 
-	const handleSelectedColorThemeChanged = (event: any) => {
-		if (event && event.target && event.target.value) {
-			setColorTheme(event.target.value as number)
+	const handleChange = (newColorTheme: number) => {
+		setSelectedColorTheme(newColorTheme)
+
+		if (settings && settings.colorTheme !== newColorTheme) {
+			settings.colorTheme = newColorTheme
+			UserSettingsService.save(settings)
 		}
 	}
 
@@ -25,8 +31,8 @@ const SelectColorTheme: React.FC<SelectColorThemeProps> = ({
 			</InputLabel>
 			<Select
 				labelId='color_theme__select_label'
-				value={colorTheme}
-				onChange={handleSelectedColorThemeChanged}
+				value={selectedColorTheme}
+				onChange={e => handleChange(e.target.value as number)}
 				fullWidth
 			>
 				{colorThemeList.map((option, index) => (

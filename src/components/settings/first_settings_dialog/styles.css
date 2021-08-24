@@ -8,9 +8,8 @@
 	opacity: 0.5;
 }
 
-.first_settings__dialog {
-	min-width: 80%;
-	min-height: 50%;
+.first-settings .dino_dialog__actions{
+	padding: 16px;
 }
 
 .first_settings__dialog h5 {
@@ -33,17 +32,24 @@
 	font-size: var(--default-font);
 }
 
-.first_settings__dialog .citation {
+.first_settings__message_dialog { 
+	padding: 16px 20px 0px;
+}
+
+.first_settings__message_dialog .citation {
 	text-align: end;
 	font-style: italic;
 }
 
-.first_settings__dialog .message_dialog .dino_header {
-	margin-bottom: 1.5rem;
+.first_settings__message_dialog .dino_header {
+	margin-bottom: 24px;
 }
 
-.first_settings__dialog .message_dialog .dino_hr {
-	margin: 0.75rem 0.5rem;
+.first_settings__message_dialog .dino_hr {
+	margin: 12px 8px;
+}
+.first_settings__message_dialog .font-size__selector {
+	margin-top: 20px;
 }
 
 .first_settings__dialog .message_dialog.set_password p {
@@ -55,11 +61,28 @@
 	width: 100%;
 	padding: 0.2rem;
 	border-radius: 1rem;
-	background-color: var(--dialog-input);
+	background-color: var(--dialog-background);
 	color: var(--base-font-color);
 	border: none;
 }
 
 .set_password__error_message {
 	color: #FF7676;
+}
+
+.first_settings__message_dialog__sync_item .sync_info {
+	border-radius: 50%;
+	background-color: var(--menu-and-headers-background);
+	min-width: 3rem;
+	min-height: 3rem;
+	max-width: 3rem;
+	max-height: 3rem;
+	margin: 0 1rem 1rem 0rem;
+}
+
+.first_settings__message_dialog__sync_item {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 0.5rem;
 }

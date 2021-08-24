@@ -4,7 +4,6 @@ import './styles.css'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
 import NoteContentColumnCard from './card'
 import NoteBodyColumnHeader from './header'
-import { isMobile } from 'react-device-detect'
 import NoteDraggableType from '../../../../../constants/note/NoteDroppableType'
 import NotesContentColumnAddNote from './add_note'
 import NoteEntity from '../../../../../types/note/database/NoteEntity'
@@ -48,7 +47,7 @@ const NoteContentColumn: React.FC<NoteBodyColumnProps> = ({
 	}
 
 	return (
-		<div className={`note__note_content__column${isMobile ? '' : ' desktop'}`}>
+		<div className={`note__note_content__column`}>
 			<Draggable
 				draggableId={columnIndex.toString()}
 				index={columnIndex}

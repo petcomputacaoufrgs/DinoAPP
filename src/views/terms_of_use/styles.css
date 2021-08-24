@@ -3,7 +3,7 @@
 	font-size: var(--default-font);
 	text-align: justify;
 
-	background-color: var(--background-main);
+	background-color: var(--background-color);
 	color: var(--base-font-color);
 
 	width: 100%;
@@ -26,8 +26,8 @@
 	margin-bottom: 0.625rem;
 }
 
-.terms_of_use .icon_button.arrow_back svg {
-	fill: var(--contrast-color);
+.terms_of_use .dino_icon_button__button.arrow_back svg {
+	fill: var(--base-font-color);
 }
 
 .terms_of_use h2 {
@@ -51,7 +51,7 @@
 }
 
 .terms_of_use span {
-	font-size: var(--default-small-font);
+	font-size: var(--small-font);
 	text-align: center;
 	color: #636363;
 }
@@ -62,15 +62,15 @@
 
 .terms_of_use a {
 	text-decoration: none;
-	color: var(--tag-color);
+	color: var(--link-font-color);
 }
 
 .terms_of_use a:hover {
 	text-decoration: none;
-	color: var(--board-background);
+	color: var(--hover-link-font-color);
 }
 
 .terms_of_use a:active {
 	text-decoration: none;
-	color: var(--tag-color);
+	color: var(--link-font-color);
 }

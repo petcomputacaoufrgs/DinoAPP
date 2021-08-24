@@ -6,16 +6,8 @@
 	overflow: auto;
 }
 
-.game_card {
-	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.game_menu__go_back svg {
+.game_menu_arrow_back .dino_icon_button__button svg {
 	width: 3rem;
 	height: 3rem;
-	margin: 1rem;
-}
-
-.minigame .go_back_button svg {
-	fill: var(--dark-color-transparency);
+	fill: var(--light-color);
 }

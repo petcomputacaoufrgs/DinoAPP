@@ -1,0 +1,12 @@
+.arrow_back__kids {
+	position: absolute;
+  top: 0;
+	left: 0;
+	z-index: 100;
+  margin: 1em;
+}
+
+.arrow_back__kids svg {
+	width: 2.5rem;
+	height: 2.5rem;
+}

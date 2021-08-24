@@ -1,30 +1,31 @@
 import React from 'react'
 import NoteBodyColumnHeaderProps from './props'
 import './styles.css'
-import { ReactComponent as EditIcon } from '../../../../../../assets/icons/pen.svg'
-import { ReactComponent as DeleteOutlineIcon } from '../../../../../../assets/icons/delete.svg'
-import IconButton from '../../../../../../components/button/icon_button'
+import OptionsIconButton from '../../../../../../components/button/icon_button/options_icon_button'
+import ItemListMenu from '../../../../../../components/list_components/item_list_menu'
 
 const NoteBodyColumnHeader: React.FC<NoteBodyColumnHeaderProps> = ({
 	title,
 	onEdit,
 	onDelete,
 }) => {
+	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+
+	const handleOpenOptions = (event: React.MouseEvent<HTMLButtonElement>) =>
+		setAnchorEl(event.currentTarget)
+
 	return (
 		<div className='note__note_content__column__column_header'>
 			<h2>{title}</h2>
 			<div className='note__note_content__column__column_header__button_div'>
-				<IconButton
-					icon={DeleteOutlineIcon}
-					className='note__note_content__column__column_header__button_div__button'
-					onClick={onDelete}
-				/>
-				<IconButton
-					icon={EditIcon}
-					className='note__note_content__column__column_header__button_div__button'
-					onClick={onEdit}
-				/>
+				<OptionsIconButton onClick={handleOpenOptions} />
 			</div>
+			<ItemListMenu
+				anchor={anchorEl}
+				setAnchor={setAnchorEl}
+				onEdit={onEdit}
+				onDelete={onDelete}
+			/>
 		</div>
 	)
 }

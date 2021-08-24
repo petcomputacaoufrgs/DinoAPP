@@ -5,14 +5,8 @@
 	flex: 0 0 auto;
 }
 
-.note__note_content__columns__add_column.desktop {
-	width: 15%;
-}
-
 .note__note_content__columns__add_column__button {
-	border: 0.063rem solid;
-	border-color: var(--column-border);
-	background-color: var(--board-background);
+	background-color: var(--note-column-background);
 	border-radius: 0.313rem;
 	width: 100%;
 	height: auto;
@@ -24,7 +18,7 @@
 	margin-bottom: 0;
 	margin-top: 0;
 	font-weight: 700;
-	color: var(--column-border);
+	color: var(--notes-font-color);
 }
 
 .note__note_content__columns__add_column__button__text__max_columns {

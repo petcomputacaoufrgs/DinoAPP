@@ -1,3 +1,4 @@
+import PermissionEnum from '../../types/enum/PermissionEnum'
 import SyncResolve from '../../types/sync/SyncResolve'
 import AuthService from '../auth/AuthService'
 import WebSocketSubscriberableService from '../websocket/WebSocketSubscriberableService'
@@ -15,9 +16,23 @@ export default abstract class SynchronizableService extends WebSocketSubscribera
 	abstract getSyncDependencies(): SynchronizableService[]
 
 	/**
+	 * @description Return list of permissions that can read this service entity.
+	 * An user with anyone of this authorities can read this entity.
+	 * If empty anyone with authentication can read
+	 */
+	abstract getPermissionsWhichCanRead(): PermissionEnum[]
+
+	/**
+	 * @description Return list of permissions that can edit this service entity.
+	 * An user with anyone of this authorities can edit this entity.
+	 * If empty anyone with authentication can edit
+	 */
+	abstract getPermissionsWhichCanEdit(): PermissionEnum[]
+
+	/**
 	 * @description Function that performs save data synchronization with the API.
 	 */
-	protected abstract syncSave(): Promise<boolean>
+	protected abstract sync(): Promise<boolean>
 
 	/**
 	 * @description Function that performs delete data synchronization with the API.
@@ -53,6 +68,55 @@ export default abstract class SynchronizableService extends WebSocketSubscribera
 	}
 
 	/**
+	 * @description check if user has necessary permission to modify this service entity
+	 */
+	hasNecessaryPermissionToEdit = async (): Promise<boolean> => {
+		const necessaryPermissions = this.getPermissionsWhichCanEdit()
+		if (this.anyPermissionIsNecessary(necessaryPermissions)) return true
+		return this.userHasAnyNecessaryPermission(necessaryPermissions)
+	}
+
+	/**
+	 * @description check if user has not necessary permission to modify this service entity
+	 */
+	hasNotNecessaryPermissionToEdit = async (): Promise<boolean> => {
+		return !this.hasNecessaryPermissionToEdit()
+	}
+
+	/**
+	 * @description check if user has necessary permission to read this service entity
+	 */
+	hasNecessaryPermissionToRead = async (): Promise<boolean> => {
+		const necessaryPermissions = this.getPermissionsWhichCanRead()
+		if (this.anyPermissionIsNecessary(necessaryPermissions)) return true
+		return this.userHasAnyNecessaryPermission(necessaryPermissions)
+	}
+
+	/**
+	 * @description check if user has not necessary permission to read this service entity
+	 */
+	hasNotNecessaryPermissionToRead = async (): Promise<boolean> => {
+		return !(await this.hasNecessaryPermissionToRead())
+	}
+
+	private anyPermissionIsNecessary = (
+		necessaryPermissions: PermissionEnum[],
+	): boolean => {
+		return necessaryPermissions.length === 0 ? true : false
+	}
+
+	private userHasAnyNecessaryPermission = async (
+		necessaryPermissions: string[],
+	): Promise<boolean> => {
+		const userPermissions = await AuthService.getPermissions()
+		return userPermissions.some(userPermission =>
+			necessaryPermissions.some(
+				necessaryPermission => necessaryPermission === userPermission,
+			),
+		)
+	}
+
+	/**
 	 * @description Need to be called for finish sync process to not cause conflict with the next sync.
 	 */
 	finishSync = () => {
@@ -71,7 +135,7 @@ export default abstract class SynchronizableService extends WebSocketSubscribera
 			})
 		} else {
 			this.isSynchronizing = true
-			const result = await this.syncSave()
+			const result = await this.sync()
 			this.syncResult = result
 			this.isSynchronizing = false
 			this.resolveAllAfterReturn(result)

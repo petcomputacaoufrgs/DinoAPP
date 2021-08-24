@@ -2,11 +2,12 @@ import React, { useState } from "react"
 import { useLanguage } from "../../../../context/language"
 import HistoryService from "../../../../services/history/HistoryService"
 import PathConstants from "../../../../constants/app/PathConstants"
-import GameOverDialog from "../../../../components/kids_space_dialog/game_over_dialog"
+import GameOverDialog from "../../../../components/dialogs/kids_space_dialog/game_over_dialog"
 import Game from './components/Game'
 import '../../variables.css'
 import './styles.css'
-import GoBackButton from '../../../../components/button/go_back'
+
+import ArrowBack from "../../../../components/arrow_back"
 
 const TicTacDino: React.FC = () => {
 	const language = useLanguage()
@@ -28,7 +29,7 @@ const TicTacDino: React.FC = () => {
 		if (winner) {
 			setMessage(`${language.data.TIC_TAC_DINO_GAME_OVER_MSG_1} ${winner}!`)
 		} else {
-			setMessage(language.data.TIC_TAC_DINO_TIE)
+			setMessage(language.data.TIE)
 		}
 		setOpenDialog(true)
 		setGameStarted(false)
@@ -43,7 +44,7 @@ const TicTacDino: React.FC = () => {
 			>
 				<p>{message}</p>
 			</GameOverDialog>
-			<GoBackButton path={PathConstants.GAME_MENU} />
+			<ArrowBack kids />
 			<Game onEndGame={handleEndGame} gameStarted={gameStarted} />
 		</div>
 	)

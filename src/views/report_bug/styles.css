@@ -1,0 +1,8 @@
+.report_bug {
+	padding: 24px 16px;
+	text-align: justify;
+}
+
+.report_bug .report_bug__div {
+	padding-bottom: 2em;
+}

@@ -7,9 +7,13 @@
 }
 
 .tag_search_bar .MuiOutlinedInput-notchedOutline {
-	border-color: var(--contrast-color);
+	border-color: var(--search-bar-border-color);
 	border-width: 0.05rem;
 	border-radius: 0.625rem;
+}
+
+.tag_search_bar .MuiSvgIcon-root {
+	fill: var(--search-bar-font-color);
 }
 
 .tag_search_bar
@@ -19,6 +23,6 @@
 }
 
 .tag_search_bar .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
-	border-color: var(--contrast-color);
+	border-color: var(--search-bar-border-color);
 	border-width: 0.05rem;
 }

@@ -1,12 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { startDinoRunnerGame } from './engine/game'
 import { useLanguage } from '../../../../context/language'
-import HistoryService from '../../../../services/history/HistoryService'
-import PathConstants from '../../../../constants/app/PathConstants'
-import { ReactComponent as BackgroundSVG } from '../../../../assets/kids_space/dino_runner/background.svg'
-import GameOverDialog from '../../../../components/kids_space_dialog/game_over_dialog'
-import GoBackButton from '../../../../components/button/go_back'
+import { ReactComponent as BackgroundSVG } from '../../../../assets/kids_space/games/dino_runner/background.svg'
 import './styles.css'
+import ArrowBack from '../../../../components/arrow_back'
 
 const DinoRunner: React.FC = () => {
 	const language = useLanguage()
@@ -16,7 +13,6 @@ const DinoRunner: React.FC = () => {
 	const dinoRunnerGameCharacter = useRef<HTMLDivElement>(null)
 	const dinoRunnerGameScoreBoard = useRef<HTMLDivElement>(null)
 
-	const [openDialog, setOpenDialog] = useState(false)
 	const [gameStarted, setGameStarted] = useState(false)
 	const [startGame, setStartGame] = useState<() => void>(() => {})
 
@@ -39,36 +35,18 @@ const DinoRunner: React.FC = () => {
 		}
 	}, [])
 
-	function handleClose() {
-		setOpenDialog(false)
-		HistoryService.push(PathConstants.GAME_MENU)
-	}
-
-	function handleRestart() {
-		setOpenDialog(false)
-		handleStartGame()
-	}
-
 	function handleStartGame() {
 		setGameStarted(true)
 		startGame()
 	}
 
 	function handleGameEnd() {
-		setOpenDialog(true)
 		setGameStarted(false)
 	}
 
 	return (
 		<div ref={dinoRunnerGameContainer} className='minigame dino_runner_game'>
-			<GameOverDialog
-				onAgree={handleRestart}
-				onDisagree={handleClose}
-				open={openDialog}
-			>
-				<p>{language.data.DINO_RUNNER_GAME_OVER_MSG_1}</p>
-			</GameOverDialog>
-			<GoBackButton path={PathConstants.GAME_MENU} />
+			<ArrowBack kids />
 			<div ref={dinoRunnerGameGrid} className='dino_runner_game__grid'>
 				<div
 					ref={dinoRunnerGameCharacter}
@@ -87,7 +65,7 @@ const DinoRunner: React.FC = () => {
 					className='dino_runner_game__start_game_button'
 					onClick={handleStartGame}
 				>
-					{language.data.START_GAME_TEXT}
+					{language.data.START_GAME}
 				</button>
 			)}
 		</div>

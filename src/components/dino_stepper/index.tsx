@@ -20,7 +20,7 @@ const DinoStepper: React.FC<DinoStepperProps> = ({
 	return (
 		<MobileStepper
 			className='dino_stepper'
-			variant='dots'
+			variant='progress'
 			steps={steps}
 			position='static'
 			activeStep={activeStep}
@@ -42,7 +42,7 @@ const DinoStepper: React.FC<DinoStepperProps> = ({
 					onCancel ? (
 						<TextButton className='back__button' onClick={() => onCancel()}>
 							<KeyboardArrowLeft />
-							{language.data.DIALOG_CANCEL_BUTTON_TEXT}
+							{language.data.CANCEL}
 						</TextButton>
 					) : (
 						<div className='empty__action'></div>

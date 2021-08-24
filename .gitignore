@@ -29,5 +29,6 @@ yarn-error.log*
 # environment 
 *.log
 .eslintcache
-
 .env
+src/environment/
+/environment

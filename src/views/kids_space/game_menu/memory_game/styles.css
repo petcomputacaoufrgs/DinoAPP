@@ -18,6 +18,8 @@
     grid-gap: 12px;
 }
 
-.memory_game .game_over_dialog {
-    top: 35vh;
+.memory_game .dino_icon_button__button svg {
+	width: 3rem;
+	height: 3rem;
+	fill: var(--memory-game-piece-back-color);
 }

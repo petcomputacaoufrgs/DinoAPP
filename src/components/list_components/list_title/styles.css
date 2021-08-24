@@ -1,0 +1,21 @@
+.list__title {
+	padding: 0px 16px;
+	margin-bottom: 8px;
+	width: 100%;
+}
+
+.list__title p {
+	font-size: var(--large-font);
+	text-align: left;
+}
+
+.list__title .MuiTypography-root.MuiTypography-body1 {
+	text-align: left;
+	color: var(--menu-and-titles-font-color);
+}
+
+@media (orientation: landscape) {
+	.list__title p {
+		font-size: 2.5rem;
+	}
+}

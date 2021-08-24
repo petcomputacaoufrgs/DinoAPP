@@ -2,7 +2,6 @@ import React from 'react'
 import AddColumnProps from './props'
 import './styles.css'
 import Button from '../../../../../components/button'
-import { isMobile } from 'react-device-detect'
 import NoteConstants from '../../../../../constants/note/NoteConstants'
 import { useLanguage } from '../../../../../context/language'
 
@@ -17,9 +16,7 @@ const AddColumn: React.FC<AddColumnProps> = ({
 
 	return (
 		<div
-			className={`note__note_content__columns__add_column${
-				isMobile ? '' : ' desktop'
-			}`}
+			className={`note__note_content__columns__add_column`}
 			style={{ visibility: visible ? 'inherit' : 'hidden' }}
 		>
 			<Button
@@ -28,7 +25,7 @@ const AddColumn: React.FC<AddColumnProps> = ({
 				disabled={maxColumns}
 			>
 				<h2 className='note__note_content__columns__add_column__button__text'>
-					{language.data.ADD_COLUMN_TEXT} (
+					{`${language.data.ADD_COLUMN_TEXT}`} (
 					<span
 						className={
 							maxColumns

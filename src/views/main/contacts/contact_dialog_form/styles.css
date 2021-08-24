@@ -1,9 +1,13 @@
-.contact_form .MuiDialog-paper {
-	margin: 1.25rem;
+.MuiDialog-paper {
+	margin: 0px;
 }
 
-.dialog_form__content
+.contact__dialog_form__content
 	.MuiFormHelperText-root.Mui-error.MuiFormHelperText-filled {
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+.contact__dialog_form__content {
+	padding: 16px 24px;
 }

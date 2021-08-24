@@ -1,7 +1,7 @@
 import Database from '../../storage/Database'
 import PostMessageType from '../../types/service_worker/PostMessageType'
 import TabEntity from '../../types/tab_control/TabEntity'
-import Utils from '../../utils/Utils'
+import { hasValue } from '../../utils/Utils'
 import EventService from '../events/EventService'
 import PostMessageService from '../service_worker/PostMessageService'
 import UpdatableService from '../update/UpdatableService'
@@ -64,7 +64,7 @@ class TabControlService extends UpdatableService {
 	isMainTab = async (): Promise<boolean> => {
 		if (process.env.NODE_ENV !== 'production') return true
 
-		if (Utils.isNotEmpty(this.tabId)) {
+		if (hasValue(this.tabId)) {
 			const tab = await this.getById(this.tabId!)
 			if (tab) {
 				return tab.isMain === 1

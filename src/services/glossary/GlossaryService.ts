@@ -1,13 +1,15 @@
 import GlossaryItemModel from '../../types/glossary/api/GlossaryItemDataModel'
-import APIRequestMappingConstants from '../../constants/api/APIRequestMappingConstants'
+import APIHTTPPathsConstants from '../../constants/api/APIHTTPPathsConstants'
 import AutoSynchronizableService from '../sync/AutoSynchronizableService'
 import GlossaryItemDataModel from '../../types/glossary/api/GlossaryItemDataModel'
 import GlossaryItemEntity from '../../types/glossary/database/GlossaryItemEntity'
-import APIWebSocketDestConstants from '../../constants/api/APIWebSocketDestConstants'
 import SynchronizableService from '../sync/SynchronizableService'
-import WebSocketTopicPathService from '../websocket/path/WebSocketTopicPathService'
+import WebSocketQueuePathService from '../websocket/path/WebSocketQueuePathService'
 import Database from '../../storage/Database'
 import StringUtils from '../../utils/StringUtils'
+import LanguageBase from '../../constants/languages/LanguageBase'
+import PermissionEnum from '../../types/enum/PermissionEnum'
+import APIWebSocketPathsConstants from '../../constants/api/APIWebSocketPathsConstants'
 
 class GlossaryServiceImpl extends AutoSynchronizableService<
 	number,
@@ -17,13 +19,21 @@ class GlossaryServiceImpl extends AutoSynchronizableService<
 	constructor() {
 		super(
 			Database.glossary,
-			APIRequestMappingConstants.GLOSSARY,
-			WebSocketTopicPathService,
-			APIWebSocketDestConstants.GLOSSARY,
+			APIHTTPPathsConstants.GLOSSARY,
+			WebSocketQueuePathService,
+			APIWebSocketPathsConstants.GLOSSARY,
 		)
 	}
 
 	getSyncDependencies(): SynchronizableService[] {
+		return []
+	}
+
+	getPermissionsWhichCanEdit(): PermissionEnum[] {
+		return [PermissionEnum.STAFF, PermissionEnum.ADMIN]
+	}
+
+	getPermissionsWhichCanRead(): PermissionEnum[] {
 		return []
 	}
 
@@ -56,7 +66,28 @@ class GlossaryServiceImpl extends AutoSynchronizableService<
 	filterGlossary = (glossary: GlossaryItemEntity[], searchTerm: string) => {
 		return glossary
 			.filter(item => StringUtils.contains(item.title, searchTerm))
-			.sort((a, b) => (a.title >= b.title ? 1 : -1))
+			.sort((a, b) => (a.title.toLowerCase() < b.title.toLowerCase() ? -1 : 1))
+	}
+
+	getByTitle = async (
+		title: string,
+	): Promise<GlossaryItemEntity | undefined> => {
+		return this.toFirst(this.table.where('title').equalsIgnoreCase(title))
+	}
+
+	isTitleInvalid = async (
+		item: GlossaryItemEntity,
+		languageData: LanguageBase,
+	) => {
+		if (StringUtils.isEmpty(item.title)) {
+			return languageData.EMPTY_FIELD_ERROR
+		}
+
+		const dbItem = await this.getByTitle(item.title)
+
+		return dbItem && dbItem.localId !== item.localId
+			? languageData.itemAlreadyExists(languageData.TITLE)
+			: undefined
 	}
 }
 

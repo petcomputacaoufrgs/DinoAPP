@@ -5,7 +5,7 @@
 .loader__screen {
 	position: absolute;
 	top: 0;
-	background-color: var(--inv-contrast-color);
+	background-color: var(--background-color);
 	opacity: 0.7;
 	z-index: 99;
 	display: flex;

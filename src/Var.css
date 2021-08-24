@@ -1,6 +1,7 @@
 :root {
 	/* Definicoes gerais */
 	--font-base: 'Poppins', sans-serif;
+	--font-secondary: 'Poppins', sans-serif;
 	--dark-color: #121212;
 	--light-color: #f5f5f5;
 
@@ -15,124 +16,205 @@
 
 	--svg-size: 1.125rem;
 
-	/* // Light Mode // */
-	/* Fundos */
-	--login-background: #694e73;
-	--background-main: #f5f5f5;
-	--horizontal-menu-item: #688478;
-	--dialog-input: #e2e2e2;
+	--calendar-medication-background: #4b75c3;
+	--calendar-event-background: #d783bb;
+	--calendar-reminder-background: #f0994d;
+	--calendar-event-cards-font-color: #fafafa;
 
+	/* #region LIGHT - TEDDY-BEAR // */
 	/* Fontes */
 	--base-font-color: #121212;
-	--selection: #adc2b9;
+	--buttons-font-color: #fafafa;
+	--menu-and-titles-font-color: #71584f;
+	--notes-font-color: #121212;
+	--selected-tab-header-font-color: #f8e6c0;
+	--link-font-color: #977569;
+	--hover-link-font-color: #b48b7c;
+	--focused-input-font-color: #977569;
+	--delete-account-font-color: #ed2939;
 
-	/* Menu e cabecalho */
-	--header-and-menu: #694e73;
+	/* Fundos */
+	--background-color: #e5dcd9;
+	--menu-cards-background: #e1a69e;
+	--menu-buttons-background: #a97d77;
+	--menu-and-headers-background: #a0d1be;
+	--dialog-background: #e5dcd9;
 
-	/* Home */
-	--home-icons: #adc2b9;
+	--buttons-background: #977569;
+	--list-item-header-background: #cbbab4;
+	--list-item-description-baclground: #d8cbc7;
+	--note-column-background: #e1a69e;
+	--note-card-background: #e8bcb6;
+	--note-card-answer-background: #dbb4af;
 
-	/* Notas */
-	--board-background: #adc2b9;
-	--column-border: #274035;
-	--column-font-color: #274035;
+	--tag-background: #f8e6c0;
+	--selection-box-background: #cbbab4;
 
-	--note-background: #f5f5f5;
-	--note-answer-background: #c2c2c2;
+	--selection-tab-background: #cbbab4;
 
-	/* Botoes */
-	--button-font-color: #694e73;
-	--button-selected-font-color: #b054d1;
+	/* Barra de Pesquisa */
+	--search-bar-border-color: #bfb9b7;
+	--search-bar-font-color: #bfb9b799;
 
-	/* Outros */
-	--contrast-color: #2f2e2c;
-	--inv-contrast-color: #f5f5f5;
-	--other-details: #f5f5f5;
-	--font-base: 'Poppins', sans-serif;
-	--font-secondary: 'Poppins', sans-serif;
+	/* Switchs */
+	--switch-color: #977569;
+	--switch-slider-background: #977569b3;
+
+	/* Badge */
+	--badge-color: #e1a69e;
+
 	--avatar-color-1: #f44336;
 	--avatar-color-2: #e91e63;
 	--avatar-color-3: #9c27b0;
 	--avatar-color-4: #2196f3;
 	--avatar-color-5: #4caf50;
-	--tag-color: #d1a300;
+
+	/* #endregion */
 }
 
-[data-theme='dark'] {
-	/* Fundos */
-	--login-background: #2f2e2c;
-	--background-main: #2f2e2c;
-	--horizontal-menu-item: #c2ae64;
-	--dialog-input: #5A5A5A;
-
+/* #region DARK - MINT */
+[data-theme='mint_dark'] {
 	/* Fontes */
-	--base-font-color: #f5f5f5;
-	--selection: #a594ab;
+	--base-font-color: #fafafa;
+	--buttons-font-color: #fafafa;
+	--menu-and-titles-font-color: #fafafa;
+	--notes-font-color: #121212;
+	--selected-tab-header-font-color: #6ccbb5;
+	--link-font-color: #3bba9c;
+	--hover-link-font-color: #41d8b5;
+	--focused-input-font-color: #3bba9c;
+	--delete-account-font-color: #f25f6b;
 
-	/* Menu e cabecalho */
-	--header-and-menu: #121212;
+	/* Fundos */
+	--background-color: #36393f;
+	--dialog-background: #36393f;
+	--menu-and-headers-background: #202225;
+	--menu-cards-background: #3bba9c;
+	--menu-buttons-background: #6ccbb5;
 
-	/* Home */
-	--home-icons: #ffeaa3;
+	--list-item-header-background: #202225;
+	--list-item-description-baclground: #686b6f;
+	--note-column-background: #3bba9c;
+	--note-card-background: #6ccbb5;
+	--note-card-answer-background: #6ec2ae;
 
-	/* Notas */
-	--board-background: #796980;
-	--column-border: #2d1b35;
-	--column-font-color: #f5f5f5;
+	--buttons-background: #3bba9c;
+	--tag-background: #202225;
+	--selection-box-background: #202225;
 
-	--note-background: #b4a3ba;
-	--note-answer-background: #a692ae;
+	--selection-tab-background: #202225;
 
-	/* Botoes */
-	--button-font-color: #b054d1;
-	--button-selected-font-color: #694e73;
+	/* Barra de Pesquisa */
+	--search-bar-border-color: #686b6f;
+	--search-bar-font-color: #686b6f99;
 
-	/* Outros */
-	--contrast-color: #f5f5f5;
-	--inv-contrast-color: #2f2e2c;
-	--other-details: #474747;
+	/* Switchs */
+	--switch-color: #3bba9c;
+	--switch-slider-background: #3bba9cb3;
+
+	/* Badge */
+	--badge-color: #3bba9c;
+
 	--avatar-color-1: #6e1f1a;
 	--avatar-color-2: #682552;
 	--avatar-color-3: #53195e;
 	--avatar-color-4: #0c3d64;
 	--avatar-color-5: #255727;
-	--tag-color: #d1a300;
 }
+/* #endregion */
 
-[data-theme='high_contrast'] {
-	/* Fundos */
-	--login-background: #694e73;
-	--background-main: #f5f5f5;
-	--horizontal-menu-item: #e3c660;
-
+/* #region LIGHT - COTTON CANDY */
+[data-theme='cotton_candy_light'] {
 	/* Fontes */
 	--base-font-color: #121212;
-	--selection: #f1d881;
+	--buttons-font-color: #121212;
+	--menu-and-titles-font-color: #121212;
+	--notes-font-color: #121212;
+	--selected-tab-header-font-color: #ec284c;
+	--link-font-color: #ec284c;
+	--hover-link-font-color: #f14262;
+	--focused-input-font-color: #3969aa;
+	--delete-account-font-color: #ec284c;
 
-	/* Menu e cabecalho */
-	--header-and-menu: #694e73;
+	/* Fundos */
+	--background-color: #fff9f9;
+	--dialog-background: #fff9f9;
+	--menu-and-headers-background: #ffadc6;
+	--menu-cards-background: #a9cdff;
+	--menu-buttons-background: #74f1d4;
 
-	/* Home */
-	--home-icons: #f1d881;
+	--list-item-header-background: #fdd8d8;
+	--list-item-description-baclground: #f9e6e6;
+	--note-column-background: #a9cdff;
+	--note-card-background: #fafafa;
+	--note-card-answer-background: #ebebeb;
 
-	/* Notas */
-	--board-background: #f1d881;
-	--column-border: #d1a300;
-	--column-font-color: #f5f5f5;
+	--buttons-background: #74f1d4;
+	--tag-background: #ffdaa1;
+	--selection-box-background: #f9e6e6;
 
-	--note-background: #fff3cb;
-	--note-answer-background: #efe1b1;
+	--selection-tab-background: #fdd8d8;
 
-	/* Botoes */
-	--button-font-color: #442950;
-	--button-selected-font-color: #b054d1;
+	/* Barra de Pesquisa */
+	--search-bar-border-color: #e1e1e1;
+	--search-bar-font-color: #e1e1e199;
 
-	/* Outros */
-	--contrast-color: #2f2e2c;
-	--inv-contrast-color: #f5f5f5;
-	--other-details: #f5f5f5;
-	--tag-color: #a594ab;
+	/* Switchs */
+	--switch-color: #74f1d4;
+	--switch-slider-background: #74f1d4b3;
 }
+/* #endregion */
+
+/* #region DARK - EGGPLANT */
+[data-theme='dark'] {
+	/* Fontes */
+	--base-font-color: #fafafa;
+	--buttons-font-color: #fafafa;
+	--menu-and-titles-font-color: #fafafa;
+	--notes-font-color: #fafafa;
+	--selected-tab-header-font-color: #e2b2e2;
+	--link-font-color: #e2b2e2;
+	--hover-link-font-color: #f8d4f8;
+	--focused-input-font-color: #e2b2e2;
+	--delete-account-font-color: #f25f6b;
+
+	/* Fundos */
+	--background-color: #22252a;
+	--dialog-background: #36393f;
+	--menu-and-headers-background: #22252a;
+	--menu-cards-background: #4a154b;
+	--menu-buttons-background: #4a154b;
+
+	--list-item-header-background: #36393f;
+	--list-item-description-baclground: #686b6f;
+	--note-column-background: #4a154b;
+	--note-card-background: #613262;
+	--note-card-answer-background: #653c66;
+
+	--buttons-background: #4a154b;
+	--tag-background: #22252a;
+	--selection-box-background: #22252a;
+
+	--selection-tab-background: #36393f;
+
+	/* Barra de Pesquisa */
+	--search-bar-border-color: #686b6f;
+	--search-bar-font-color: #686b6f99;
+
+	/* Switchs */
+	--switch-color: #613262;
+	--switch-slider-background: #613262b3;
+
+	/* Badge */
+	--badge-color: #613262;
+
+	--avatar-color-1: #6e1f1a;
+	--avatar-color-2: #682552;
+	--avatar-color-3: #53195e;
+	--avatar-color-4: #0c3d64;
+	--avatar-color-5: #255727;
+}
+/* #endregion */
 
 [data-font-size='large'] {
 	--very-small-font: 0.9425rem;

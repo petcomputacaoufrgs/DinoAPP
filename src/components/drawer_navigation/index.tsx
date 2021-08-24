@@ -201,7 +201,9 @@ const scrollingAnotherElement = (event: TouchEvent): boolean => {
 }
 
 const openDrawer = (divEl: React.MutableRefObject<HTMLDivElement | null>) => {
-	changeDivTransform(divEl, 'translate3d(15rem, 0, 0)')
+	let deslocation: number
+	window.innerWidth > window.innerHeight ? deslocation = 20 : deslocation = 15
+	changeDivTransform(divEl, `translate3d(${deslocation}rem, 0, 0)`)
 }
 
 const closeDrawer = (divEl: React.MutableRefObject<HTMLDivElement | null>) => {

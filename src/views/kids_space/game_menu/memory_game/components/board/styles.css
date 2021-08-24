@@ -3,13 +3,3 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 12px;
 }
-
-.score_board {
-    margin-bottom: 2rem;
-    width: 4.5rem;
-    height: 4.5rem;
-    padding: 0.5rem;
-    border-radius: 50%;
-    font-size: var(--titan-font);
-    background-color: var(--memory-game-contrast-color);
-}

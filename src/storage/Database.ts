@@ -8,18 +8,20 @@ import UserEntity from '../types/user/database/UserEntity'
 import ContactEntity from '../types/contact/database/ContactEntity'
 import EssentialContactEntity from '../types/contact/database/EssentialContactEntity'
 import PhoneEntity from '../types/contact/database/PhoneEntity'
-import GoogleContactEntity from '../types/contact/database/GoogleContactEntity'
-import FaqEntity from '../types/faq/database/FaqEntity'
 import FaqItemEntity from '../types/faq/database/FaqItemEntity'
-import FaqUserQuestionEntity from '../types/faq/database/FaqUserQuestionEntity'
+import TreatmentQuestionEntity from '../types/faq/database/TreatmentQuestionEntity'
 import TreatmentEntity from '../types/treatment/database/TreatmentEntity'
 import UserSettingsEntity from '../types/user/database/UserSettingsEntity'
 import GoogleScopeEntity from '../types/auth/google/database/GoogleScopeEntity'
 import AuthEntity from '../types/auth/database/AuthEntity'
 import TabEntity from '../types/tab_control/TabEntity'
+import { KidsSpaceSettingsEntity } from '../types/kids_space/database/KidsSpaceSettingsEntity'
+import StaffEntity from '../types/staff/database/StaffEntity'
+import EssentialPhoneEntity from '../types/contact/database/EssentialPhoneEntity'
+import ReportEntity from '../types/report/database/ReportEntity'
 
 const DATABASE_NAME = 'DinoDatabase'
-const DATABASE_VERSION = 12
+const DATABASE_VERSION = 18
 
 class Database extends Dexie {
 	auth: Dexie.Table<AuthEntity, number>
@@ -31,15 +33,17 @@ class Database extends Dexie {
 	glossary: Dexie.Table<GlossaryItemEntity, number>
 	contact: Dexie.Table<ContactEntity, number>
 	essentialContact: Dexie.Table<EssentialContactEntity, number>
-	googleContact: Dexie.Table<GoogleContactEntity, number>
 	phone: Dexie.Table<PhoneEntity, number>
+	essentialPhone: Dexie.Table<EssentialPhoneEntity, number>
 	user: Dexie.Table<UserEntity, number>
-	faq: Dexie.Table<FaqEntity, number>
 	faqItem: Dexie.Table<FaqItemEntity, number>
-	faqUserQuestion: Dexie.Table<FaqUserQuestionEntity, number>
+	treatmentQuestion: Dexie.Table<TreatmentQuestionEntity, number>
 	treatment: Dexie.Table<TreatmentEntity, number>
 	googleScope: Dexie.Table<GoogleScopeEntity, number>
+	staff: Dexie.Table<StaffEntity, number>
 	tab: Dexie.Table<TabEntity, number>
+	kidsSpaceSettings: Dexie.Table<KidsSpaceSettingsEntity, number>
+	report: Dexie.Table<ReportEntity, number>
 
 	constructor() {
 		super(DATABASE_NAME)
@@ -49,28 +53,29 @@ class Database extends Dexie {
 		 **/
 		this.version(DATABASE_VERSION).stores({
 			userSettings: generateSynchronizableTableString(),
-			glossary: generateSynchronizableTableString(),
+			glossary: generateSynchronizableTableString('title'),
 			contact: generateSynchronizableTableString('localEssentialContactId'),
 			essentialContact: generateSynchronizableTableString(
 				'*treatmentLocalIds',
 				'isUniversal',
 			),
-			googleContact: generateSynchronizableTableString(
-				'localContactId',
-				'savedOnGoogleAPI',
-			),
-			phone: generateSynchronizableTableString(
-				'localContactId',
+			phone: generateSynchronizableTableString('localContactId'),
+			essentialPhone: generateSynchronizableTableString(
 				'localEssentialContactId',
 			),
 			noteColumn: generateSynchronizableTableString(),
 			note: generateSynchronizableTableString('columnId', 'localColumnId'),
 			user: generateSynchronizableTableString(),
-			faq: generateSynchronizableTableString('localTreatmentId'),
-			faqItem: generateSynchronizableTableString('localFaqId'),
-			faqUserQuestion: generateSynchronizableTableString(),
-			treatment: generateSynchronizableTableString(),
+			staff: generateSynchronizableTableString('email'),
+			faqItem: generateSynchronizableTableString(
+				'localTreatmentId',
+				'isUniversal',
+			),
+			treatmentQuestion: generateSynchronizableTableString('localTreatmentId'),
+			treatment: generateSynchronizableTableString('name'),
 			googleScope: generateSynchronizableTableString('name'),
+			kidsSpaceSettings: generateSynchronizableTableString(),
+			report: generateSynchronizableTableString('userId'),
 			auth: '++id',
 			logAppError: '++id,title,file,error,date',
 			calendarEvent:
@@ -81,21 +86,23 @@ class Database extends Dexie {
 		this.auth = this.table('auth')
 		this.userSettings = this.table('userSettings')
 		this.user = this.table('user')
+		this.staff = this.table('staff')
 		this.glossary = this.table('glossary')
 		this.contact = this.table('contact')
 		this.essentialContact = this.table('essentialContact')
-		this.googleContact = this.table('googleContact')
 		this.phone = this.table('phone')
+		this.essentialPhone = this.table('essentialPhone')
 		this.note = this.table('note')
 		this.noteColumn = this.table('noteColumn')
-		this.faq = this.table('faq')
 		this.faqItem = this.table('faqItem')
-		this.faqUserQuestion = this.table('faqUserQuestion')
+		this.treatmentQuestion = this.table('treatmentQuestion')
 		this.logAppError = this.table('logAppError')
 		this.calendarEvent = this.table('calendarEvent')
 		this.treatment = this.table('treatment')
 		this.googleScope = this.table('googleScope')
 		this.tab = this.table('tab')
+		this.kidsSpaceSettings = this.table('kidsSpaceSettings')
+		this.report = this.table('report')
 	}
 }
 

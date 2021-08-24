@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Board from './Board'
+import TicTacBoard from './Board'
 import { calculateWinner } from '../helper'
 import { useLanguage } from '../../../../../context/language'
 
@@ -62,7 +62,7 @@ const Game: React.FC<GameProps> = ({ onEndGame, gameStarted }) => {
 
 	return (
 		<>
-			<Board squares={history[stepNumber]} onClick={handleClick} />
+			<TicTacBoard squares={history[stepNumber]} onClick={handleClick} />
 			<div className='tic_tac_dino_game__display'>
 				{winner
 					? language.data.WINNER + winner

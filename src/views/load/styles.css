@@ -11,7 +11,7 @@
 	flex-direction: column;
 }
 
-.load_header {
+.load__header {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -27,19 +27,23 @@
 }
 
 .load__dino_logo {
+	width: fit-content;
 	height: 7.813rem;
-	width: 8.125rem;
-	opacity: 0;
 	animation: dino_logo_in 750ms 750ms forwards;
 }
 
 .load__team {
+	opacity: 0;
+	width: 100%;
 	position: fixed;
 	bottom: 1.5rem;
 	display: flex;
 	align-items: center;
-	justify-content: center;
 	flex-direction: row;
+	justify-content: center;
+	column-gap: 15%;
+	padding: 0 10%;
+
 }
 
 .load__team img {
@@ -47,19 +51,11 @@
 	height: auto;
 }
 
-.load__team img:not(:last-child) {
-	margin-right: 2.5rem;
-}
-
-.load__team__pet {
-	animation: teams_logo_in 500ms forwards 1.5s;
-}
-
 .load__team__hc {
 	animation: teams_logo_in 750ms forwards 0.75s;
 }
 
-.load__team__ufrgs {
+.load__team__ufrgs, .load__team__pet {
 	animation: teams_logo_in 500ms forwards 1.5s;
 }
 

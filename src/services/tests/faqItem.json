@@ -1,0 +1,24 @@
+{
+	"itemList": [
+		{
+			"question": "Que tipo de água o paciente pode beber?",
+			"answer": "Utilizar água corrente tratada fervida ou mineral em garrafas pequenas ou galões de até 5 litros. Água do filtro também deve ser fervida. EVITAR: água de poços artesianos, rios e lagos",
+			"isUniversal": 1
+		},
+		{
+			"question": "Quais frutas são permitidas?",
+			"answer": "Todas as frutas cruas são permitidas, desde que bem higienizadas e de preferência sem a casca. EVITAR: morango, framboesa, amora, uva, uva passas, frutas secas/desidratadas e oleaginosas (nozes, amêndoas, amendoim)",
+			"isUniversal": 1
+		},
+		{
+			"question": "Como a higienização de frutas e vegetais fazer em casa?",
+			"answer": "Os alimentos devem ser limpos com uma escova exclusiva e ficar de molho, ainda inteiros, em uma solução de 1 colher de sopa de água sanitária para 1 litro de água limpa. Deixar por 10 minutos, escorrer e enxaguar em água corrente.",
+			"isUniversal": 1
+		},
+		{
+			"question": "Posso comer hambúrguer, pizza, xis, etc..?",
+			"answer": "Se a sua orientação nutricional permitir, pode ingerir, desde que PREPARADOS em casa, com a carne do guisado cortada à mão ou moída em casa. EVITAR lanches preparados em estabelecimentos de procedência duvidosa.",
+			"isUniversal": 1
+		}
+	]
+}

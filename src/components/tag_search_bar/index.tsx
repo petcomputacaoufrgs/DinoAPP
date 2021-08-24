@@ -45,7 +45,7 @@ const TagSearchBar = (props: TagSearchBarProps): JSX.Element => {
 				<TextField
 					{...params}
 					className={props.textFieldClass}
-					placeholder={`${language.data.SEARCH_BUTTON_LABEL} (${language.data.MAX} ${MAX_TAGS})`}
+					placeholder={`${language.data.SEARCH_BUTTON_LABEL}`}
 					variant='outlined'
 					InputProps={{
 						...params.InputProps,

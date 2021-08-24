@@ -1,31 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { InputLabel, MenuItem, Select } from '@material-ui/core'
-import SelectLanguageProps from './props'
 import { useLanguage } from '../../../context/language'
 import UserSettingsService from '../../../services/user/UserSettingsService'
+import UserSettingsEntity from '../../../types/user/database/UserSettingsEntity'
 
-const SelectLanguage: React.FC<SelectLanguageProps> = ({
-	languageName,
-	setLanguage 
-}) => {
+const SelectLanguage: React.FC<{
+	settings?: UserSettingsEntity
+}> = ({ settings }) => {
 	const language = useLanguage()
 	const languageOptions = UserSettingsService.getLanguagesOptions(language.data)
 
-	const handleSelectedLanguageChanged = (event: any) => {
-		if (event && event.target && event.target.value) {
-			setLanguage(event.target.value as number)
+	const [selectedLanguage, setSelectedLanguage] = useState(
+		language.data.LANGUAGE_CODE,
+	)
+
+	const handleChange = (newLanguage: number) => {
+		setSelectedLanguage(newLanguage)
+
+		if (settings && settings.language !== newLanguage) {
+			settings.language = newLanguage
+			UserSettingsService.save(settings)
 		}
 	}
 
 	return (
 		<>
 			<InputLabel shrink id='language_select_label'>
-				{language.data.SETTINGS_LANGUAGE}
+				{language.data.CHOOSE_LANGUAGE}
 			</InputLabel>
 			<Select
 				labelId='language_select_label'
-				value={languageName}
-				onChange={handleSelectedLanguageChanged}
+				value={selectedLanguage}
+				onChange={e => handleChange(e.target.value as number)}
 				fullWidth
 			>
 				{languageOptions.map((languageOption, index) => (

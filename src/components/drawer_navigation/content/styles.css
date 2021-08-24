@@ -8,7 +8,7 @@
 .drawer__navigation__content__component {
 	position: relative;
 	height: calc(100% - 2.813rem);
-	background-color: var(--background-main);
+	background-color: var(--background-color);
 }
 
 .drawer__navigation__content__component__scrollable {
@@ -18,4 +18,14 @@
 
 .drawer__navigation__content__app_bar {
 	height: 2.813rem;
+}
+
+@media (orientation: landscape) {
+	.drawer__navigation__content__app_bar {
+		height: 4rem;
+	}
+
+	.drawer__navigation__content__component {
+		height: calc(100% - 4rem);
+	}
 }

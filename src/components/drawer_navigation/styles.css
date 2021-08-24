@@ -12,3 +12,9 @@
 	flex-direction: row;
 	overflow: visible;
 }
+
+@media (orientation: landscape) {
+	.drawer_navigation__box {
+		width: calc(100% + 20rem);
+	}
+}

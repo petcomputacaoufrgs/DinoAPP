@@ -4,19 +4,19 @@ import TreatmentService from '../../../services/treatment/TreatmentService'
 import TreatmentEntity from '../../../types/treatment/database/TreatmentEntity'
 import { FormControl, InputLabel, Select, Input } from '@material-ui/core'
 import SelectMultipleTreatmentsProps from './props'
-import Loader from '../../loader'
+import DinoLoader from '../../loader'
 import './styles.css'
+import { useLanguage } from '../../../context/language'
 
 const SelectMultipleTreatments: React.FC<SelectMultipleTreatmentsProps> = ({
 	selectedLocalIds,
-	setSelectedLocalIds,
+	handleChange
 }) => {
-	const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-		setSelectedLocalIds(event.target.value as number[])
-	}
 
-	const [isLoading, setIsLoading] = useState(true)
-	const [treatments, setTreatments] = useState<TreatmentEntity[]>()
+  const language = useLanguage()
+
+  let [isLoading, setIsLoading] = useState(true)
+  const [treatments, setTreatments] = useState<TreatmentEntity[]>()
 
 	useEffect(() => {
 		const loadData = async () => {
@@ -40,36 +40,34 @@ const SelectMultipleTreatments: React.FC<SelectMultipleTreatmentsProps> = ({
 
 	const renderOptions = () => {
 		if (treatments && !isLoading) {
-			return treatments.map(t => (
-				<MenuItem key={t.name} value={t.localId}>
+			return treatments.map((t, index) => (
+				<MenuItem key={index} value={t.localId}>
 					{t.name}
 				</MenuItem>
 			))
 		}
 	}
 
-	return (
-		<div className='select_multiple_treatments'>
-			<Loader isLoading={isLoading}>
-				<FormControl style={{ marginTop: '0.375rem', width: '100%' }}>
-					<InputLabel id='select_multiple_treatments__input_label'>
-						Tratamentos
-					</InputLabel>
-					<Select
-						labelId='select_multiple_treatments__input_label'
-						id='select_multiple_treatments__select_id'
-						multiple
-						fullWidth
-						value={selectedLocalIds}
-						onChange={handleChange}
-						input={<Input />}
-					>
-						{renderOptions()}
-					</Select>
-				</FormControl>
-			</Loader>
-		</div>
-	)
+  return (
+    <div className='select_multiple_treatments'>
+        <FormControl className="select_multiple_treatments__form_control">
+          <InputLabel id="select_multiple_treatments__input_label">{language.data.CHOOSE_TREATMENT}</InputLabel>
+          <DinoLoader isLoading={isLoading}>
+            <Select
+              labelId="select_multiple_treatments__input_label"
+              id="select_multiple_treatments__select_id"
+              multiple
+              fullWidth
+              value={selectedLocalIds}
+              onChange={(e) => handleChange(e.target.value as number[])}
+              input={<Input />}
+            >
+                {renderOptions()}
+            </Select>
+          </DinoLoader>
+        </FormControl>
+    </div>
+  )
 }
 
 export default SelectMultipleTreatments

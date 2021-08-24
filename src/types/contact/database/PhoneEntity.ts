@@ -1,9 +1,8 @@
 import SynchronizableEntity from '../../sync/database/SynchronizableEntity'
 
-export default interface PhoneModel extends SynchronizableEntity<number> {
+export default interface PhoneEntity extends SynchronizableEntity<number> {
 	number: string
 	type: number
 	localContactId?: number
-	localEssentialContactId?: number
-	localOriginalEssentialPhoneId?: number
+	localEssentialPhoneId?: number
 }

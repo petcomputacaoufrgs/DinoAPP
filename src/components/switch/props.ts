@@ -1,5 +1,5 @@
 export default interface SwitchProps {
 	selected: boolean
-	setSelected: (data: boolean) => void
+	onChangeSelected: () => void
 	label: string
 }

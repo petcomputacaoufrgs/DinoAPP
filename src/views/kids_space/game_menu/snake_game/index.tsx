@@ -3,17 +3,16 @@ import PathConstants from '../../../../constants/app/PathConstants'
 import HistoryService from '../../../../services/history/HistoryService'
 import { starGame } from './engine'
 import { useLanguage } from '../../../../context/language'
-import GameOverDialog from '../../../../components/kids_space_dialog/game_over_dialog'
-import GoBackButton from '../../../../components/button/go_back'
+import GameOverDialog from '../../../../components/dialogs/kids_space_dialog/game_over_dialog'
+
 import './styles.css'
+import ArrowBack from '../../../../components/arrow_back'
 
 const SnakeGame: React.FC = () => {
 	const language = useLanguage()
 	const [openDialog, setOpenDialog] = useState(false)
 
-	useEffect(() => {
-		starGame(handleGameOver)
-	}, [])
+	useEffect(() => starGame(handleGameOver), [])
 
 	const handleClose = () => {
 		setOpenDialog(false)
@@ -38,7 +37,7 @@ const SnakeGame: React.FC = () => {
 			>
 				<p>{language.data.SNAKE_GAME_GAME_OVER_MSG_1}</p>
 			</GameOverDialog>
-			<GoBackButton path={PathConstants.GAME_MENU} />
+			<ArrowBack kids />
 			<div id='snake_game__score_board' />
 			<div id='snake_game__game_board' />
 		</div>

@@ -1,0 +1,15 @@
+.dino_tab_panels, .tab_panel {
+  height: inherit;
+}
+
+.dino_tab_panels .MuiTab-wrapped {
+  font-size: var(--default-font);
+}
+
+.dino_tab_panels .MuiTab-wrapper {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}

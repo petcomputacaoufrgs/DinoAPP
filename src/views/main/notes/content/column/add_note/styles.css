@@ -11,7 +11,7 @@
 	font-style: normal;
 	margin-bottom: 0;
 	margin-top: 0;
-	color: var(--column-border);
+	color: var(--notes-font-color);
 }
 
 .note__note_content__column__add_note__max_notes {
