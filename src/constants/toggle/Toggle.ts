@@ -9,5 +9,5 @@ export const toggle = {
 		override: false,
 		permission: PermissionEnum.USER,
 	},
-	testAll2048Pieces: false,
+	testAll2048Pieces: true,
 }

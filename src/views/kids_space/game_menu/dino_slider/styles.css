@@ -19,7 +19,7 @@
 .dino_slider__header .dino_icon_button__button svg {
 	width: 3rem;
 	height: 3rem;
-	fill: var(--dino-slider-game-button-background-color);
+	fill: var(--switch-color);
 }
 
 .dino_slider__switch {

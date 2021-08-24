@@ -1,5 +1,5 @@
 .dino_slider .dino_slider__piece {
-  font-size: 30px;
+  font-size: 6vmin;
   font-weight: bold;
   height: 20vmin;
   width: 20vmin;
@@ -15,8 +15,8 @@
   justify-self: center;
 }
 
-.dino_slider .dino_slider__piece .dino_slider__piece.reduced {
-  font-size: 45px;
+.dino_slider .dino_slider__piece.reduced {
+  font-size: 11vmin !important;
 }
 
 .dino_slider .dino_slider__piece.piece_0{
@@ -25,55 +25,57 @@
 }
 
 .dino_slider .dino_slider__piece.piece_2 {
-  font-size: 45px;
+  font-size: 11vmin;
   background-color: #e9b90c;
 }
 
 .dino_slider .dino_slider__piece.piece_4 {
-  font-size: 45px;
+  font-size: 11vmin;
   background-color: #c6e030;
 }
 
 .dino_slider .dino_slider__piece.piece_8 {
-  font-size: 45px;
+  font-size: 11vmin;
   background-color: #93FF60;
 }
 
 .dino_slider .dino_slider__piece.piece_16 {
-  font-size: 45px;
+  font-size: 11vmin;
   background-color: #50d693;
 }
 
 .dino_slider .dino_slider__piece.piece_32 {
-  font-size: 45px;
+  font-size: 11vmin;
   background-color: #31d4cc;
 }
 
 .dino_slider .dino_slider__piece.piece_64 {
-  font-size: 45px;
+  font-size: 11vmin;
   background-color: #60B0FF;
 }
 
 .dino_slider .dino_slider__piece.piece_128 {
-  font-size: 40px;
+  font-size: 9vmin;
   background-color: #6060FF;
 }
 
 .dino_slider .dino_slider__piece.piece_256 {
-  font-size: 40px;
+  font-size: 9vmin;
   background-color: #B060FF;
 }
 
 .dino_slider .dino_slider__piece.piece_512 {
-  font-size: 40px;
+  font-size: 9vmin;
   background-color: #FF60FF;
 }
 
 .dino_slider .dino_slider__piece.piece_1024 {
+  font-size: 6vmin;
   background-color: #FF409F;
 }
 
 .dino_slider .dino_slider__piece.piece_2048 {
+  font-size: 6vmin;
   background-color: #FF4040;
 }
 

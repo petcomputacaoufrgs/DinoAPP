@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { useEvent } from '../../../dino_slider'
 import { toggle } from '../../../../../../constants/toggle/Toggle'
 import ArrayUtils from '../../../../../../utils/ArrayUtils'
 import SliderPiece from '../piece'
 import SliderBoardProps, { HandleSwipeProps } from './props'
+
+export const useEvent = (
+	event: any,
+	handler: { (this: Window, ev: any): any; (this: Window, ev: any): any },
+	passive = false,
+) => {
+	useEffect(() => {
+		window.addEventListener(event, handler, passive)
+		return () => window.removeEventListener(event, handler)
+	})
+}
 
 const SliderBoard: React.FC<SliderBoardProps> = ({
 	restart,
@@ -64,9 +74,40 @@ const SliderBoard: React.FC<SliderBoardProps> = ({
 		return newGrid
 	}
 
+	let xDown: number | null = null
+	let yDown: number | null = null
+
 	useEffect(() => setGameState(initialize()), [restart])
 
 	useEvent('keydown', (event: KeyboardEvent) => handleKeyDown(event.key))
+	useEvent('touchstart', (event: TouchEvent) => {
+		const firstTouch = event.touches[0]
+
+		xDown = firstTouch.clientX
+		yDown = firstTouch.clientY
+	})
+
+	useEvent('touchmove', (event: TouchEvent) => {
+		if (!xDown || !yDown) {
+			return
+		}
+
+		let xUp = event.touches[0].clientX
+		let yUp = event.touches[0].clientY
+
+		if (Math.abs(xDown - xUp) < Math.abs(yDown - yUp)) {
+			if (yDown - yUp > 0) {
+				handleKeyDown('ArrowUp')
+			} else handleKeyDown('ArrowDown')
+		} else {
+			if (xDown - xUp > 0) {
+				handleKeyDown('ArrowLeft')
+			} else handleKeyDown('ArrowRight')
+		}
+
+		xDown = null
+		yDown = null
+	})
 
 	const handleSwipe = (
 		{ isOffline, selectLinePieces, nextPieceFrom }: HandleSwipeProps,
